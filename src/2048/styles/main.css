@@ -1,0 +1,339 @@
+:root {
+	color-scheme: light dark;
+	--background-color: #faf8ef;
+	--text-color: #000;
+	--grid-background: #bbada0;
+	--cell-background: #ccc0b3;
+	--cell-color: #776e65;
+
+	--color-2: #eee4da;
+	--color-4: #ede0c8;
+	--color-8: #f2b179;
+	--color-16: #f59563;
+	--color-32: #f67c5f;
+	--color-64: #f65e3b;
+	--color-128: #edcf72;
+	--color-256: #edcc61;
+	--color-512: #edc850;
+	--color-1024: #edc53f;
+	--color-2048: #edc22e;
+	--color-4096: #000000;
+	--color-8192: #000000;
+
+	--button-background: #8f7a66;
+	--button-color: #f9f6f2;
+	--leaderboard-background: #bbada0;
+	--scrollbar-thumb-color: #8f7a66;
+	--scrollbar-track-color: #cdc1b4;
+	--leaderboard-scroll-background: #eee4da;
+	--table-even-background: #f0e4d3;
+	--table-odd-background: #eee4da;
+	--table-even-cell-background: #ede0c8;
+
+	/* --- Sizes --- */
+	--scrollbar-width: 10px;
+	--cell-size: min(80px, 18vw);
+	--grid-gap: min(10px, 2.25vw);
+	--border-radius: 5px;
+	--button-padding: 10px 20px;
+	--leaderboard-width: min(400px, 80vw);
+	--leaderboard-max-height: 250px;
+	--mobile-button-size: 60px;
+	--font-size-normal: 1.125rem;
+	--font-size-large: 1.5rem;
+	--margin-normal: 10px;
+	--margin-large: 20px;
+	--padding-normal: 15px;
+	--padding-large: 20px;
+	--grid-padding: 10px;
+	--grid-margin: 20px;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background-color: #111;
+		--text-color: #f9f6f2;
+		--grid-background: #55473b;
+		--cell-background: #372d22;
+	}
+}
+
+body {
+	font-family: Arial, sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+	background-color: var(--background-color);
+	color: var(--text-color);
+}
+
+.no-select {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+
+#grid {
+	display: grid;
+	grid-gap: var(--grid-gap);
+	background-color: var(--grid-background);
+	border-radius: var(--border-radius);
+	padding: var(--grid-padding);
+	margin: var(--grid-margin);
+	justify-content: center;
+}
+
+.cell {
+	width: var(--cell-size);
+	height: var(--cell-size);
+	background-color: var(--cell-background);
+	border-radius: var(--border-radius);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--cell-color);
+}
+
+.color-2 {
+	background-color: var(--color-2);
+}
+
+.color-4 {
+	background-color: var(--color-4);
+}
+
+.color-8 {
+	background-color: var(--color-8);
+	color: var(--button-color);
+}
+
+.color-16 {
+	background-color: var(--color-16);
+	color: var(--button-color);
+}
+
+.color-32 {
+	background-color: var(--color-32);
+	color: var(--button-color);
+}
+
+.color-64 {
+	background-color: var(--color-64);
+	color: var(--button-color);
+}
+
+.color-128 {
+	background-color: var(--color-128);
+	color: var(--button-color);
+}
+
+.color-256 {
+	background-color: var(--color-256);
+	color: var(--button-color);
+}
+
+.color-512 {
+	background-color: var(--color-512);
+	color: var(--button-color);
+}
+
+.color-1024 {
+	background-color: var(--color-1024);
+	color: var(--button-color);
+}
+
+.color-2048 {
+	background-color: var(--color-2048);
+	color: var(--button-color);
+}
+
+.color-4096 {
+	background-color: var(--color-4096);
+	color: var(--button-color);
+}
+
+.color-8192 {
+	background-color: var(--color-8192);
+	color: var(--button-color);
+}
+
+button {
+	font-size: var(--font-size-normal);
+	padding: var(--button-padding);
+	margin: var(--margin-normal);
+	cursor: pointer;
+	background-color: var(--button-background);
+	color: var(--button-color);
+	border: none;
+	border-radius: var(--border-radius);
+	align-items: center;
+	justify-content: center;
+	display: flex;
+}
+
+#game-container {
+	flex-direction: column;
+}
+
+#buttons {
+	display: flex;
+	justify-content: center;
+}
+
+#score {
+	font-size: var(--font-size-large);
+}
+
+#leaderboard {
+	width: var(--leaderboard-width);
+	margin-bottom: var(--margin-large);
+	background-color: var(--leaderboard-background);
+	border-radius: 10px;
+	padding: var(--padding-large);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+}
+
+#leaderboard h2 {
+	color: var(--cell-color);
+	margin-top: 0;
+	margin-bottom: var(--margin-large);
+	font-size: var(--font-size-large);
+}
+
+.leaderboard-scroll {
+	max-height: var(--leaderboard-max-height);
+	overflow-y: auto;
+	border-radius: var(--border-radius);
+	background-color: var(--leaderboard-scroll-background);
+	scrollbar-width: thin;
+	scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+}
+
+.leaderboard-scroll::-webkit-scrollbar {
+	width: var(--scrollbar-width);
+}
+
+.leaderboard-scroll::-webkit-scrollbar-track {
+	background: var(--scrollbar-track-color);
+	border-radius: var(--border-radius);
+}
+
+.leaderboard-scroll::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb-color);
+	border-radius: var(--border-radius);
+	border: 2px solid var(--scrollbar-track-color);
+}
+
+#leaderboard-table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	table-layout: fixed;
+}
+
+#leaderboard-table td {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#leaderboard-table th,
+#leaderboard-table td {
+	padding: var(--padding-normal);
+	text-align: left;
+	color: var(--cell-color);
+}
+
+#leaderboard-table th:nth-child(1),
+#leaderboard-table td:nth-child(1) {
+	width: 20%;
+}
+
+#leaderboard-table th:nth-child(2),
+#leaderboard-table td:nth-child(2) {
+	width: 55%;
+}
+
+#leaderboard-table th:nth-child(3),
+#leaderboard-table td:nth-child(3) {
+	width: 25%;
+}
+
+#leaderboard-table th {
+	background-color: var(--button-background);
+	color: var(--button-color);
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+#leaderboard-table tbody tr:nth-child(even) {
+	background-color: var(--table-even-background);
+}
+
+#leaderboard-table tbody tr:nth-child(odd) {
+	background-color: var(--table-odd-background);
+}
+
+#leaderboard-table tr:nth-child(even) td {
+	background-color: var(--table-even-cell-background);
+}
+
+#leaderboard-table td:first-child,
+#leaderboard-table th:first-child {
+	border-top-left-radius: var(--border-radius);
+	border-bottom-left-radius: var(--border-radius);
+}
+
+#leaderboard-table td:last-child,
+#leaderboard-table th:last-child {
+	border-top-right-radius: var(--border-radius);
+	border-bottom-right-radius: var(--border-radius);
+}
+
+.mobile-control-button {
+	width: var(--mobile-button-size);
+	height: var(--mobile-button-size);
+	margin: 5px;
+	font-size: var(--font-size-large);
+	background-color: var(--button-background);
+	color: var(--button-color);
+	border: none;
+	border-radius: var(--border-radius);
+	cursor: pointer;
+}
+
+.mobile {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+@media (min-width: 480px) {
+	.mobile {
+		display: none;
+	}
+}
+
+.section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.hidden {
+	display: none;
+}

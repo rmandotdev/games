@@ -1,0 +1,63 @@
+.notification {
+	position: fixed;
+	top: 10%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-100%);
+	background-color: var(--notification-background-color);
+	color: var(--notification-color);
+	padding: var(--notification-padding);
+	border-radius: var(--notification-border-radius);
+	font-size: var(--notification-font-size);
+	opacity: 0;
+	transition: transform 0.3s, opacity 0.3s;
+	width: fit-content;
+}
+
+.notification.game-over {
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%) scale(0.8);
+	background-color: var(--notification-game-over-background-color);
+	padding: var(--notification-game-over-padding);
+	border-radius: var(--notification-game-over-border-radius);
+	box-shadow: var(--notification-game-over-box-shadow);
+	text-align: center;
+	width: fit-content;
+}
+
+.notification.show {
+	transform: translateX(-50%) translateY(0);
+	opacity: 1;
+}
+
+.notification.game-over.show {
+	transform: translate(-50%, -50%) scale(1);
+}
+
+.dark-mode .notification {
+	background-color: rgba(255, 255, 255, 0.8);
+	color: black;
+}
+
+.dark-mode .notification.game-over {
+	background-color: rgba(255, 255, 255, 0.95);
+}
+
+.notification-close {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background: none;
+	border: none;
+	color: inherit;
+	font-size: 1.5em;
+	cursor: pointer;
+	padding: 5px;
+	line-height: 0.8;
+	opacity: 0.7;
+	transition: opacity 0.2s;
+}
+
+.notification-close:hover {
+	opacity: 1;
+}

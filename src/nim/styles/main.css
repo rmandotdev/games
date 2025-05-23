@@ -1,0 +1,208 @@
+:root {
+	--primary-color: #e6b980;
+	--text-color: #fff;
+
+	--stone-size: 24px;
+	--stones-gap: calc( var(--stone-size) / 3 );
+	--stones-padding: 1em;
+
+
+	--stones-in-one-row: 5;
+
+	--stones-width: calc( var(--stones-in-one-row) * var(--stone-size) + (var(--stones-in-one-row) - 1) * var(--stones-gap) );
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	margin: 0;
+	background: linear-gradient(135deg, #1a1f25 0%, #2c3e50 100%);
+	color: var(--text-color);
+}
+
+.screen {
+	background: rgba(255, 255, 255, 0.1);
+	padding: min(2.5em, 2.5vw);
+	border-radius: min(1.5em, 1.5vw);
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+	text-align: center;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	max-width: 800px;
+	width: 90%;
+}
+
+.hidden {
+	display: none;
+}
+
+h1 {
+	color: var(--text-color);
+	font-size: 2.5em;
+	margin-bottom: 1em;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+	color: var(--text-color);
+	margin-bottom: 1em;
+}
+
+button {
+	margin: 0.8em;
+	padding: 0.8em 1.5em;
+	font-size: 1.1em;
+	cursor: pointer;
+	background: transparent;
+	color: var(--text-color);
+	border: 2px solid rgba(255, 255, 255, 0.2);
+	border-radius: 8px;
+	transition: all 0.3s ease;
+	font-family: 'Poppins', sans-serif;
+	position: relative;
+	overflow: hidden;
+}
+
+button:hover {
+	background: rgba(255, 255, 255, 0.1);
+	transform: translateY(-2px);
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+	transform: translateY(0);
+}
+
+.heaps-display {
+	display: flex;
+	justify-content: space-between;
+}
+
+.heap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: rgba(255, 255, 255, 0.05);
+	padding: 1.5em;
+	border-radius: 10px;
+	transition: all 0.3s ease;
+	border: 2px solid transparent;
+	position: relative;
+	cursor: not-allowed;
+}
+
+.heap.selectable {
+	cursor: pointer;
+}
+
+.heap.selected {
+	border-color: var(--primary-color);
+	background: rgba(230, 185, 128, 0.1);
+	transform: translateY(-5px);
+	box-shadow: 0 5px 15px rgba(230, 185, 128, 0.2);
+}
+
+.heap.selectable:not(.selected):hover {
+	border-color: rgba(230, 185, 128, 0.3);
+	transform: translateY(-2px);
+}
+
+.stones {
+	display: grid;
+	grid-template-columns: repeat(var(--stones-in-one-row), 1fr);
+	gap: var(--stones-gap);
+	padding: 1em;
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	align-content: center;
+	width: var(--stones-width);
+	height: calc(8 * var(--stone-size) + 7 * var(--stones-gap));
+	align-content: start;
+}
+
+.stone {
+	width: var(--stone-size);
+	height: var(--stone-size);
+	background: linear-gradient(135deg, var(--primary-color) 0%, #eacda3 100%);
+	border-radius: 50%;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	transition: all 0.3s ease;
+	position: relative;
+}
+
+.heap-label {
+	font-size: 1.1em;
+	color: var(--primary-color);
+	padding: 0.5em 1em;
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	margin-bottom: 1em;
+	display: inline-block;
+}
+
+#take-controls {
+	margin-top: 2em;
+	padding: 1em;
+	background: rgba(255, 255, 255, 0.05);
+	border-radius: 10px;
+}
+
+.range-selector {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 250px;
+	height: 8px;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 4px;
+	margin: 1.5em;
+	cursor: pointer;
+}
+
+.range-selector::-webkit-slider-thumb {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 20px;
+	height: 20px;
+	background: var(--primary-color);
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.range-selector::-webkit-slider-thumb:hover {
+	transform: scale(1.1);
+}
+
+#rules ul {
+	text-align: left;
+	line-height: 1.6;
+	padding-left: 1.5em;
+}
+
+#rules li {
+	margin: 0.8em 0;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+#winner {
+	font-size: 2em;
+	color: var(--primary-color);
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#turn-indicator {
+	font-size: 1.4em;
+	color: var(--primary-color);
+	margin-top: 0;
+}
+
+#stones-selected {
+	font-size: 1.1em;
+	color: var(--primary-color);
+	margin: 0.5em 0;
+}

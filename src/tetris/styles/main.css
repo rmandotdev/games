@@ -1,0 +1,103 @@
+:root {
+	--board-width: 100%;
+	--board-height: calc(100vh - 120px);
+	--primary-color: #0ff;
+	--background-color: #000;
+	--text-color: #fff;
+	--grid-color: rgba(255, 255, 255, 0.1);
+	--tetromino-border: rgba(255, 255, 255, 0.5);
+	--block-size: 20px;
+	--grid-columns: repeat(10, 1fr);
+	--grid-rows: repeat(20, 1fr);
+	--font-family: 'Press Start 2P', cursive;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	margin: 0;
+	background-color: var(--background-color);
+	font-family: var(--font-family);
+	touch-action: manipulation;
+	overflow: hidden;
+	color: var(--text-color);
+}
+
+.no-select {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+#game-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	max-width: 100vw;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+#game-board {
+	width: var(--board-width);
+	height: var(--board-height);
+	max-width: none;
+	border: 2px solid var(--primary-color);
+	background-color: rgba(0, 0, 0, 0.8);
+	position: relative;
+	border-radius: 5px;
+	display: grid;
+	font-size: var(--block-size);
+	grid-template-columns: var(--grid-columns);
+	grid-template-rows: var(--grid-rows);
+}
+
+.grid-cell {
+	border: 1px solid var(--grid-color);
+	box-sizing: border-box;
+}
+
+#score {
+	margin-bottom: 10px;
+	font-size: 1rem;
+	text-shadow: 0 0 5px var(--primary-color);
+}
+
+.button {
+	padding: 8px 16px;
+	font-size: 1rem;
+	font-family: var(--font-family);
+	background-color: var(--primary-color);
+	color: var(--background-color);
+	border: none;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.button:hover {
+	background-color: var(--text-color);
+	box-shadow: 0 0 20px var(--text-color);
+}
+
+#reset-button {
+	background-color: #FF0000;
+	color: var(--text-color);
+}
+
+#reset-button:hover {
+	background-color: #FF3333;
+	box-shadow: 0 0 30px #FF3333;
+}
+
+#button-container {
+	gap: 20px;
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}

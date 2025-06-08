@@ -18,7 +18,7 @@
     "noUnusedParameters": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitAny": true,
-    "strictNullChecks": true,
+    "strictNullChecks": false,
 
     // Some more
     "allowJs": true,

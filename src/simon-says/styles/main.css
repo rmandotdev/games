@@ -1,135 +1,135 @@
 body {
-	font-family: 'Roboto', sans-serif;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
-	background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-	color: #ffffff;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
 }
 
 #game-container {
-	text-align: center;
-	background: rgba(255, 255, 255, 0.1);
-	padding: 30px;
-	border-radius: 15px;
-	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-	backdrop-filter: blur(4px);
-	-webkit-backdrop-filter: blur(4px);
-	border: 1px solid rgba(255, 255, 255, 0.18);
-	width: 100%;
-	max-width: 500px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 100%;
+  max-width: 500px;
 }
 
 h1 {
-	font-size: 2.5em;
-	margin-bottom: 20px;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 #simon-board {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	gap: 15px;
-	margin-bottom: 30px;
-	width: 270px;
-	margin-left: auto;
-	margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+  width: 270px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .simon-button {
-	width: 120px;
-	height: 120px;
-	border: none;
-	border-radius: 50%;
-	cursor: pointer;
-	opacity: 0.8;
-	transition: all 0.3s ease;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 120px;
+  height: 120px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .simon-button:hover {
-	opacity: 1;
-	transform: scale(1.05);
+  opacity: 1;
+  transform: scale(1.05);
 }
 
 .simon-button.active {
-	transform: scale(1.1);
-	box-shadow: 0 0 30px 15px rgba(255, 255, 255, 0.7);
+  transform: scale(1.1);
+  box-shadow: 0 0 30px 15px rgba(255, 255, 255, 0.7);
 }
 
 #red {
-	background-color: #ff4136;
+  background-color: #ff4136;
 }
 
 #green {
-	background-color: #2ecc40;
+  background-color: #2ecc40;
 }
 
 #blue {
-	background-color: #0074d9;
+  background-color: #0074d9;
 }
 
 #yellow {
-	background-color: #ffdc00;
+  background-color: #ffdc00;
 }
 
 #start-button {
-	font-size: 1.2em;
-	padding: 12px 30px;
-	cursor: pointer;
-	background-color: #01FF70;
-	color: #111111;
-	border: none;
-	border-radius: 25px;
-	transition: all 0.3s ease;
-	text-transform: uppercase;
-	font-weight: bold;
-	letter-spacing: 1px;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 1.2em;
+  padding: 12px 30px;
+  cursor: pointer;
+  background-color: #01ff70;
+  color: #111111;
+  border: none;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 #start-button:hover {
-	background-color: #2ECC40;
-	transform: translateY(-2px);
-	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  background-color: #2ecc40;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
 #start-button:disabled {
-	background-color: #aaaaaa;
-	cursor: not-allowed;
-	transform: none;
-	box-shadow: none;
+  background-color: #aaaaaa;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 #message {
-	font-size: 1.5em;
-	margin-bottom: 20px;
-	font-weight: 300;
-	letter-spacing: 1px;
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  font-weight: 300;
+  letter-spacing: 1px;
 }
 
 #leaderboard {
-	margin-top: 20px;
-	background: rgba(255, 255, 255, 0.1);
-	padding: 15px;
-	border-radius: 10px;
-	max-height: 200px;
-	overflow-y: auto;
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  max-height: 200px;
+  overflow-y: auto;
 }
 
 #leaderboard h2 {
-	margin-top: 0;
-	font-size: 1.5em;
+  margin-top: 0;
+  font-size: 1.5em;
 }
 
 #leaderboard-list {
-	list-style-type: none;
-	padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 #leaderboard-list li {
-	margin-bottom: 5px;
-	font-size: 1.1em;
+  margin-bottom: 5px;
+  font-size: 1.1em;
 }

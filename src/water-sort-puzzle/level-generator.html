@@ -1,168 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Water Sort Puzzle - Level Generator</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: linear-gradient(to bottom, #87ceeb, #1e90ff);
+        font-family: Arial, sans-serif;
+      }
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Water Sort Puzzle - Level Generator</title>
-	<style>
-		body {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-			margin: 0;
-			background: linear-gradient(to bottom, #87CEEB, #1E90FF);
-			font-family: Arial, sans-serif;
-		}
+      #config-input-container {
+        text-align: center;
+        margin-bottom: 20px;
+      }
 
-		#config-input-container {
-			text-align: center;
-			margin-bottom: 20px;
-		}
+      #config-input {
+        width: 400px;
+        height: 100px;
+        padding: 10px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        resize: vertical;
+      }
 
-		#config-input {
-			width: 400px;
-			height: 100px;
-			padding: 10px;
-			font-size: 1rem;
-			border-radius: 5px;
-			border: 1px solid #ccc;
-			resize: vertical;
-		}
+      #render-button,
+      #generate-button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: none;
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+      }
 
-		#render-button, #generate-button {
-			margin-top: 10px;
-			padding: 10px 20px;
-			font-size: 1rem;
-			border-radius: 5px;
-			border: none;
-			background-color: #4CAF50;
-			color: white;
-			cursor: pointer;
-		}
+      #render-button:hover,
+      #generate-button:hover {
+        background-color: #45a049;
+      }
 
-		#render-button:hover, #generate-button:hover {
-			background-color: #45a049;
-		}
+      #tubes-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
 
-		#tubes-container {
-			display: flex;
-			justify-content: center;
-			margin-top: 20px;
-		}
+      .tube {
+        width: 60px;
+        height: 200px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 2px solid #000;
+        border-radius: 0 0 20px 20px;
+        margin: 0 10px;
+        display: flex;
+        flex-direction: column-reverse;
+        overflow: hidden;
+      }
 
-		.tube {
-			width: 60px;
-			height: 200px;
-			background-color: rgba(255, 255, 255, 0.7);
-			border: 2px solid #000;
-			border-radius: 0 0 20px 20px;
-			margin: 0 10px;
-			display: flex;
-			flex-direction: column-reverse;
-			overflow: hidden;
-		}
+      .liquid {
+        width: 100%;
+        height: 25%;
+      }
+    </style>
+  </head>
 
-		.liquid {
-			width: 100%;
-			height: 25%;
-		}
-	</style>
-</head>
+  <body>
+    <div id="config-input-container">
+      <textarea id="config-input" placeholder="Level config"></textarea>
+      <br />
+      <input
+        type="number"
+        id="tube-count"
+        placeholder="Number of Tubes"
+        min="1"
+        style="margin-top: 10px; padding: 5px; font-size: 1rem"
+      />
+      <button id="generate-button">Generate Random Level</button>
+      <button id="render-button">Render Tubes</button>
+    </div>
 
-<body>
-	<div id="config-input-container">
-		<textarea id="config-input" placeholder='Level config'></textarea>
-		<br>
-		<input type="number" id="tube-count" placeholder="Number of Tubes" min="1" style="margin-top: 10px; padding: 5px; font-size: 1rem;">
-		<button id="generate-button">Generate Random Level</button>
-		<button id="render-button">Render Tubes</button>
-	</div>
+    <div id="tubes-container"></div>
 
-	<div id="tubes-container"></div>
+    <script>
+      const colors = [
+        "#FF0000",
+        "#0000FF",
+        "#20D020",
+        "#FFFF00",
+        "#FF00FF",
+        "#00FFFF",
+        "#FFA500",
+        "#A200FF",
+      ];
 
-	<script>
-		const colors = ['#FF0000', '#0000FF', '#20D020', '#FFFF00', '#FF00FF', '#00FFFF', '#FFA500', '#A200FF'];
+      function genLevel(x) {
+        const level = Array.from({ length: x + 2 }, () => []); // Initialize tubes
+        const colorsArr = []; // Array to store each color 4 times
 
-		function genLevel(x) {
-			const level = Array.from({ length: x + 2 }, () => []); // Initialize tubes
-			const colorsArr = []; // Array to store each color 4 times
+        // Add each color exactly 4 times to the colors array
+        for (let i = 0; i < x; i++) {
+          for (let j = 0; j < 4; j++) {
+            colorsArr.push(i);
+          }
+        }
 
-			// Add each color exactly 4 times to the colors array
-			for (let i = 0; i < x; i++) {
-				for (let j = 0; j < 4; j++) {
-					colorsArr.push(i);
-				}
-			}
+        // Shuffle colors array randomly
+        for (let i = colorsArr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [colorsArr[i], colorsArr[j]] = [colorsArr[j], colorsArr[i]];
+        }
 
-			// Shuffle colors array randomly
-			for (let i = colorsArr.length - 1; i > 0; i--) {
-				const j = Math.floor(Math.random() * (i + 1));
-				[colorsArr[i], colorsArr[j]] = [colorsArr[j], colorsArr[i]];
-			}
+        // Distribute shuffled colors into the tubes
+        let colorIndex = 0;
+        for (let i = 0; i < x; i++) {
+          for (let j = 0; j < 4; j++) {
+            level[i % x].push(colorsArr[colorIndex++]);
+          }
+        }
 
-			// Distribute shuffled colors into the tubes
-			let colorIndex = 0;
-			for (let i = 0; i < x; i++) {
-				for (let j = 0; j < 4; j++) {
-					level[i % x].push(colorsArr[colorIndex++]);
-				}
-			}
-			
-			const string = `[\n	${level.map(tube => `	[${tube.join(', ')}]`).join(',\n	')}\n	]`;
+        const string = `[\n	${level
+          .map((tube) => `	[${tube.join(", ")}]`)
+          .join(",\n	")}\n	]`;
 
-			return string;
-		}
+        return string;
+      }
 
-		function renderTubes(level) {
-			const tubesContainer = document.getElementById('tubes-container');
-			tubesContainer.innerHTML = ''; // Clear any existing tubes
+      function renderTubes(level) {
+        const tubesContainer = document.getElementById("tubes-container");
+        tubesContainer.innerHTML = ""; // Clear any existing tubes
 
-			level.forEach(tube => {
-				const tubeElement = document.createElement('div');
-				tubeElement.className = 'tube';
+        level.forEach((tube) => {
+          const tubeElement = document.createElement("div");
+          tubeElement.className = "tube";
 
-				tube.forEach(colorIndex => {
-					const liquid = document.createElement('div');
-					liquid.className = 'liquid';
-					liquid.style.backgroundColor = colors[colorIndex];
-					tubeElement.appendChild(liquid);
-				});
+          tube.forEach((colorIndex) => {
+            const liquid = document.createElement("div");
+            liquid.className = "liquid";
+            liquid.style.backgroundColor = colors[colorIndex];
+            tubeElement.appendChild(liquid);
+          });
 
-				tubesContainer.appendChild(tubeElement);
-			});
-		}
+          tubesContainer.appendChild(tubeElement);
+        });
+      }
 
-		function handleRender() {
-			const configInput = document.getElementById('config-input').value;
-			try {
-				const levelConfig = JSON.parse(configInput);
-				if (Array.isArray(levelConfig)) {
-					renderTubes(levelConfig);
-				} else {
-					alert('Invalid format. Please enter a valid array.');
-				}
-			} catch (error) {
-				alert('Invalid format. Please enter a valid JSON array.');
-			}
-		}
+      function handleRender() {
+        const configInput = document.getElementById("config-input").value;
+        try {
+          const levelConfig = JSON.parse(configInput);
+          if (Array.isArray(levelConfig)) {
+            renderTubes(levelConfig);
+          } else {
+            alert("Invalid format. Please enter a valid array.");
+          }
+        } catch (error) {
+          alert("Invalid format. Please enter a valid JSON array.");
+        }
+      }
 
-		document.getElementById('render-button').addEventListener('click', handleRender);
+      document
+        .getElementById("render-button")
+        .addEventListener("click", handleRender);
 
-		document.getElementById('generate-button').addEventListener('click', () => {
-			const tubeCount = parseInt(document.getElementById('tube-count').value, 10);
-			if (isNaN(tubeCount) || tubeCount < 1) {
-				alert('Please enter a valid number of tubes.');
-				return;
-			}
+      document
+        .getElementById("generate-button")
+        .addEventListener("click", () => {
+          const tubeCount = parseInt(
+            document.getElementById("tube-count").value,
+            10
+          );
+          if (isNaN(tubeCount) || tubeCount < 1) {
+            alert("Please enter a valid number of tubes.");
+            return;
+          }
 
-			const randomLevel = genLevel(tubeCount);
-			document.getElementById('config-input').value = randomLevel;
-			handleRender();
-		});
-	</script>
-</body>
-
+          const randomLevel = genLevel(tubeCount);
+          document.getElementById("config-input").value = randomLevel;
+          handleRender();
+        });
+    </script>
+  </body>
 </html>

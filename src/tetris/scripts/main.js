@@ -1,4 +1,4 @@
-let GG_ALL_GAME_CONFIG = {
+const CONFIG = {
 	boardWidth: 10,
 	boardHeight: 20,
 	initialSpeed: 1000,
@@ -56,27 +56,27 @@ function updateBoardDimensions() {
 	const maxWidth = containerElement.clientWidth * 0.95;
 	const maxHeight = window.innerHeight - 120;
 	const blockSize = Math.max(
-		GG_ALL_GAME_CONFIG.minBlockSize,
+		CONFIG.minBlockSize,
 		Math.min(
-			(maxWidth / GG_ALL_GAME_CONFIG.boardWidth),
-			(maxHeight / GG_ALL_GAME_CONFIG.boardHeight)
+			(maxWidth / CONFIG.boardWidth),
+			(maxHeight / CONFIG.boardHeight)
 		)
 	);
-	const newWidth = GG_ALL_GAME_CONFIG.boardWidth * blockSize;
-	const newHeight = GG_ALL_GAME_CONFIG.boardHeight * blockSize;
+	const newWidth = CONFIG.boardWidth * blockSize;
+	const newHeight = CONFIG.boardHeight * blockSize;
 	document.documentElement.style.setProperty('--board-width', `${newWidth}px`);
 	document.documentElement.style.setProperty('--board-height', `${newHeight}px`);
 	document.documentElement.style.setProperty('--block-size', `${blockSize}px`);
-	document.documentElement.style.setProperty('--grid-columns', `repeat(${GG_ALL_GAME_CONFIG.boardWidth}, 1fr)`);
-	document.documentElement.style.setProperty('--grid-rows', `repeat(${GG_ALL_GAME_CONFIG.boardHeight}, 1fr)`);
+	document.documentElement.style.setProperty('--grid-columns', `repeat(${CONFIG.boardWidth}, 1fr)`);
+	document.documentElement.style.setProperty('--grid-rows', `repeat(${CONFIG.boardHeight}, 1fr)`);
 }
 
 function initializeBoard() {
 	gameBoard = [];
 	gameboardElement.innerHTML = '';
-	for (let y = 0; y < GG_ALL_GAME_CONFIG.boardHeight; y++) {
+	for (let y = 0; y < CONFIG.boardHeight; y++) {
 		gameBoard[y] = [];
-		for (let x = 0; x < GG_ALL_GAME_CONFIG.boardWidth; x++) {
+		for (let x = 0; x < CONFIG.boardWidth; x++) {
 			gameBoard[y][x] = 0;
 			const cell = document.createElement('div');
 			cell.classList.add('grid-cell');
@@ -88,11 +88,11 @@ function initializeBoard() {
 }
 
 function createTetromino() {
-	const shapeIndex = Math.floor(Math.random() * GG_ALL_GAME_CONFIG.tetrominoShapes.length);
-	const tetrominoData = GG_ALL_GAME_CONFIG.tetrominoShapes[shapeIndex];
+	const shapeIndex = Math.floor(Math.random() * CONFIG.tetrominoShapes.length);
+	const tetrominoData = CONFIG.tetrominoShapes[shapeIndex];
 	return {
 		shape: JSON.parse(JSON.stringify(tetrominoData.shape)),
-		x: Math.floor(GG_ALL_GAME_CONFIG.boardWidth / 2) - Math.floor(tetrominoData.shape[0].length / 2),
+		x: Math.floor(CONFIG.boardWidth / 2) - Math.floor(tetrominoData.shape[0].length / 2),
 		y: 0,
 		color: tetrominoData.color,
 		colorIndex: shapeIndex
@@ -154,9 +154,9 @@ function collision() {
 			const newY = currentTetromino.y + dy;
 			const newX = currentTetromino.x + dx;
 			return (
-				newY >= GG_ALL_GAME_CONFIG.boardHeight ||
+				newY >= CONFIG.boardHeight ||
 				newX < 0 ||
-				newX >= GG_ALL_GAME_CONFIG.boardWidth ||
+				newX >= CONFIG.boardWidth ||
 				(newY >= 0 && gameBoard[newY][newX])
 			);
 		})
@@ -170,7 +170,7 @@ function mergeTetromino() {
 			if (value) {
 				const newY = currentTetromino.y + y;
 				const newX = currentTetromino.x + x;
-				if (newY >= 0 && newY < GG_ALL_GAME_CONFIG.boardHeight && newX >= 0 && newX < GG_ALL_GAME_CONFIG.boardWidth) {
+				if (newY >= 0 && newY < CONFIG.boardHeight && newX >= 0 && newX < CONFIG.boardWidth) {
 					gameBoard[newY][newX] = currentTetromino.colorIndex + 1;
 				}
 			}
@@ -181,16 +181,16 @@ function mergeTetromino() {
 
 function checkLines() {
 	let linesCleared = 0;
-	for (let y = GG_ALL_GAME_CONFIG.boardHeight - 1; y >= 0; y--) {
+	for (let y = CONFIG.boardHeight - 1; y >= 0; y--) {
 		if (gameBoard[y].every(cell => cell !== 0)) {
 			linesCleared++;
 			gameBoard.splice(y, 1);
-			gameBoard.unshift(new Array(GG_ALL_GAME_CONFIG.boardWidth).fill(0));
+			gameBoard.unshift(new Array(CONFIG.boardWidth).fill(0));
 			y++;
 		}
 	}
 	if (linesCleared > 0) {
-		score += linesCleared * GG_ALL_GAME_CONFIG.scorePerLine;
+		score += linesCleared * CONFIG.scorePerLine;
 		scoreElement.textContent = `Score: ${score}`;
 		increaseSpeed();
 	}
@@ -198,7 +198,7 @@ function checkLines() {
 
 function increaseSpeed() {
 	clearInterval(gameInterval);
-	const speed = Math.max(100, GG_ALL_GAME_CONFIG.initialSpeed - Math.floor(score / 1000) * GG_ALL_GAME_CONFIG.speedIncrease);
+	const speed = Math.max(100, CONFIG.initialSpeed - Math.floor(score / 1000) * CONFIG.speedIncrease);
 	gameInterval = setInterval(gameLoop, speed);
 }
 
@@ -243,7 +243,7 @@ function startGame() {
 		score = 0;
 		scoreElement.textContent = 'Score: 0';
 		currentTetromino = createTetromino();
-		gameInterval = setInterval(gameLoop, GG_ALL_GAME_CONFIG.initialSpeed);
+		gameInterval = setInterval(gameLoop, CONFIG.initialSpeed);
 		gameStarted = true;
 		gamePaused = false;
 		startButton.style.display = 'none';
@@ -257,7 +257,7 @@ function startGame() {
 function pauseGame() {
 	if (!gameStarted) return;
 	if (gamePaused) {
-		gameInterval = setInterval(gameLoop, GG_ALL_GAME_CONFIG.initialSpeed);
+		gameInterval = setInterval(gameLoop, CONFIG.initialSpeed);
 		gamePaused = false;
 		pauseButton.textContent = 'Pause Game';
 		resetButton.style.display = 'none';

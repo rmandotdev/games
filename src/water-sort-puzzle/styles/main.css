@@ -1,128 +1,128 @@
 :root {
-	--tube-width: 90px;
-	--tube-height: calc(var(--tube-width) * 3.5);
-	--tubes-gap: calc(var(--tube-width) / 4);
-	--tube-border-radius: calc(var(--tube-width) / 3);
-	--top-menu-font-size: 2.25rem;
-	--control-button-size: 54px;
-	--top-menu-gap: 20px;
+  --tube-width: 90px;
+  --tube-height: calc(var(--tube-width) * 3.5);
+  --tubes-gap: calc(var(--tube-width) / 4);
+  --tube-border-radius: calc(var(--tube-width) / 3);
+  --top-menu-font-size: 2.25rem;
+  --control-button-size: 54px;
+  --top-menu-gap: 20px;
 }
 
 body {
-	font-family: Arial, sans-serif;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
-	background: linear-gradient(to bottom, #87CEEB, #1E90FF);
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(to bottom, #87ceeb, #1e90ff);
 }
 
 .no-select {
-	user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .hidden {
-	display: none;
+  display: none;
 }
 
 #game-container {
-	text-align: center;
-	min-height: 80vh;
-	display: flex;
-	flex-direction: column;
+  text-align: center;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
 }
 
 #tubes-container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-grow: 1;
-	flex-direction: column;
-	gap: var(--tubes-gap);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  flex-direction: column;
+  gap: var(--tubes-gap);
 }
 
 .tube-row {
-	display: flex;
-	justify-content: center;
-	gap: var(--tubes-gap);
+  display: flex;
+  justify-content: center;
+  gap: var(--tubes-gap);
 }
 
 .tube {
-	width: var(--tube-width);
-	height: var(--tube-height);
-	background-color: rgba(255, 255, 255, 0.7);
-	border: 2px solid #000;
-	border-radius: 0 0 var(--tube-border-radius) var(--tube-border-radius);
-	display: flex;
-	flex-direction: column-reverse;
-	overflow: hidden;
-	cursor: pointer;
+  width: var(--tube-width);
+  height: var(--tube-height);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 2px solid #000;
+  border-radius: 0 0 var(--tube-border-radius) var(--tube-border-radius);
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .liquid {
-	width: 100%;
-	height: 25%;
-	transition: all 0.3s ease;
+  width: 100%;
+  height: 25%;
+  transition: all 0.3s ease;
 }
 
 #top-menu {
-	gap: var(--top-menu-gap);
-	font-size: var(--top-menu-font-size);
-	font-weight: bold;
-	margin-bottom: var(--top-menu-gap);
-	color: #fff;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  gap: var(--top-menu-gap);
+  font-size: var(--top-menu-font-size);
+  font-weight: bold;
+  margin-bottom: var(--top-menu-gap);
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #currrent-level {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #message {
-	font-size: calc(var(--tube-width) * 0.35);
-	font-weight: bold;
-	margin-bottom: calc(var(--tube-margin) * 2);
-	color: #fff;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: calc(var(--tube-width) * 0.35);
+  font-weight: bold;
+  margin-bottom: calc(var(--tube-margin) * 2);
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .control-button {
-	width: var(--control-button-size);
-	height: var(--control-button-size);
-	cursor: pointer;
-	border: none;
-	padding: 0;
-	background: none;
+  width: var(--control-button-size);
+  height: var(--control-button-size);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background: none;
 }
 
 .control-button {
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 #previous-level {
-	background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiBmaWxsPSIjRkZGIj48cGF0aCBkPSJtMzEzLTQ0MCAyMjQgMjI0LTU3IDU2LTMyMC0zMjAgMzIwLTMyMCA1NyA1Ni0yMjQgMjI0aDQ4N3Y4MEgzMTNaIi8+PC9zdmc+');
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiBmaWxsPSIjRkZGIj48cGF0aCBkPSJtMzEzLTQ0MCAyMjQgMjI0LTU3IDU2LTMyMC0zMjAgMzIwLTMyMCA1NyA1Ni0yMjQgMjI0aDQ4N3Y4MEgzMTNaIi8+PC9zdmc+");
 }
 
 #next-level {
-	background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiBmaWxsPSIjRkZGIj48cGF0aCBkPSJNNjQ3LTQ0MEgxNjB2LTgwaDQ4N0w0MjMtNzQ0bDU3LTU2IDMyMCAzMjAtMzIwIDMyMC01Ny01NiAyMjQtMjI0WiIvPjwvc3ZnPg==');
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiBmaWxsPSIjRkZGIj48cGF0aCBkPSJNNjQ3LTQ0MEgxNjB2LTgwaDQ4N0w0MjMtNzQ0bDU3LTU2IDMyMCAzMjAtMzIwIDMyMC01Ny01NiAyMjQtMjI0WiIvPjwvc3ZnPg==");
 }
 
 #restart-level {
-	background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiBmaWxsPSIjRkZGIj48cGF0aCBkPSJNNDgwLTE2MHEtMTM0IDAtMjI3LTkzdC05My0yMjdxMC0xMzQgOTMtMjI3dDIyNy05M3E2OSAwIDEzMiAyOC41VDcyMC02OTB2LTExMGg4MHYyODBINTIwdi04MGgxNjhxLTMyLTU2LTg3LjUtODhUNDgwLTcyMHEtMTAwIDAtMTcwIDcwdC03MCAxNzBxMCAxMDAgNzAgMTcwdDE3MCA3MHE3NyAwIDEzOS00NHQ4Ny0xMTZoODRxLTI4IDEwNi0xMTQgMTczdC0xOTYgNjdaIi8+PC9zdmc+");
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiBmaWxsPSIjRkZGIj48cGF0aCBkPSJNNDgwLTE2MHEtMTM0IDAtMjI3LTkzdC05My0yMjdxMC0xMzQgOTMtMjI3dDIyNy05M3E2OSAwIDEzMiAyOC41VDcyMC02OTB2LTExMGg4MHYyODBINTIwdi04MGgxNjhxLTMyLTU2LTg3LjUtODhUNDgwLTcyMHEtMTAwIDAtMTcwIDcwdC03MCAxNzBxMCAxMDAgNzAgMTcwdDE3MCA3MHE3NyAwIDEzOS00NHQ4Ny0xMTZoODRxLTI4IDEwNi0xMTQgMTczdC0xOTYgNjdaIi8+PC9zdmc+");
 }
 
 .control-button:disabled {
-	opacity: 0.5;
-	cursor: not-allowed;
+  opacity: 0.5;
+  cursor: not-allowed;
 }

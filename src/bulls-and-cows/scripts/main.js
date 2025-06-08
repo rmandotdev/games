@@ -1,4 +1,4 @@
-let GG_ALL_GAME_CONFIG = {
+const CONFIG = {
 	numberLength: 4, 
 	digits: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 };
@@ -17,9 +17,9 @@ function shuffleArray(array) {
 }
 
 function generateSecretNumber() {
-	const shuffled = [...GG_ALL_GAME_CONFIG.digits];
+	const shuffled = [...CONFIG.digits];
 	shuffleArray(shuffled);
-	return shuffled.slice(0, GG_ALL_GAME_CONFIG.numberLength).join('');
+	return shuffled.slice(0, CONFIG.numberLength).join('');
 }
 
 function checkGuess(guess) {
@@ -31,7 +31,7 @@ function checkGuess(guess) {
 			error: "Invalid guess. Must be 4 unique digits."
 		};
 	}
-	for (let i = 0; i < GG_ALL_GAME_CONFIG.numberLength; i++) {
+	for (let i = 0; i < CONFIG.numberLength; i++) {
 		if (guess[i] === gameState.secretNumber[i]) {
 			bulls++;
 		} else if (gameState.secretNumber.includes(guess[i])) {
@@ -107,7 +107,7 @@ document.getElementById('guess-form').addEventListener('submit', function(e) {
 	} else {
 		gameState.guesses++;
 		updateHistory(guess, result);
-		if (result.bulls === GG_ALL_GAME_CONFIG.numberLength) {
+		if (result.bulls === CONFIG.numberLength) {
 			endGame();
 		}
 		document.getElementById('guessInput').value = '';

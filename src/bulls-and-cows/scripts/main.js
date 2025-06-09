@@ -26,9 +26,12 @@ function checkGuess(guess) {
   let bulls = 0;
   let cows = 0;
   const guessSet = new Set(guess);
-  if (guess.length !== 4 || guessSet.size !== 4) {
+  if (
+    guess.length !== CONFIG.numberLength ||
+    guessSet.size !== CONFIG.numberLength
+  ) {
     return {
-      error: "Invalid guess. Must be 4 unique digits.",
+      error: `Invalid guess. Must be ${CONFIG.numberLength} unique digits.`,
     };
   }
   for (let i = 0; i < CONFIG.numberLength; i++) {
@@ -116,7 +119,7 @@ document.getElementById("guess-form").addEventListener("submit", function (e) {
 
 document.getElementById("guessInput").addEventListener("input", function (e) {
   const input = e.target;
-  input.value = input.value.slice(0, 4);
+  input.value = input.value.slice(0, CONFIG.numberLength);
   input.setCustomValidity("");
 });
 

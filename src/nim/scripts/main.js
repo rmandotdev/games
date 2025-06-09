@@ -218,3 +218,5 @@ document.getElementById("take-button").addEventListener("click", confirmTake);
 document
   .getElementById("restart-button")
   .addEventListener("click", restartGame);
+
+export {};

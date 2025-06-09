@@ -16,7 +16,6 @@ let gameState = {
 
 const startButton = document.getElementById("start-button");
 const messageElement = document.getElementById("message");
-const leaderboardList = document.getElementById("leaderboard-list");
 
 startButton.addEventListener("click", startGame);
 
@@ -37,7 +36,6 @@ function startGame() {
   gameState.canPlay = false;
   startButton.disabled = true;
   nextRound();
-  requestLeaderboard();
 }
 
 function nextRound() {
@@ -50,9 +48,7 @@ function nextRound() {
 
 function addToSequence() {
   const randomColor =
-    CONFIG.colors[
-      Math.floor(Math.random() * CONFIG.colors.length)
-    ];
+    CONFIG.colors[Math.floor(Math.random() * CONFIG.colors.length)];
   gameState.gameSequence.push(randomColor);
 }
 
@@ -133,7 +129,6 @@ function endGame() {
   startButton.disabled = false;
   startButton.classList.add("pulse");
   gameState.canPlay = false;
-  saveScore(gameState.round, `Round ${gameState.round}`);
 }
 
 function updateRoundDisplay() {
@@ -144,40 +139,4 @@ function updateRoundDisplay() {
   }, 1000);
 }
 
-function saveScore(score, scoreText) {
-  const submitScoreEvent = {
-    type: "REQUEST_SAVE_SCORE_EVENT",
-    score_numeric: score,
-    score_text: scoreText,
-  };
-  window.parent.postMessage(submitScoreEvent, "*");
-  requestLeaderboard();
-}
-
-function requestLeaderboard() {
-  window.parent.postMessage(
-    {
-      type: "REQUEST_LOAD_SCORES_EVENT",
-    },
-    "*"
-  );
-}
-
-window.addEventListener("message", (event) => {
-  const { type, scores } = event.data;
-  if (type === "RESPONSE_LOAD_SCORES_EVENT") {
-    updateLeaderboard(scores);
-  }
-});
-
-function updateLeaderboard(scores) {
-  leaderboardList.innerHTML = "";
-  scores.slice(0, 10).forEach((score, index) => {
-    const li = document.createElement("li");
-    li.textContent = `${index + 1}. ${score.handle}: ${score.score_text}`;
-    leaderboardList.appendChild(li);
-  });
-}
-
-// Initial leaderboard load
-requestLeaderboard();
+export {};

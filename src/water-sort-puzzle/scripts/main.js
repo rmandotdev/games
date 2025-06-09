@@ -44,9 +44,7 @@ function loadData() {
 }
 
 async function getLevels() {
-  await fetch(
-    `${CONFIG.dataUrl}/levels.json?timestamp=${Date.now()}`
-  )
+  await fetch(`${CONFIG.dataUrl}/levels.json?timestamp=${Date.now()}`)
     .then((response) => response.json())
     .then((data) => {
       CONFIG.levels = data;
@@ -91,8 +89,7 @@ function loadLevel() {
   document.getElementById("restart-level").disabled = true;
   if (gameState.currentLevel >= CONFIG.levels.length) {
     document.getElementById("tubes-container").style.visibility = "hidden";
-    document.getElementById("message").innerHTML =
-      CONFIG.finalMessage;
+    document.getElementById("message").innerHTML = CONFIG.finalMessage;
     return;
   }
   createTubes();
@@ -142,8 +139,7 @@ function selectTube(index) {
 function canPour(from, to) {
   if (from === to) return false;
   if (gameState.tubes[from].length === 0) return false;
-  if (gameState.tubes[to].length === CONFIG.tubeCapacity)
-    return false;
+  if (gameState.tubes[to].length === CONFIG.tubeCapacity) return false;
   if (gameState.tubes[to].length === 0) return true;
   return (
     gameState.tubes[from][gameState.tubes[from].length - 1] ===
@@ -268,3 +264,5 @@ async function initializeGame() {
 
 initializeGame();
 updateTubeSize(); // Initial call to set correct sizes
+
+export {};

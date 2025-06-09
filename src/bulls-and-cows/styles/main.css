@@ -1,168 +1,173 @@
 :root {
-	color-scheme: light dark;
-	--text-color: #000;
-	--secondary-text-color: #666;
-	--primary-color: #5a3982;
-	--secondary-color: #4a5ec8;
-	--scrollbar-color: #f0f0f0;
-	--background-color: rgba(255, 255, 255, 0.9);
-	--secondary-background-color: #f9f9f9;
-	--border-color: #ddd;
-	--secondary-border-color: #eee;
+  color-scheme: light dark;
+  --text-color: #000;
+  --secondary-text-color: #666;
+  --primary-color: #5a3982;
+  --secondary-color: #4a5ec8;
+  --scrollbar-color: #f0f0f0;
+  --background-color: rgba(255, 255, 255, 0.9);
+  --secondary-background-color: #f9f9f9;
+  --border-color: #ddd;
+  --secondary-border-color: #eee;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--text-color: #e4e4e4;
-		--secondary-text-color: #b0b0b0;
-		--primary-color: #151b44;
-		--secondary-color: #221337;
-		--scrollbar-color: #080808;
-		--background-color: rgba(13, 13, 13, 0.95);
-		--secondary-background-color: #1a1a1a;
-		--border-color: #404040;
-		--secondary-border-color: #333;
-	}
+  :root {
+    --text-color: #e4e4e4;
+    --secondary-text-color: #b0b0b0;
+    --primary-color: #151b44;
+    --secondary-color: #221337;
+    --scrollbar-color: #080808;
+    --background-color: rgba(13, 13, 13, 0.95);
+    --secondary-background-color: #1a1a1a;
+    --border-color: #404040;
+    --secondary-border-color: #333;
+  }
 }
 
 body {
-	font-family: 'Roboto', sans-serif;
-	color: var(--text-color);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-	margin: 0;
-	background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+  font-family: "Roboto", sans-serif;
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(
+    135deg,
+    var(--secondary-color) 0%,
+    var(--primary-color) 100%
+  );
 }
 
 .game-container {
-	background-color: var(--background-color);
-	padding: min(30px, 5%);
-	border-radius: 15px;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-	text-align: center;
-	max-width: min(400px, 84%);
-	width: 100%;
+  background-color: var(--background-color);
+  padding: min(30px, 5%);
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: min(400px, 84%);
+  width: 100%;
 }
 
 form {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 p {
-	color: var(--secondary-text-color);
-	margin: 0;
+  color: var(--secondary-text-color);
+  margin: 0;
 }
 
 input {
-	background-color: var(--background-color);
-	width: auto;
-	padding: 10px;
-	margin: 10px 5px 10px 0;
-	border: 2px solid var(--border-color);
-	border-radius: 5px;
-	font-size: 16px;
-	transition: border-color 0.3s ease;
-	-moz-appearance: textfield;
-	flex: 1;
+  background-color: var(--background-color);
+  width: auto;
+  padding: 10px;
+  margin: 10px 5px 10px 0;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  flex: 1;
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 input:focus {
-	outline: none;
-	border-color: var(--primary-color);
+  outline: none;
+  border-color: var(--primary-color);
 }
 
 button {
-	padding: 10px 20px;
-	background-color: var(--primary-color);
-	color: white;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 16px;
-	transition: background-color 0.3s ease;
-	white-space: nowrap;
+  padding: 10px 20px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
 }
 
 button:hover {
-	background-color: var(--secondary-color);
+  background-color: var(--secondary-color);
 }
 
 #history {
-	margin: 10px 0;
-	text-align: left;
-	max-height: 200px;
-	overflow-y: auto;
-	border: 1px solid var(--border-color);
-	padding: 10px;
-	border-radius: 5px;
-	background-color: var(--secondary-background-color);
-	scrollbar-width: thin;
-	scrollbar-color: var(--primary-color) var(--scrollbar-color);
+  margin: 10px 0;
+  text-align: left;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--secondary-background-color);
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--scrollbar-color);
 }
 
 #history::-webkit-scrollbar {
-	width: 8px;
+  width: 8px;
 }
 
 #history::-webkit-scrollbar-track {
-	background: var(--scrollbar-color);
-	border-radius: 5px;
+  background: var(--scrollbar-color);
+  border-radius: 5px;
 }
 
 #history::-webkit-scrollbar-thumb {
-	background-color: var(--primary-color);
-	border-radius: 5px;
-	border: 2px solid var(--scrollbar-color);
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  border: 2px solid var(--scrollbar-color);
 }
 
 .history-entry {
-	display: grid;
-	grid-template-columns: 0.5fr 1fr 0.75fr 0.75fr;
-	gap: 10px;
-	margin: 5px 0;
-	padding: 8px;
-	border-bottom: 1px solid var(--secondary-border-color);
-	align-items: center;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.75fr 0.75fr;
+  gap: 10px;
+  margin: 5px 0;
+  padding: 8px;
+  border-bottom: 1px solid var(--secondary-border-color);
+  align-items: center;
 }
 
 .history-entry:last-child {
-	border-bottom: none;
+  border-bottom: none;
 }
 
 .history-header {
-	display: grid;
-	grid-template-columns: 0.5fr 1fr 0.75fr 0.75fr;
-	gap: 10px;
-	padding: 8px;
-	font-weight: bold;
-	border-bottom: 2px solid var(--text-color);
-	margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.75fr 0.75fr;
+  gap: 10px;
+  padding: 8px;
+  font-weight: bold;
+  border-bottom: 2px solid var(--text-color);
+  margin-bottom: 10px;
 }
 
 #result {
-	font-weight: bold;
-	color: var(--text-color);
+  font-weight: bold;
+  color: var(--text-color);
 }
 
 .game-info {
-	border-radius: 5px;
+  border-radius: 5px;
 }
 
 .game-info p {
-	margin: 5px 0;
-	font-size: 14px;
+  margin: 5px 0;
+  font-size: 14px;
 }
 
 .hidden {
-	display: none;
+  display: none;
 }

@@ -245,3 +245,5 @@ document
 loadData();
 updateGameConfig();
 showMenu();
+
+export {};

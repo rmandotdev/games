@@ -247,3 +247,5 @@ document
 document.getElementById("menu-button").addEventListener("click", showMainMenu);
 
 showMainMenu();
+
+export {};

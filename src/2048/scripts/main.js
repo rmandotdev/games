@@ -391,3 +391,5 @@ window.addEventListener("message", (e) => {
 requestUserHandle();
 loadScore();
 newGame();
+
+export {};

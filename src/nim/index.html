@@ -1,75 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-<head>
-	<meta name="referrer" content="no-referrer-when-downgrade">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NIM Game</title>
 
-	<title>NIM Game</title>
+    <meta name="description" content="Classic NIM game by GameRoMan" />
 
-	<meta name="description" content="Classic NIM game by GameRoMan">
+    <meta property="og:title" content="NIM Game" />
+    <meta
+      property="og:description"
+      content="Classic NIM game. Play on https://rman.dev/games/nim"
+    />
+    <meta property="og:url" content="https://rman.dev/games/nim" />
+    <meta property="og:image" content="images/thumbnail.png" />
 
-	<meta property="og:title" content="NIM Game">
-	<meta property="og:description" content="Classic NIM game. Play on https://roman.is-a.dev/games/nim">
-	<meta property="og:url" content="https://roman.is-a.dev/games/nim">
-	<meta property="og:image" content="images/thumbnail.png">
+    <meta name="twitter:title" content="NIM Game" />
+    <meta
+      name="twitter:description"
+      content="Classic NIM game. Play on https://rman.dev/games/nim"
+    />
+    <meta name="twitter:image" content="images/thumbnail.png" />
 
-	<meta name="twitter:title" content="NIM Game">
-	<meta name="twitter:description" content="Classic NIM game. Play on https://roman.is-a.dev/games/nim">
-	<meta name="twitter:image" content="images/thumbnail.png">
+    <link rel="canonical" href="https://rman.dev/games/nim" />
+    <link rel="shortcut icon" href="images/thumbnail.png" type="image/x-icon" />
 
-	<link rel="canonical" href="https://roman.is-a.dev/games/nim">
-	<link rel="shortcut icon" href="images/thumbnail.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles/main.css" />
 
-	<link rel="stylesheet" href="styles/main.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-</head>
+  <body>
+    <div id="menu" class="screen">
+      <h1>NIM Game</h1>
+      <button id="player-vs-player">Player vs Player</button>
+      <button id="player-vs-bot">Player vs Bot</button>
+      <button id="rules-button">How to Play</button>
+    </div>
 
-<body>
-	<div id="menu" class="screen">
-		<h1>NIM Game</h1>
-		<button id="player-vs-player">Player vs Player</button>
-		<button id="player-vs-bot">Player vs Bot</button>
-		<button id="rules-button">How to Play</button>
-	</div>
+    <div id="rules" class="screen hidden">
+      <h2>How to Play</h2>
+      <ul>
+        <li>The game starts with 3 heaps of stones</li>
+        <li>Players take turns removing stones from the heaps</li>
+        <li>On your turn, you can take any number of stones from one heap</li>
+        <li>You cannot take stones from multiple heaps in one turn</li>
+        <li>The player who takes the last stone wins!</li>
+      </ul>
+      <button id="back-button">Back</button>
+    </div>
 
-	<div id="rules" class="screen hidden">
-		<h2>How to Play</h2>
-		<ul>
-			<li>The game starts with 3 heaps of stones</li>
-			<li>Players take turns removing stones from the heaps</li>
-			<li>On your turn, you can take any number of stones from one heap</li>
-			<li>You cannot take stones from multiple heaps in one turn</li>
-			<li>The player who takes the last stone wins!</li>
-		</ul>
-		<button id="back-button">Back</button>
-	</div>
+    <div id="first-choice" class="screen hidden">
+      <h2>Would you like to make the first move?</h2>
+      <div class="heaps-display"></div>
+      <button id="go-first">Go First</button>
+      <button id="go-second">Go Second</button>
+    </div>
 
-	<div id="first-choice" class="screen hidden">
-		<h2>Would you like to make the first move?</h2>
-		<div class="heaps-display"></div>
-		<button id="go-first">Go First</button>
-		<button id="go-second">Go Second</button>
-	</div>
+    <div id="game" class="screen hidden">
+      <h2 id="turn-indicator"></h2>
+      <div class="heaps-display"></div>
+      <div id="take-controls" class="hidden">
+        <input
+          type="range"
+          id="take-amount"
+          class="range-selector"
+          min="1"
+          value="1"
+        />
+        <div id="stones-selected">1 stone selected</div>
+        <button id="take-button">Take Stones</button>
+      </div>
+    </div>
 
-	<div id="game" class="screen hidden">
-		<h2 id="turn-indicator"></h2>
-		<div class="heaps-display"></div>
-		<div id="take-controls" class="hidden">
-			<input type="range" id="take-amount" class="range-selector" min="1" value="1">
-			<div id="stones-selected">1 stone selected</div>
-			<button id="take-button">Take Stones</button>
-		</div>
-	</div>
+    <div id="game-over" class="screen hidden">
+      <h2 id="winner"></h2>
+      <button id="restart-button">Play Again</button>
+    </div>
 
-	<div id="game-over" class="screen hidden">
-		<h2 id="winner"></h2>
-		<button id="restart-button">Play Again</button>
-	</div>
-
-	<script type="module" src="scripts/main.js"></script>
-</body>
-
+    <script type="module" src="./scripts/main.js"></script>
+  </body>
 </html>

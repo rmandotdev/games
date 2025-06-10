@@ -1,0 +1,8 @@
+{
+  "name": "games",
+  "compatibility_date": "2025-06-10",
+  "assets": {
+    "directory": "./src",
+    "not_found_handling": "404-page"
+  }
+}

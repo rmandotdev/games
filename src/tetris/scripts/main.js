@@ -57,9 +57,9 @@ const CONFIG = {
 
 const gameState = {
   gameBoard: [],
-  currentTetromino,
+  currentTetromino: null,
   score: 0,
-  gameInterval,
+  gameInterval: null,
   gameStarted: false,
   gamePaused: false,
 };

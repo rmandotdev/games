@@ -1,8 +1,13 @@
 {
+  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "games",
-  "compatibility_date": "2025-06-10",
+  "compatibility_date": "2025-06-23",
+  "account_id": "9cb2e2e27c4416de8fa3465ed0ee8deb",
+
   "assets": {
-    "directory": "./src",
+    "directory": "./dist",
     "not_found_handling": "404-page"
-  }
+  },
+
+  "observability": { "logs": { "enabled": true } }
 }

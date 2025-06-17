@@ -1,13 +1,17 @@
 {
   "name": "games",
-  "module": "index.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+    "build": "bunx astro build",
+    "deploy": "bunx wrangler deploy"
+  },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20250612.0",
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "astro": "^5.10.1",
+    "wrangler": "^4.20.5"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "typescript": "^5.8.3"
   }
 }

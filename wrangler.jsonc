@@ -9,5 +9,10 @@
     "not_found_handling": "404-page"
   },
 
+  "build": {
+    "command": "bun run build",
+    "cwd": "."
+  },
+
   "observability": { "logs": { "enabled": true } }
 }

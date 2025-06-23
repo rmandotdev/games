@@ -1,0 +1,15 @@
+---
+import "./_styles/game.css";
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import Game from "./_components/Game.tsx";
+
+const id = "bulls-and-cows";
+const title = "Bulls and Cows";
+const canonical = `https://games.rman.dev/${id}`;
+const description = `Classic Bulls and Cows game. Play on ${canonical}`;
+const thumbnail = `/thumbnail/${id}.png`;
+---
+
+<BaseLayout {id} {title} {description} {canonical} {thumbnail}>
+  <Game client:load />
+</BaseLayout>

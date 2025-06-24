@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "bunx astro build",
-    "deploy": "bunx wrangler deploy"
+    "deploy": "bunx wrangler deploy",
+    "dev": "bunx astro dev"
   },
   "dependencies": {
     "solid-js": "^1.9.7"
@@ -12,8 +13,8 @@
   "devDependencies": {
     "@astrojs/solid-js": "^5.1.0",
     "@types/bun": "latest",
-    "astro": "^5.10.1",
-    "wrangler": "^4.21.1"
+    "astro": "^5.12.0",
+    "wrangler": "^4.25.0"
   },
   "peerDependencies": {
     "typescript": "^5.8.3"

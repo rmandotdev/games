@@ -1,17 +1,13 @@
-import { CONFIG } from "./config.js";
-import { submitGuess } from "./core.js";
+import { CONFIG } from "./config";
+import { submitGuess } from "./core";
 
-/**
- * @param {GameState} gameState
- * @param {HTMLElement} keyboard
- * @param {string} keyLabel
- * @param {string} keyName
- */
+import type { GameState } from "../_types";
+
 function addKeyToKeybaord(
-  gameState,
-  keyboard,
-  keyLabel,
-  keyName,
+  gameState: GameState,
+  keyboard: HTMLElement,
+  keyLabel: string,
+  keyName: string,
   x = 1,
   y = 1
 ) {
@@ -45,11 +41,7 @@ function addKeyToKeybaord(
   keyboard.appendChild(buttonElement);
 }
 
-/**
- * @param {GameState} gameState
- * @param {HTMLElement} keyboard
- */
-export function createKeyboard(gameState, keyboard) {
+export function createKeyboard(gameState: GameState, keyboard: HTMLElement) {
   keyboard.innerHTML = "";
   const keyboardLayout =
     CONFIG.keyboardLayouts[gameState.settings.keyboardLayout];
@@ -84,11 +76,7 @@ export function createKeyboard(gameState, keyboard) {
   }
 }
 
-/**
- * @param {GameState} gameState
- * @param {string} key
- */
-export function handleKeyPress(gameState, key) {
+export function handleKeyPress(gameState: GameState, key: string) {
   if (gameState.gameOver) return;
   if (key === "Enter" || key === "Submit") {
     if (gameState.currentTile === CONFIG.wordLength) {

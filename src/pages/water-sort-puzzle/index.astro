@@ -1,0 +1,15 @@
+---
+import "./_styles/game.css";
+import BaseLayout from "~/layouts/BaseLayout.astro";
+import Game from "./_components/Game.tsx";
+
+const id = "water-sort-puzzle";
+const title = "Water Sort Puzzle";
+const canonical = `https://games.rman.dev/${id}`;
+const description = `Classic Water Sort Puzzle game by GameRoMan. Play on ${canonical}`;
+const thumbnail = `/thumbnails/${id}.png`;
+---
+
+<BaseLayout {id} {title} {description} {canonical} {thumbnail}>
+  <Game client:load />
+</BaseLayout>

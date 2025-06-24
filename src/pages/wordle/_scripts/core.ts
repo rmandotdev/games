@@ -1,6 +1,8 @@
-import { CONFIG } from "./config.js";
-import { updateStats, renderStats } from "./statistics.js";
-import { createKeyboard } from "./keyboard.js";
+import { CONFIG } from "./config";
+import { updateStats, renderStats } from "./statistics";
+import { createKeyboard } from "./keyboard";
+
+import type { GameState } from "../_types";
 
 function getDailyWord() {
   const seed = 7855891;
@@ -9,14 +11,13 @@ function getDailyWord() {
   const daysSinceStart = Math.floor(
     (today.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
   );
-  return CONFIG.answers[(daysSinceStart * seed) % CONFIG.answers.length];
+  return CONFIG.answers[(daysSinceStart * seed) % CONFIG.answers.length]!;
 }
 
-/**
- * @param {GameState} gameState
- * @param {"daily" | "unlimited"} gameMode
- */
-export function initializeGame(gameState, gameMode = "unlimited") {
+export function initializeGame(
+  gameState: GameState,
+  gameMode: "daily" | "unlimited" = "unlimited"
+) {
   gameState.gameMode = gameMode;
   gameState.gameOver = false;
   gameState.currentRow = 0;
@@ -54,7 +55,7 @@ function createGameBoard() {
 /**
  * @param {GameState} gameState
  */
-export function submitGuess(gameState) {
+export function submitGuess(gameState: GameState) {
   const guess = gameState.guesses[gameState.currentRow].toLowerCase();
   if (!CONFIG.guesses.includes(guess)) {
     shakeRow(gameState);
@@ -72,10 +73,7 @@ export function submitGuess(gameState) {
   }
 }
 
-/**
- * @param {GameState} gameState
- */
-function shakeRow(gameState) {
+function shakeRow(gameState: GameState) {
   const tiles = document.querySelectorAll(".tile");
   const rowTiles = [...tiles].slice(
     gameState.currentRow * CONFIG.wordLength,
@@ -89,27 +87,25 @@ function shakeRow(gameState) {
   });
 }
 
-/**
- * @param {GameState} gameState
- */
-function getGuessPattern(gameState) {
+function getGuessPattern(gameState: GameState) {
   const pattern = [];
-  const tiles = document.querySelectorAll(".tile");
   for (let row = 0; row <= gameState.currentRow; row++) {
     const rowPattern = [];
-    const guess = gameState.guesses[row].toLowerCase();
+    const guess = gameState.guesses[row]!.toLowerCase();
     const letterCounts = [...gameState.secretWord].reduce(
-      (res, char) => ((res[char] = (res[char] || 0) + 1), res),
+      (res: { [key: string]: number }, char) => (
+        (res[char] = (res[char] || 0) + 1), res
+      ),
       {}
     );
     for (let i = 0; i < CONFIG.wordLength; i++) {
-      const letter = guess[i];
+      const letter = guess[i]!;
       if (letter === gameState.secretWord[i]) {
         rowPattern.push("🟩");
-        letterCounts[letter]--;
-      } else if (letterCounts[letter] > 0) {
+        letterCounts[letter]!--;
+      } else if (letterCounts[letter]! > 0) {
         rowPattern.push("🟨");
-        letterCounts[letter]--;
+        letterCounts[letter]!--;
       } else {
         rowPattern.push("⬛");
       }
@@ -119,11 +115,7 @@ function getGuessPattern(gameState) {
   return pattern.join("\n");
 }
 
-/**
- * @param {GameState} gameState
- * @param {boolean} isWin
- */
-function showSharePopup(gameState, isWin) {
+function showSharePopup(gameState: GameState, isWin: boolean) {
   const pattern = getGuessPattern(gameState);
 
   const notification = document.createElement("div");
@@ -158,7 +150,7 @@ function showSharePopup(gameState, isWin) {
       .then(() => {
         showNotification("Copied to clipboard!");
       })
-      .catch((err) => {
+      .catch(() => {
         showNotification("Failed to copy to clipboard");
       });
   });
@@ -185,10 +177,7 @@ function showSharePopup(gameState, isWin) {
 
 let notificationTimeout;
 
-/**
- * @param {string} message
- */
-function showNotification(message, isGameOver = false) {
+function showNotification(message: string) {
   if (notificationTimeout) {
     clearTimeout(notificationTimeout);
     const existingNotification = document.querySelector(".notification");
@@ -215,11 +204,7 @@ function showNotification(message, isGameOver = false) {
   }, 2000);
 }
 
-/**
- * @param {GameState} gameState
- * @param {boolean} won
- */
-function finishGame(gameState, won) {
+function finishGame(gameState: GameState, won: boolean) {
   gameState.gameOver = true;
   document.getElementById("new-game-button").style.display = "block";
   document.getElementById("keyboard").style.display = "none";
@@ -229,12 +214,9 @@ function finishGame(gameState, won) {
   saveData(gameState);
 }
 
-/**
- * @param {GameState} gameState
- */
-function colorTiles(gameState) {
+function colorTiles(gameState: GameState) {
   const tiles = document.querySelectorAll(".tile");
-  const guess = gameState.guesses[gameState.currentRow].toLowerCase();
+  const guess = gameState.guesses[gameState.currentRow]!.toLowerCase();
   const rowTiles = [...tiles].slice(
     gameState.currentRow * CONFIG.wordLength,
     (gameState.currentRow + 1) * CONFIG.wordLength
@@ -246,7 +228,7 @@ function colorTiles(gameState) {
   );
 
   rowTiles.forEach((tile, index) => {
-    const letter = guess[index];
+    const letter = guess[index]!;
     const correctLetter = gameState.secretWord[index];
 
     setTimeout(() => {
@@ -305,10 +287,7 @@ function colorTiles(gameState) {
   }, CONFIG.wordLength * 250 + 100);
 }
 
-/**
- * @param {GameState} gameState
- */
-export async function fetchWords(gameState) {
+export async function fetchWords(gameState: GameState) {
   try {
     const responseGuesses = await fetch(CONFIG.guessesListUrl);
     const responseAnswers = await fetch(CONFIG.answersListUrl);
@@ -334,10 +313,7 @@ export async function fetchWords(gameState) {
   initializeGame(gameState, "daily");
 }
 
-/**
- * @param {GameState} gameState
- */
-function saveData(gameState) {
+function saveData(gameState: GameState) {
   localStorage.setItem("ww-wordle-stats", JSON.stringify(gameState.stats));
   localStorage.setItem(
     "ww-wordle-settings",
@@ -349,10 +325,7 @@ function saveData(gameState) {
   );
 }
 
-/**
- * @param {GameState} gameState
- */
-export function loadData(gameState) {
+export function loadData(gameState: GameState) {
   const savedStats = localStorage.getItem("ww-wordle-stats");
   if (savedStats) {
     gameState.stats = JSON.parse(savedStats);
@@ -368,11 +341,7 @@ export function loadData(gameState) {
   }
 }
 
-/**
- * @param {GameState} gameState
- * @param {string} sectionName
- */
-export function openSection(gameState, sectionName) {
+export function openSection(gameState: GameState, sectionName: string) {
   document.querySelectorAll(".content-container").forEach((container) => {
     if (container.id === `${sectionName}-container`) {
       container.classList.remove("hidden");

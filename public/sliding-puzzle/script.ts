@@ -1,3 +1,15 @@
+type Piece = {
+  type: "main" | "vertical" | "horizontal";
+  size: {
+    w: number;
+    h: number;
+  };
+  pos: {
+    x: number;
+    y: number;
+  };
+};
+
 const CONFIG = {
   gridSize: 6, // Size of the grid (6x6)
   cellSize: 50, // Size of each cell in pixels
@@ -6,6 +18,7 @@ const CONFIG = {
   nextLevel: 1, // Number of levels solved
   totalLevels: 10, // Total number of levels in the game
   darkMode: false, // Dark mode state
+  pieces: [] as Piece[],
   levels: [
     // Level 1
     [
@@ -77,8 +90,8 @@ const CONFIG = {
       { type: "vertical", size: { w: 1, h: 2 }, pos: { x: 5, y: 1 } },
       { type: "vertical", size: { w: 1, h: 2 }, pos: { x: 4, y: 1 } },
     ],
-    // Level 7
     [
+      // Level 7
       { type: "main", size: { w: 2, h: 1 }, pos: { x: 0, y: 2 } },
       { type: "vertical", size: { w: 1, h: 2 }, pos: { x: 1, y: 4 } },
       { type: "horizontal", size: { w: 2, h: 1 }, pos: { x: 4, y: 1 } },
@@ -135,14 +148,14 @@ const CONFIG = {
       { type: "horizontal", size: { w: 2, h: 1 }, pos: { x: 4, y: 1 } },
       { type: "horizontal", size: { w: 2, h: 1 }, pos: { x: 4, y: 4 } },
     ],
-  ] as const,
+  ] as Piece[][],
 };
 
-function deepCopy(obj) {
+function deepCopy<T>(obj: T) {
   if (typeof obj !== "object" || obj === null) {
     return obj;
   }
-  const copy = Array.isArray(obj) ? [] : {};
+  const copy = (Array.isArray(obj) ? [] : {}) as T;
   for (let key in obj) {
     if (obj.hasOwnProperty(key)) {
       copy[key] = deepCopy(obj[key]);
@@ -151,19 +164,45 @@ function deepCopy(obj) {
   return copy;
 }
 
+const gameContainer = document.getElementById(
+  "game-container"
+) as HTMLDivElement;
+const menuContainer = document.getElementById(
+  "menu-container"
+) as HTMLDivElement;
+const gameUI = document.getElementById("game-ui") as HTMLDivElement;
+const mainMenu = document.getElementById("game-main-menu") as HTMLDivElement;
+const mainMenuButton = document.getElementById(
+  "main-menu-button"
+) as HTMLButtonElement;
+
+function startLevel() {
+  menuContainer.style.display = "none";
+  gameUI.style.display = "block";
+  gameContainer.innerHTML = "";
+  mainMenu.innerHTML = `
+<button id="main-menu-button" class="menu-button">MAIN MENU</button>
+`;
+
+  mainMenuButton.addEventListener("click", showMainMenu);
+  CONFIG.pieces = getLevelPieces(CONFIG.currentLevel);
+  createPieces();
+  createExit();
+  updateLevelDisplay();
+}
+
 function resizeGame() {
-  const container = document.getElementById("game-container");
   const containerSize = Math.min(
     window.innerWidth * 0.9,
     window.innerHeight * 0.9,
     300
   );
-  container.style.width = `${containerSize}px`;
-  container.style.height = `${containerSize}px`;
+  gameContainer.style.width = `${containerSize}px`;
+  gameContainer.style.height = `${containerSize}px`;
   CONFIG.cellSize = containerSize / CONFIG.gridSize;
-  const pieces = document.querySelectorAll(".piece");
+  const pieces = document.querySelectorAll<HTMLElement>(".piece");
   pieces.forEach((piece, index) => {
-    const pieceData = CONFIG.pieces[index];
+    const pieceData = CONFIG.pieces[index]!;
     piece.style.width = `${pieceData.size.w * CONFIG.cellSize}px`;
     piece.style.height = `${pieceData.size.h * CONFIG.cellSize}px`;
     piece.style.left = `${pieceData.pos.x * CONFIG.cellSize}px`;
@@ -176,33 +215,12 @@ function resizeGame() {
 }
 window.addEventListener("resize", resizeGame);
 
-function getLevelPieces(level) {
-  return deepCopy(CONFIG.levels[level - 1]);
+function getLevelPieces(level: number) {
+  return deepCopy(CONFIG.levels[level - 1]!);
 }
-
-const menuContainer = document.getElementById("menu-container");
-const gameUI = document.getElementById("game-ui");
-const gameContainer = document.getElementById("game-container");
-const mainMenu = document.getElementById("game-main-menu");
 
 let selectedPiece = null;
 let startX, startY;
-
-function startLevel() {
-  menuContainer.style.display = "none";
-  gameUI.style.display = "block";
-  gameContainer.innerHTML = "";
-  mainMenu.innerHTML = `
-<button id="main-menu-button" class="menu-button">MAIN MENU</button>
-`;
-  document
-    .getElementById("main-menu-button")
-    .addEventListener("click", showMainMenu);
-  CONFIG.pieces = getLevelPieces(CONFIG.currentLevel);
-  createPieces();
-  createExit();
-  updateLevelDisplay();
-}
 
 function updateLevelDisplay() {
   const levelDisplay = document.getElementById("level-display");
@@ -227,7 +245,7 @@ function createPieces() {
     pieceElement.style.left = `${piece.pos.x * CONFIG.cellSize}px`;
     pieceElement.style.top = `${piece.pos.y * CONFIG.cellSize}px`;
     pieceElement.textContent = piece.type === "main" ? "Exit" : "";
-    pieceElement.dataset.index = index;
+    pieceElement.dataset.index = `${index}`;
     gameContainer.appendChild(pieceElement);
   });
 }
@@ -407,6 +425,7 @@ gameContainer.addEventListener("mousedown", (e) => {
     startY = e.clientY - selectedPiece.offsetTop;
   }
 });
+
 addEventListener("mousemove", (e) => {
   if (selectedPiece) {
     checkWin();
@@ -420,14 +439,18 @@ addEventListener("mousemove", (e) => {
     }
   }
 });
+
 addEventListener("mouseup", handleEnd);
 gameContainer.addEventListener("touchstart", handleStart, { passive: false });
 gameContainer.addEventListener("touchmove", handleMove, { passive: false });
 gameContainer.addEventListener("touchend", handleEnd, { passive: false });
+
 const darkModeToggle = document.getElementById("dark-mode-toggle");
 darkModeToggle.addEventListener("change", toggleDarkMode);
+
 const closeSettingsButton = document.getElementById("close-settings");
 closeSettingsButton.addEventListener("click", closeSettings);
+
 showMainMenu();
 resizeGame();
 

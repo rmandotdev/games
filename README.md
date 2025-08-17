@@ -1,3 +1,3 @@
 # Games
 
-https://games.rman.dev
+<https://games.rman.dev>

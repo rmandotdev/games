@@ -6,4 +6,6 @@ export default defineConfig({
   output: "static",
   viewTransitions: true,
   integrations: [solid()],
+
+  site: "https://games.rman.dev",
 });

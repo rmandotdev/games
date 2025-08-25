@@ -1,14 +1,22 @@
-type Piece = {
-  type: "main" | "vertical" | "horizontal";
-  size: {
-    w: number;
-    h: number;
-  };
-  pos: {
-    x: number;
-    y: number;
-  };
+type MainPiece = {
+  type: "main";
+  size: { w: 2; h: 1 };
+  pos: { x: number; y: 2 };
 };
+
+type VerticalPiece = {
+  type: "vertical";
+  size: { w: 1; h: 2 | 3 };
+  pos: { x: number; y: number };
+};
+
+type HorizontalPiece = {
+  type: "horizontal";
+  size: { w: 2 | 3; h: 1 };
+  pos: { x: number; y: number };
+};
+
+type Piece = MainPiece | VerticalPiece | HorizontalPiece;
 
 const CONFIG = {
   gridSize: 6, // Size of the grid (6x6)
@@ -151,7 +159,7 @@ const CONFIG = {
   ] as Piece[][],
 };
 
-function deepCopy<T>(obj: T) {
+function deepCopy<T>(obj: T): T {
   if (typeof obj !== "object" || obj === null) {
     return obj;
   }
@@ -174,6 +182,12 @@ const gameUI = document.getElementById("game-ui") as HTMLDivElement;
 const mainMenu = document.getElementById("game-main-menu") as HTMLDivElement;
 const mainMenuButton = document.getElementById(
   "main-menu-button"
+) as HTMLButtonElement;
+const darkModeToggle = document.getElementById(
+  "dark-mode-toggle"
+) as HTMLButtonElement;
+const closeSettingsButton = document.getElementById(
+  "close-settings"
 ) as HTMLButtonElement;
 
 function startLevel() {
@@ -213,14 +227,18 @@ function resizeGame() {
     exit.style.top = `${CONFIG.exitPosition * CONFIG.cellSize}px`;
   }
 }
+
 window.addEventListener("resize", resizeGame);
 
-function getLevelPieces(level: number) {
+function getLevelPieces(level: number): Piece[] {
   return deepCopy(CONFIG.levels[level - 1]!);
 }
 
-let selectedPiece = null;
-let startX, startY;
+type SelectedPiece = HTMLElement;
+
+let selectedPiece: SelectedPiece | null = null;
+let startX: number;
+let startY: number;
 
 function updateLevelDisplay() {
   const levelDisplay = document.getElementById("level-display");
@@ -337,9 +355,9 @@ function toggleDarkMode() {
   document.body.classList.toggle("dark-mode", CONFIG.darkMode);
 }
 
-function canMove(piece, newX, newY) {
+function canMove(piece: SelectedPiece, newX: number, newY: number) {
   const pieceIndex = parseInt(piece.dataset.index);
-  const pieceData = CONFIG.pieces[pieceIndex];
+  const pieceData = CONFIG.pieces[pieceIndex]!;
   const isHorizontal =
     pieceData.type === "main" || pieceData.type === "horizontal";
   const isVertical = pieceData.type === "vertical";
@@ -361,7 +379,7 @@ function canMove(piece, newX, newY) {
   }
   for (let i = 0; i < CONFIG.pieces.length; i++) {
     if (i !== pieceIndex) {
-      const otherPiece = CONFIG.pieces[i];
+      const otherPiece = CONFIG.pieces[i]!;
       if (
         newGridX < otherPiece.pos.x + otherPiece.size.w &&
         newGridX + pieceData.size.w > otherPiece.pos.x &&
@@ -375,19 +393,19 @@ function canMove(piece, newX, newY) {
   return true;
 }
 
-function handleStart(e) {
-  const touch = e.touches[0];
-  selectedPiece = e.target.closest(".piece");
+function handleStart(e: TouchEvent) {
+  const touch = e.touches[0]!;
+  selectedPiece = (e.target as HTMLDivElement).closest(".piece");
   if (selectedPiece) {
     startX = touch.clientX - selectedPiece.offsetLeft;
     startY = touch.clientY - selectedPiece.offsetTop;
   }
 }
 
-function handleMove(e) {
+function handleMove(e: TouchEvent) {
   if (selectedPiece) {
     e.preventDefault();
-    const touch = e.touches[0];
+    const touch = e.touches[0]!;
     checkWin();
     const newX =
       Math.round((touch.clientX - startX) / CONFIG.cellSize) * CONFIG.cellSize;
@@ -419,14 +437,14 @@ function handleEnd() {
 }
 
 gameContainer.addEventListener("mousedown", (e) => {
-  selectedPiece = e.target.closest(".piece");
+  selectedPiece = (e.target as HTMLDivElement).closest(".piece");
   if (selectedPiece) {
     startX = e.clientX - selectedPiece.offsetLeft;
     startY = e.clientY - selectedPiece.offsetTop;
   }
 });
 
-addEventListener("mousemove", (e) => {
+window.addEventListener("mousemove", (e) => {
   if (selectedPiece) {
     checkWin();
     const newX =
@@ -440,15 +458,13 @@ addEventListener("mousemove", (e) => {
   }
 });
 
-addEventListener("mouseup", handleEnd);
+window.addEventListener("mouseup", handleEnd);
+
 gameContainer.addEventListener("touchstart", handleStart, { passive: false });
 gameContainer.addEventListener("touchmove", handleMove, { passive: false });
 gameContainer.addEventListener("touchend", handleEnd, { passive: false });
 
-const darkModeToggle = document.getElementById("dark-mode-toggle");
 darkModeToggle.addEventListener("change", toggleDarkMode);
-
-const closeSettingsButton = document.getElementById("close-settings");
 closeSettingsButton.addEventListener("click", closeSettings);
 
 showMainMenu();

@@ -12,7 +12,6 @@
   },
   "devDependencies": {
     "@astrojs/solid-js": "^5.1.0",
-    "@types/bun": "latest",
     "astro": "^5.13.3",
     "wrangler": "^4.32.0"
   },

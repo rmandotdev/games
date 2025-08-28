@@ -25,10 +25,6 @@ body {
   -ms-user-select: none;
 }
 
-.hidden {
-  display: none;
-}
-
 #game-container {
   text-align: center;
   min-height: 80vh;
@@ -104,6 +100,11 @@ body {
   background: none;
 }
 
+.control-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .control-button {
   background-size: cover;
   background-position: center;
@@ -120,9 +121,4 @@ body {
 
 #restart-level {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAtOTYwIDk2MCA5NjAiIHdpZHRoPSIyNHB4IiBmaWxsPSIjRkZGIj48cGF0aCBkPSJNNDgwLTE2MHEtMTM0IDAtMjI3LTkzdC05My0yMjdxMC0xMzQgOTMtMjI3dDIyNy05M3E2OSAwIDEzMiAyOC41VDcyMC02OTB2LTExMGg4MHYyODBINTIwdi04MGgxNjhxLTMyLTU2LTg3LjUtODhUNDgwLTcyMHEtMTAwIDAtMTcwIDcwdC03MCAxNzBxMCAxMDAgNzAgMTcwdDE3MCA3MHE3NyAwIDEzOS00NHQ4Ny0xMTZoODRxLTI4IDEwNi0xMTQgMTczdC0xOTYgNjdaIi8+PC9zdmc+");
-}
-
-.control-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
 }

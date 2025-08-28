@@ -102,8 +102,8 @@
         "#A200FF",
       ];
 
-      function genLevel(x) {
-        const level = Array.from({ length: x + 2 }, () => []); // Initialize tubes
+      function genLevel(x: number) {
+        const level = Array.from<never, number[]>({ length: x + 2 }, () => []); // Initialize tubes
         const colorsArr = []; // Array to store each color 4 times
 
         // Add each color exactly 4 times to the colors array
@@ -116,14 +116,14 @@
         // Shuffle colors array randomly
         for (let i = colorsArr.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
-          [colorsArr[i], colorsArr[j]] = [colorsArr[j], colorsArr[i]];
+          [colorsArr[i], colorsArr[j]] = [colorsArr[j]!, colorsArr[i]!];
         }
 
         // Distribute shuffled colors into the tubes
         let colorIndex = 0;
         for (let i = 0; i < x; i++) {
           for (let j = 0; j < 4; j++) {
-            level[i % x].push(colorsArr[colorIndex++]);
+            level[i % x]!.push(colorsArr[colorIndex++]!);
           }
         }
 

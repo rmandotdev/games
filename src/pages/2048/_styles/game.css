@@ -22,7 +22,6 @@
   --color-4096: #000000;
   --color-8192: #000000;
 
-
   /* --- Sizes --- */
   --cell-size: min(80px, 18vw);
   --grid-gap: min(10px, 2.25vw);

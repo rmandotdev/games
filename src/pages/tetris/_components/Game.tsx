@@ -1,7 +1,9 @@
 import { onMount } from "solid-js";
 
+type Shape = (0 | 1)[][];
+
 type TetrmoinoShape = {
-  shape: (0 | 1)[][];
+  shape: Shape;
   color: string;
 };
 
@@ -72,18 +74,27 @@ const CONFIG: GameConfig = {
   ],
 };
 
+type GameState = {
+  gameBoard: number[][];
+  currentTetromino: {
+    shape: Shape;
+    x: number;
+    y: number;
+    color: string;
+    colorIndex: number;
+  } | null;
+  score: number;
+  gameInterval: number | undefined;
+  gameStarted: boolean;
+  gamePaused: boolean;
+};
+
 function init() {
-  const gameState = {
-    gameBoard: [] as number[][],
-    currentTetromino: null as {
-      shape: (typeof CONFIG.tetrominoShapes)[number]["shape"];
-      x: number;
-      y: number;
-      color: (typeof CONFIG.tetrominoShapes)[number]["color"];
-      colorIndex: number;
-    } | null,
+  const gameState: GameState = {
+    gameBoard: [],
+    currentTetromino: null,
     score: 0,
-    gameInterval: undefined as NodeJS.Timeout | number | undefined,
+    gameInterval: undefined,
     gameStarted: false,
     gamePaused: false,
   };
@@ -302,13 +313,13 @@ function init() {
   }
 
   function increaseSpeed() {
-    clearInterval(gameState.gameInterval);
+    window.clearInterval(gameState.gameInterval);
     const speed = Math.max(
       100,
       CONFIG.initialSpeed -
         Math.floor(gameState.score / 1000) * CONFIG.speedIncrease
     );
-    gameState.gameInterval = setInterval(gameLoop, speed);
+    gameState.gameInterval = window.setInterval(gameLoop, speed);
   }
 
   function updateGame() {
@@ -356,7 +367,10 @@ function init() {
       gameState.score = 0;
       scoreElement.textContent = "Score: 0";
       gameState.currentTetromino = createTetromino();
-      gameState.gameInterval = setInterval(gameLoop, CONFIG.initialSpeed);
+      gameState.gameInterval = window.setInterval(
+        gameLoop,
+        CONFIG.initialSpeed
+      );
       gameState.gameStarted = true;
       gameState.gamePaused = false;
       startButton.style.display = "none";
@@ -370,12 +384,15 @@ function init() {
   function pauseGame() {
     if (!gameState.gameStarted) return;
     if (gameState.gamePaused) {
-      gameState.gameInterval = setInterval(gameLoop, CONFIG.initialSpeed);
+      gameState.gameInterval = window.setInterval(
+        gameLoop,
+        CONFIG.initialSpeed
+      );
       gameState.gamePaused = false;
       pauseButton.textContent = "Pause Game";
       resetButton.style.display = "none";
     } else {
-      clearInterval(gameState.gameInterval);
+      window.clearInterval(gameState.gameInterval);
       gameState.gamePaused = true;
       pauseButton.textContent = "Resume Game";
       resetButton.style.display = "inline-block";
@@ -436,7 +453,7 @@ function init() {
     let touchStartY = 0;
     let currentTouchX = 0;
     let currentTouchY = 0;
-    let swipeInterval = null as NodeJS.Timeout | number | null;
+    let swipeInterval: number | null = null;
 
     gameboardElement.addEventListener(
       "touchstart",
@@ -445,8 +462,8 @@ function init() {
         touchStartY = e.changedTouches[0]!.screenY;
         currentTouchX = touchStartX;
         currentTouchY = touchStartY;
-        if (swipeInterval) clearInterval(swipeInterval);
-        swipeInterval = setInterval(handleSwipe, 175);
+        if (swipeInterval) window.clearInterval(swipeInterval);
+        swipeInterval = window.setInterval(handleSwipe, 175);
       },
       false
     );
@@ -463,7 +480,7 @@ function init() {
     gameboardElement.addEventListener(
       "touchend",
       function () {
-        if (swipeInterval) clearInterval(swipeInterval);
+        if (swipeInterval) window.clearInterval(swipeInterval);
         handleSwipe();
         if (touchStartX === currentTouchX && touchStartY === currentTouchY) {
           rotateTetromino();

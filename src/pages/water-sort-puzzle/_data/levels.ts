@@ -1,4 +1,6 @@
-const levels = (
+import type { TubeType } from "../_types";
+
+const levels: TubeType[][] = (
 
 [
   [[0, 0, 1, 1], [1, 1, 0, 0], []],
@@ -113,6 +115,6 @@ const levels = (
   [[1, 6, 1, 1], [0, 0, 2, 7], [3, 6, 7, 5], [4, 2, 5, 5], [4, 0, 7, 3], [6, 3, 0, 2], [3, 5, 4, 2], [6, 4, 7, 1], [], []]
 ]
 
-) as const;
+);
 
 export default levels;

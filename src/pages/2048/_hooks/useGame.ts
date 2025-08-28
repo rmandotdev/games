@@ -4,9 +4,9 @@ import type { Direction } from "../_types";
 
 export function useGame(gridSize: number, initialTiles: number) {
   const createEmptyGrid = () =>
-    Array(gridSize)
-      .fill(null)
-      .map(() => Array(gridSize).fill(0)) as number[][];
+    Array<number>(gridSize)
+      .fill(0)
+      .map(() => Array<number>(gridSize).fill(0));
 
   const [grid, setGrid] = createSignal(createEmptyGrid());
   const [score, setScore] = createSignal(0);

@@ -1,5 +1,7 @@
 import { createSignal, onMount, For, Show } from "solid-js";
+
 import type { CurrentState } from "../_types";
+
 import Controls from "./Controls";
 import Settings from "./Settings";
 

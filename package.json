@@ -12,8 +12,8 @@
   },
   "devDependencies": {
     "@astrojs/solid-js": "^5.1.0",
-    "astro": "^5.13.3",
+    "astro": "^5.13.5",
     "typescript": "^5.9.2",
-    "wrangler": "^4.32.0"
+    "wrangler": "^4.33.1"
   }
 }

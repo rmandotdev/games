@@ -8,12 +8,12 @@
     "dev": "bunx astro dev"
   },
   "dependencies": {
+    "@astrojs/solid-js": "^5.1.1",
+    "astro": "^5.14.1",
     "solid-js": "^1.9.9"
   },
   "devDependencies": {
-    "@astrojs/solid-js": "^5.1.1",
-    "astro": "^5.13.9",
-    "typescript": "^5.9.2",
-    "wrangler": "^4.38.0"
+    "typescript": "^5.9.3",
+    "wrangler": "^4.41.0"
   }
 }

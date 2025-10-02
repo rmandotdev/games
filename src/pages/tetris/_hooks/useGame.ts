@@ -28,7 +28,7 @@ type CurrentTetromino = {
 
 type State = "notstarted" | "ongoing" | "paused";
 
-const CONFIG: GameConfig = {
+const CONFIG = {
   boardWidth: 10,
   boardHeight: 20,
 
@@ -85,7 +85,7 @@ const CONFIG: GameConfig = {
       color: "var(--tetromino-color-6)",
     },
   ],
-} as const;
+} as const satisfies GameConfig;
 
 function createEmptyBoard(): number[][] {
   const board: number[][] = Array(CONFIG.boardHeight)
@@ -141,7 +141,7 @@ export function useGame() {
 
   function createTetromino(): CurrentTetromino {
     const shapeIndex = randomInt(CONFIG.tetrominoShapes.length);
-    const tetrominoData = CONFIG.tetrominoShapes[shapeIndex]!;
+    const tetrominoData = CONFIG.tetrominoShapes[shapeIndex];
 
     return {
       shape: JSON.parse(JSON.stringify(tetrominoData.shape)) as Shape,

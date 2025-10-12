@@ -9,11 +9,11 @@
   },
   "dependencies": {
     "@astrojs/solid-js": "^5.1.1",
-    "astro": "^5.14.1",
+    "astro": "^5.14.4",
     "solid-js": "^1.9.9"
   },
   "devDependencies": {
     "typescript": "^5.9.3",
-    "wrangler": "^4.41.0"
+    "wrangler": "^4.42.2"
   }
 }

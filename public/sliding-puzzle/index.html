@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sliding Puzzle Escape</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      #game-container {
+        width: 300px;
+        height: 300px;
+        background-color: #ddd;
+        position: relative;
+        border: 2px solid #333;
+      }
+
+      .piece {
+        position: absolute;
+        background-color: #4caf50;
+        border: 1px solid #45a049;
+        cursor: move;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        color: white;
+        user-select: none;
+      }
+
+      #main-piece {
+        background-color: #ffeb3b;
+        border-color: #fbc02d;
+      }
+
+      .vertical-piece {
+        background-color: #f44336;
+        border-color: #d32f2f;
+      }
+
+      #exit {
+        position: absolute;
+        right: -5px;
+        top: 100px;
+        width: 5px;
+        height: 50px;
+        background-color: #333;
+      }
+
+      #menu-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
+      .menu-button {
+        font-size: 18px;
+        padding: 10px 20px;
+        margin: 10px;
+        cursor: pointer;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .menu-button:hover {
+        background-color: #45a049;
+      }
+
+      #game-ui {
+        display: none;
+      }
+
+      #new-game-button {
+        margin-top: 20px;
+        font-size: 18px;
+        padding: 10px 20px;
+        cursor: pointer;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+
+      #new-game-button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="menu-container">
+      <button id="new-game" class="menu-button">NEW GAME</button>
+    </div>
+    <div id="game-ui">
+      <div id="game-container">
+        <div id="exit"></div>
+      </div>
+      <button id="new-game" class="menu-button">NEW GAME</button>
+    </div>
+    <script>
+      let GG_ALL_GAME_CONFIG = {
+        gridSize: 6, // Size of the grid (6x6)
+        cellSize: 50, // Size of each cell in pixels
+        exitPosition: 2, // Position of the exit hole (0-indexed)
+        minVerticalPieces: 3, // Minimum number of vertical pieces
+        maxVerticalPieces: 4, // Maximum number of vertical pieces
+        minHorizontalPieces: 3, // Minimum number of horizontal pieces
+        maxHorizontalPieces: 4, // Maximum number of horizontal pieces
+        maxLength3Pieces: 3, // Maximum number of pieces with length 3
+      };
+
+      function generateRandomLevel() {
+        const pieces = [];
+        let length3Count = 0;
+        // Add main piece
+        pieces.push({
+          type: "main",
+          size: {
+            w: 2,
+            h: 1,
+          },
+          pos: {
+            x: Math.floor(Math.random() * (GG_ALL_GAME_CONFIG.gridSize - 2)),
+            y: GG_ALL_GAME_CONFIG.exitPosition,
+          },
+        });
+        // Add vertical pieces
+        const verticalPieces =
+          Math.floor(
+            Math.random() *
+              (GG_ALL_GAME_CONFIG.maxVerticalPieces -
+                GG_ALL_GAME_CONFIG.minVerticalPieces +
+                1)
+          ) + GG_ALL_GAME_CONFIG.minVerticalPieces;
+        for (let i = 0; i < verticalPieces; i++) {
+          let piece;
+          do {
+            const size = {
+              w: 1,
+              h:
+                length3Count < GG_ALL_GAME_CONFIG.maxLength3Pieces &&
+                Math.random() < 0.5
+                  ? 3
+                  : 2,
+            };
+            if (size.h === 3) length3Count++;
+            const pos = {
+              x: Math.floor(Math.random() * GG_ALL_GAME_CONFIG.gridSize),
+              y: Math.floor(
+                Math.random() * (GG_ALL_GAME_CONFIG.gridSize - size.h + 1)
+              ),
+            };
+            piece = {
+              type: "vertical",
+              size: size,
+              pos: pos,
+            };
+          } while (pieceOverlaps(piece, pieces));
+          pieces.push(piece);
+        }
+        // Add horizontal pieces
+        const horizontalPieces =
+          Math.floor(
+            Math.random() *
+              (GG_ALL_GAME_CONFIG.maxHorizontalPieces -
+                GG_ALL_GAME_CONFIG.minHorizontalPieces +
+                1)
+          ) + GG_ALL_GAME_CONFIG.minHorizontalPieces;
+        for (let i = 0; i < horizontalPieces; i++) {
+          let piece;
+          do {
+            const size = {
+              w:
+                length3Count < GG_ALL_GAME_CONFIG.maxLength3Pieces &&
+                Math.random() < 0.5
+                  ? 3
+                  : 2,
+              h: 1,
+            };
+            if (size.w === 3) length3Count++;
+            const pos = {
+              x: Math.floor(
+                Math.random() * (GG_ALL_GAME_CONFIG.gridSize - size.w + 1)
+              ),
+              y: Math.floor(Math.random() * GG_ALL_GAME_CONFIG.gridSize),
+            };
+            piece = {
+              type: "horizontal",
+              size: size,
+              pos: pos,
+            };
+          } while (pieceOverlaps(piece, pieces));
+          pieces.push(piece);
+        }
+        return pieces;
+      }
+
+      function pieceOverlaps(newPiece, existingPieces) {
+        return existingPieces.some((piece) => {
+          return !(
+            newPiece.pos.x + newPiece.size.w <= piece.pos.x ||
+            newPiece.pos.x >= piece.pos.x + piece.size.w ||
+            newPiece.pos.y + newPiece.size.h <= piece.pos.y ||
+            newPiece.pos.y >= piece.pos.y + piece.size.h
+          );
+        });
+      }
+
+      const menuContainer = document.getElementById("menu-container");
+      const gameUI = document.getElementById("game-ui");
+      const gameContainer = document.getElementById("game-container");
+
+      let selectedPiece = null;
+      let startX, startY;
+
+      function newGame() {
+        menuContainer.style.display = "none";
+        gameUI.style.display = "block";
+        gameContainer.innerHTML = "";
+        GG_ALL_GAME_CONFIG.pieces = generateRandomLevel();
+        createPieces();
+        createExit();
+      }
+
+      function createPieces() {
+        GG_ALL_GAME_CONFIG.pieces.forEach((piece, index) => {
+          const pieceElement = document.createElement("div");
+          pieceElement.className = "piece";
+          if (piece.type === "main") {
+            pieceElement.id = "main-piece";
+          } else if (piece.type === "vertical") {
+            pieceElement.classList.add("vertical-piece");
+          }
+          pieceElement.style.width = `${
+            piece.size.w * GG_ALL_GAME_CONFIG.cellSize
+          }px`;
+          pieceElement.style.height = `${
+            piece.size.h * GG_ALL_GAME_CONFIG.cellSize
+          }px`;
+          pieceElement.style.left = `${
+            piece.pos.x * GG_ALL_GAME_CONFIG.cellSize
+          }px`;
+          pieceElement.style.top = `${
+            piece.pos.y * GG_ALL_GAME_CONFIG.cellSize
+          }px`;
+          pieceElement.textContent = piece.type === "main" ? "Exit" : "";
+          pieceElement.dataset.index = index;
+          gameContainer.appendChild(pieceElement);
+        });
+      }
+
+      function createExit() {
+        const exit = document.createElement("div");
+        exit.id = "exit";
+        exit.style.top = `${
+          GG_ALL_GAME_CONFIG.exitPosition * GG_ALL_GAME_CONFIG.cellSize
+        }px`;
+        gameContainer.appendChild(exit);
+      }
+
+      function checkWin() {
+        const mainPiece = document.getElementById("main-piece");
+        const mainPieceRect = mainPiece.getBoundingClientRect();
+        const exitRect = document
+          .getElementById("exit")
+          .getBoundingClientRect();
+        const mainPieceRightEdge = mainPieceRect.left + mainPieceRect.width;
+        if (
+          mainPieceRightEdge >= exitRect.left &&
+          mainPieceRect.top <= exitRect.top &&
+          mainPieceRect.bottom >= exitRect.bottom
+        ) {
+          showLevelComplete();
+        }
+      }
+
+      function showLevelComplete() {
+        menuContainer.innerHTML = `
+<h2>Level Complete!</h2>
+<button id="new-game" class="menu-button">NEW GAME</button>
+<button id="main-menu" class="menu-button">MAIN MENU</button>
+`;
+        menuContainer.style.display = "flex";
+        gameUI.style.display = "none";
+        document.getElementById("new-game").addEventListener("click", newGame);
+        document
+          .getElementById("main-menu")
+          .addEventListener("click", showMainMenu);
+      }
+
+      function showMainMenu() {
+        menuContainer.innerHTML = `
+<button id="new-game" class="menu-button">NEW GAME</button>
+`;
+        menuContainer.style.display = "flex";
+        gameUI.style.display = "none";
+        document.getElementById("new-game").addEventListener("click", newGame);
+      }
+
+      function canMove(piece, newX, newY) {
+        const pieceIndex = parseInt(piece.dataset.index);
+        const pieceData = GG_ALL_GAME_CONFIG.pieces[pieceIndex];
+        const isHorizontal =
+          pieceData.type === "main" || pieceData.type === "horizontal";
+        const isVertical = pieceData.type === "vertical";
+        if (
+          (isHorizontal &&
+            newY !== pieceData.pos.y * GG_ALL_GAME_CONFIG.cellSize) ||
+          (isVertical && newX !== pieceData.pos.x * GG_ALL_GAME_CONFIG.cellSize)
+        ) {
+          return false;
+        }
+        const newGridX = Math.round(newX / GG_ALL_GAME_CONFIG.cellSize);
+        const newGridY = Math.round(newY / GG_ALL_GAME_CONFIG.cellSize);
+        if (
+          newGridX < 0 ||
+          newGridY < 0 ||
+          newGridX + pieceData.size.w > GG_ALL_GAME_CONFIG.gridSize ||
+          newGridY + pieceData.size.h > GG_ALL_GAME_CONFIG.gridSize
+        ) {
+          return false;
+        }
+        for (let i = 0; i < GG_ALL_GAME_CONFIG.pieces.length; i++) {
+          if (i !== pieceIndex) {
+            const otherPiece = GG_ALL_GAME_CONFIG.pieces[i];
+            if (
+              newGridX < otherPiece.pos.x + otherPiece.size.w &&
+              newGridX + pieceData.size.w > otherPiece.pos.x &&
+              newGridY < otherPiece.pos.y + otherPiece.size.h &&
+              newGridY + pieceData.size.h > otherPiece.pos.y
+            ) {
+              return false;
+            }
+          }
+        }
+        return true;
+      }
+
+      gameContainer.addEventListener("mousedown", (e) => {
+        selectedPiece = e.target.closest(".piece");
+        if (selectedPiece) {
+          startX = e.clientX - selectedPiece.offsetLeft;
+          startY = e.clientY - selectedPiece.offsetTop;
+        }
+      });
+
+      gameContainer.addEventListener("mousemove", (e) => {
+        if (selectedPiece) {
+          const newX = e.clientX - startX;
+          const newY = e.clientY - startY;
+          if (canMove(selectedPiece, newX, newY)) {
+            selectedPiece.style.left = `${newX}px`;
+            selectedPiece.style.top = `${newY}px`;
+          }
+        }
+      });
+
+      gameContainer.addEventListener("mouseup", () => {
+        if (selectedPiece) {
+          const pieceIndex = parseInt(selectedPiece.dataset.index);
+          const newX = Math.round(
+            selectedPiece.offsetLeft / GG_ALL_GAME_CONFIG.cellSize
+          );
+          const newY = Math.round(
+            selectedPiece.offsetTop / GG_ALL_GAME_CONFIG.cellSize
+          );
+          if (
+            newX !== GG_ALL_GAME_CONFIG.pieces[pieceIndex].pos.x ||
+            newY !== GG_ALL_GAME_CONFIG.pieces[pieceIndex].pos.y
+          ) {
+            GG_ALL_GAME_CONFIG.pieces[pieceIndex].pos = {
+              x: newX,
+              y: newY,
+            };
+            checkWin();
+          }
+          selectedPiece.style.left = `${newX * GG_ALL_GAME_CONFIG.cellSize}px`;
+          selectedPiece.style.top = `${newY * GG_ALL_GAME_CONFIG.cellSize}px`;
+          selectedPiece = null;
+        }
+      });
+
+      showMainMenu();
+    </script>
+  </body>
+</html>

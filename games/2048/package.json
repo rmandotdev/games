@@ -1,0 +1,17 @@
+{
+  "name": "2048",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "bunx astro build",
+    "deploy": "bunx wrangler deploy",
+    "dev": "bunx astro dev"
+  },
+  "dependencies": {
+    "@astrojs/solid-js": "catalog:",
+    "@tailwindcss/vite": "^4.1.16",
+    "astro": "catalog:",
+    "solid-js": "catalog:",
+    "tailwindcss": "^4.1.16"
+  }
+}

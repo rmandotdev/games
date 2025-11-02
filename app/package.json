@@ -1,0 +1,15 @@
+{
+  "name": "games",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "bunx astro build",
+    "deploy": "bunx wrangler deploy",
+    "dev": "bunx astro dev"
+  },
+  "dependencies": {
+    "@astrojs/solid-js": "catalog:",
+    "astro": "catalog:",
+    "solid-js": "catalog:"
+  }
+}

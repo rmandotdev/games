@@ -1,0 +1,16 @@
+---
+import "~/styles/game.css";
+
+import Layout from "~/layouts/Layout.astro";
+import Game from "~/components/Game.tsx";
+
+const id = "2048";
+const title = "2048 Game";
+const canonical = `https://games.rman.dev/${id}`;
+const description = `Classic 2048 game. Play on ${canonical}`;
+const thumbnail = `/images/${id}.png`;
+---
+
+<Layout {title} {description} {canonical} {thumbnail}>
+  <Game client:load />
+</Layout>

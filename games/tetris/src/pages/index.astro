@@ -1,0 +1,17 @@
+---
+import "~/styles/game.css";
+import "~/styles/tetromino.css"
+
+import Layout from "~/layouts/Layout.astro";
+import Game from "~/components/Game.tsx";
+
+const id = "tetris";
+const title = "Tetris Game";
+const canonical = `https://games.rman.dev/${id}`;
+const description = `Classic Tetris game. Play on ${canonical}`;
+const thumbnail = `/images/${id}.png`;
+---
+
+<Layout {title} {description} {canonical} {thumbnail}>
+  <Game client:load />
+</Layout>

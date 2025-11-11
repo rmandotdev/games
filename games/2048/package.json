@@ -9,9 +9,9 @@
   },
   "dependencies": {
     "@astrojs/solid-js": "catalog:",
-    "@tailwindcss/vite": "^4.1.16",
+    "@tailwindcss/vite": "^4.1.17",
     "astro": "catalog:",
     "solid-js": "catalog:",
-    "tailwindcss": "^4.1.16"
+    "tailwindcss": "^4.1.17"
   }
 }

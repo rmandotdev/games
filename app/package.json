@@ -11,5 +11,8 @@
     "@astrojs/solid-js": "catalog:",
     "astro": "catalog:",
     "solid-js": "catalog:"
+  },
+  "devDependencies": {
+    "wrangler": "catalog:"
   }
 }

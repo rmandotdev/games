@@ -1,16 +1,19 @@
 {
-  "name": "tetris",
+  "name": "wordle",
   "type": "module",
   "private": true,
   "scripts": {
     "build": "bunx astro build",
     "deploy": "bunx wrangler deploy",
-    "dev": "bunx astro dev"
+    "dev": "bunx astro dev",
+    "test": "bun test"
   },
   "dependencies": {
     "@astrojs/solid-js": "catalog:",
+    "@tailwindcss/vite": "catalog:",
     "astro": "catalog:",
-    "solid-js": "catalog:"
+    "solid-js": "catalog:",
+    "tailwindcss": "catalog:"
   },
   "devDependencies": {
     "wrangler": "catalog:"

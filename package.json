@@ -15,6 +15,9 @@
       "wrangler": "^4.47.0"
     }
   },
+  "scripts": {
+    "format": "bunx biome format --write"
+  },
   "devDependencies": {
     "typescript": "^5.9.3",
     "@biomejs/biome": "2.3.5"

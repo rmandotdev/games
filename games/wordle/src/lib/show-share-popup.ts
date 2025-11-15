@@ -30,4 +30,3 @@ export function showSharePopup({
     popup.classList.add("show");
   }, 100);
 }
-

@@ -9,10 +9,8 @@
   },
   "dependencies": {
     "@astrojs/solid-js": "catalog:",
-    "@tailwindcss/vite": "catalog:",
     "astro": "catalog:",
-    "solid-js": "catalog:",
-    "tailwindcss": "catalog:"
+    "solid-js": "catalog:"
   },
   "devDependencies": {
     "wrangler": "catalog:"

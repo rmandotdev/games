@@ -1,8 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
 
-  "name": "games",
-  "compatibility_date": "2025-10-11",
+  "name": "tetris",
+  "compatibility_date": "2025-12-02",
 
   "assets": {
     "directory": "./dist",

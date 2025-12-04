@@ -1,5 +1,5 @@
 {
-  "name": "games",
+  "name": "connect-four",
   "type": "module",
   "private": true,
   "scripts": {

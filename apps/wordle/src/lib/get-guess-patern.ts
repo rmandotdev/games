@@ -6,7 +6,7 @@ type PatternSymbol = "🟩" | "🟨" | "⬛";
 
 function getGuessPattern(
   guesses: readonly string[],
-  secretWord: string
+  secretWord: string,
 ): string {
   const pattern: string[] = [];
 

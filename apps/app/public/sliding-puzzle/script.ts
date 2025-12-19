@@ -173,21 +173,21 @@ function deepCopy<T>(obj: T): T {
 }
 
 const gameContainer = document.getElementById(
-  "game-container"
+  "game-container",
 ) as HTMLDivElement;
 const menuContainer = document.getElementById(
-  "menu-container"
+  "menu-container",
 ) as HTMLDivElement;
 const gameUI = document.getElementById("game-ui") as HTMLDivElement;
 const mainMenu = document.getElementById("game-main-menu") as HTMLDivElement;
 const mainMenuButton = document.getElementById(
-  "main-menu-button"
+  "main-menu-button",
 ) as HTMLButtonElement;
 const darkModeToggle = document.getElementById(
-  "dark-mode-toggle"
+  "dark-mode-toggle",
 ) as HTMLButtonElement;
 const closeSettingsButton = document.getElementById(
-  "close-settings"
+  "close-settings",
 ) as HTMLButtonElement;
 
 function startLevel() {
@@ -209,7 +209,7 @@ function resizeGame() {
   const containerSize = Math.min(
     window.innerWidth * 0.9,
     window.innerHeight * 0.9,
-    300
+    300,
   );
   gameContainer.style.width = `${containerSize}px`;
   gameContainer.style.height = `${containerSize}px`;

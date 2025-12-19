@@ -100,7 +100,7 @@ export function useGame() {
   const [score, setScore] = createSignal<number>(0);
 
   const [gameBoard, setGameBoard] = createSignal<number[][]>(
-    createEmptyBoard()
+    createEmptyBoard(),
   );
   const [currentTetromino, setCurrentTetromino] =
     createSignal<CurrentTetromino | null>(null);
@@ -127,7 +127,7 @@ export function useGame() {
 
   function increaseSpeed(
     gameIntervalId: number | undefined,
-    gameLoop: () => void
+    gameLoop: () => void,
   ) {
     window.clearInterval(gameIntervalId);
 
@@ -172,7 +172,7 @@ export function useGame() {
           newX >= CONFIG.boardWidth ||
           (newY >= 0 && gameBoard()[newY]![newX])
         );
-      })
+      }),
     );
   }
 
@@ -328,7 +328,7 @@ export function useGame() {
     if (!tetromino) return;
 
     const rotated = tetromino.shape[0]!.map((_, index) =>
-      tetromino.shape.map((row) => row[index]!).reverse()
+      tetromino.shape.map((row) => row[index]!).reverse(),
     );
 
     const previousShape = tetromino.shape;
@@ -353,11 +353,11 @@ export function useGame() {
     documentStyle.setProperty("--block-size", `${blockSize}px`);
     documentStyle.setProperty(
       "--grid-columns",
-      `repeat(${CONFIG.boardWidth}, 1fr)`
+      `repeat(${CONFIG.boardWidth}, 1fr)`,
     );
     documentStyle.setProperty(
       "--grid-rows",
-      `repeat(${CONFIG.boardHeight}, 1fr)`
+      `repeat(${CONFIG.boardHeight}, 1fr)`,
     );
   }
 

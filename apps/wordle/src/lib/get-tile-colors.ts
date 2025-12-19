@@ -6,11 +6,11 @@ function getTileColors(guessWord: string, secretWord: string): TileColor[] {
   const secret = secretWord.toLowerCase();
 
   const tileColors: TileColor[] = Array<TileColor>(CONFIG.wordLength).fill(
-    "absent"
+    "absent",
   );
   const letterCounts = [...secret].reduce<Record<string, number>>(
     (res, char) => ((res[char] = (res[char] || 0) + 1), res),
-    {}
+    {},
   );
 
   // Pass 1: Find Correct (Green) letters

@@ -15,7 +15,7 @@ describe("getGuessPatern", () => {
     const secret = "THEIR";
     const expectedPattern = "⬛🟨⬛⬛⬛\n⬛🟨⬛🟨🟨\n🟩🟩🟩🟩🟩";
     expect(getGuessPattern(guesses, secret.toLowerCase())).toEqual(
-      expectedPattern
+      expectedPattern,
     );
   });
 });

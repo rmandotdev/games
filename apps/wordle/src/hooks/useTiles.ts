@@ -4,7 +4,7 @@ import type { TileColor, TileInfo } from "~/types";
 
 function getArrayFullOf<T, Length extends number = number>(
   item: T,
-  { length }: { length: Length }
+  { length }: { length: Length },
 ): T[] {
   return Array.from({ length }, () => window.structuredClone(item));
 }
@@ -12,7 +12,7 @@ function getArrayFullOf<T, Length extends number = number>(
 function getEmptyTiles(): TileInfo[] {
   const tiles = getArrayFullOf<TileInfo>(
     { letter: "", color: "", anim: "" },
-    { length: CONFIG.maxGuesses * CONFIG.wordLength }
+    { length: CONFIG.maxGuesses * CONFIG.wordLength },
   );
 
   return tiles;
@@ -33,7 +33,7 @@ export function useTiles() {
 
   async function flipTile(
     tileIndex: number,
-    color: TileColor
+    color: TileColor,
   ): Promise<TileColor> {
     setTiles((prev) => {
       const copy = [...prev];

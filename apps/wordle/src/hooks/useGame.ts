@@ -34,7 +34,7 @@ export function useGame() {
   const [getGuesses, setGuesses] = createSignal<string[]>([]);
 
   const [getKeyColors, setKeycolors] = createSignal<Record<string, KeyColor>>(
-    {}
+    {},
   );
 
   const {

@@ -12,7 +12,7 @@ function getDailyWord(): string {
   const today = new Date();
   const startDate = new Date("2025-01-01");
   const daysSinceStart = Math.floor(
-    (today.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+    (today.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24),
   );
   return WORDS.answers[(daysSinceStart * seed) % WORDS.answers.length]!;
 }

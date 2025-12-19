@@ -10,7 +10,7 @@ import { createSignal, type Setter, type Signal } from "solid-js";
  */
 export function createLocalStorageSignal<T>(
   key: string,
-  initialValue: T
+  initialValue: T,
 ): Signal<T> {
   const readValue = (): T => {
     try {

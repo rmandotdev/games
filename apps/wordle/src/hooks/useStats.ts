@@ -14,7 +14,7 @@ const STORAGE_WORDLE_STATS_KEY = "wordle-stats";
 export function useStats() {
   const [getStats, setStats] = createLocalStorageSignal<Stats>(
     STORAGE_WORDLE_STATS_KEY,
-    EMPTY_STATS_STATE
+    EMPTY_STATS_STATE,
   );
 
   function updateStats(isWin: boolean, currentRow: number) {

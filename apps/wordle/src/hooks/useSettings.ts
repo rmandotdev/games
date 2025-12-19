@@ -13,13 +13,13 @@ const STORAGE_WORDLE_SETTINGS_KEY = "wordle-settings";
 export function useSettings() {
   const [getSettings, setSettings] = createLocalStorageSignal<Settings>(
     STORAGE_WORDLE_SETTINGS_KEY,
-    DEFAULT_SETTINGS
+    DEFAULT_SETTINGS,
   );
 
   function updateThemeState() {
     const theme = getSettings().theme;
     const isSystemDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
+      "(prefers-color-scheme: dark)",
     ).matches;
     const isDark = theme === "dark" || (theme === "system" && isSystemDark);
 

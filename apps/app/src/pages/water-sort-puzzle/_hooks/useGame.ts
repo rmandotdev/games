@@ -10,7 +10,7 @@ export function useGame() {
   const [currentLevel, setCurrentLevel] = createSignal<number>(0);
   const [tubes, setTubes] = createSignal<TubeType[]>([]);
   const [selectedTubeIndex, setSelectedTubeIndex] = createSignal<number | null>(
-    null
+    null,
   );
 
   const [message, setMessage] = createSignal<string>();
@@ -23,7 +23,7 @@ export function useGame() {
   function saveData() {
     localStorage.setItem(
       CONFIG.storageKey,
-      JSON.stringify({ currentLevel: currentLevel() })
+      JSON.stringify({ currentLevel: currentLevel() }),
     );
   }
 
@@ -69,19 +69,19 @@ export function useGame() {
     // Update CSS variables
     document.documentElement.style.setProperty(
       "--tube-width",
-      `${newTubeWidth}px`
+      `${newTubeWidth}px`,
     );
     document.documentElement.style.setProperty(
       "--tube-height",
-      `${newTubeHeight}px`
+      `${newTubeHeight}px`,
     );
     document.documentElement.style.setProperty(
       "--tubes-gap",
-      `${newTubesGap}px`
+      `${newTubesGap}px`,
     );
     document.documentElement.style.setProperty(
       "--tube-border-radius",
-      `${newTubeBorderRadius}px`
+      `${newTubeBorderRadius}px`,
     );
 
     // Update top menu sizes based on window width
@@ -90,15 +90,15 @@ export function useGame() {
     const newTopMenuGap = Math.max(10, Math.min(20, windowWidth * 0.04));
     document.documentElement.style.setProperty(
       "--top-menu-font-size",
-      `${newTopMenuFontSize}px`
+      `${newTopMenuFontSize}px`,
     );
     document.documentElement.style.setProperty(
       "--control-button-size",
-      `${newControlButtonSize}px`
+      `${newControlButtonSize}px`,
     );
     document.documentElement.style.setProperty(
       "--top-menu-gap",
-      `${newTopMenuGap}px`
+      `${newTopMenuGap}px`,
     );
   }
 

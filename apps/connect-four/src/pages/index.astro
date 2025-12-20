@@ -1,7 +1,7 @@
 ---
-import "./_styles/game.css";
-import BaseLayout from "~/layouts/BaseLayout.astro";
-import Game from "./_components/Game.tsx";
+import "~/styles/game.css";
+import BaseLayout from "~/layouts/Layout.astro";
+import Game from "~/components/Game.tsx";
 
 const id = "connect-four";
 const title = "Connect Four";
@@ -10,6 +10,6 @@ const description = `Classic Connect Four game. Play on ${canonical}`;
 const thumbnail = `/thumbnails/${id}.png`;
 ---
 
-<BaseLayout {id} {title} {description} {canonical} {thumbnail}>
+<BaseLayout {title} {description} {canonical} {thumbnail}>
   <Game client:load />
 </BaseLayout>

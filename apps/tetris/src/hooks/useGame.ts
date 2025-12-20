@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js";
 
-import { randomInt } from "../_lib/randomInt";
+import { randomInt } from "~/lib/randomInt";
 
 type Shape = (0 | 1)[][];
 

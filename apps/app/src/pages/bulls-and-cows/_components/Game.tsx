@@ -72,7 +72,7 @@ function App() {
     setResult(
       `Congratulations! You guessed the number ${gameState().secretNumber} in ${
         gameState().guesses
-      } guesses!`
+      } guesses!`,
     );
   }
 

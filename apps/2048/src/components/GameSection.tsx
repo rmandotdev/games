@@ -40,7 +40,7 @@ const GameSection: Component<GameSectionProps> = (props) => {
               >
                 {cell === 0 ? "" : cell}
               </div>
-            ))
+            )),
           )}
         </div>
 

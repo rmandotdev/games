@@ -13,7 +13,7 @@ function App() {
     pauseGame,
     resumeGame,
     resetGame,
-    getProjection
+    getProjection,
   } = useGame();
 
   onMount(init);

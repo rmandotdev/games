@@ -51,13 +51,13 @@ function App() {
   function saveData() {
     localStorage.setItem(
       "pixel-puzzle-rush-data",
-      JSON.stringify({ bestTimes: gameState().bestTimes })
+      JSON.stringify({ bestTimes: gameState().bestTimes }),
     );
   }
 
   function loadData() {
     const data = JSON.parse(
-      localStorage.getItem("pixel-puzzle-rush-data") ?? "{}"
+      localStorage.getItem("pixel-puzzle-rush-data") ?? "{}",
     );
     setGameState((prev) => ({ ...prev, bestTimes: data?.bestTimes ?? {} }));
   }
@@ -83,7 +83,7 @@ function App() {
     const state = gameState();
     return Array.from(
       { length: state.gridSize * state.gridSize },
-      () => state.colors[Math.floor(Math.random() * state.colors.length)]!
+      () => state.colors[Math.floor(Math.random() * state.colors.length)]!,
     );
   }
 
@@ -167,11 +167,11 @@ function App() {
       }));
       saveData();
       setMessage(
-        `New Best Time for ${key}: ${(state.currentTime / 1000).toFixed(2)}s!`
+        `New Best Time for ${key}: ${(state.currentTime / 1000).toFixed(2)}s!`,
       );
     } else {
       setMessage(
-        `Puzzle Solved! Time: ${(state.currentTime / 1000).toFixed(2)}s`
+        `Puzzle Solved! Time: ${(state.currentTime / 1000).toFixed(2)}s`,
       );
     }
     setGameState((prev) => ({

@@ -14,7 +14,7 @@ function App() {
   const [board, setBoard] = createSignal(
     Array(CONFIG.rows)
       .fill(null)
-      .map(() => Array(CONFIG.cols).fill(0)) as number[][]
+      .map(() => Array(CONFIG.cols).fill(0)) as number[][],
   );
   const [showMenu, setShowMenu] = createSignal(true);
   const [gameOver, setGameOver] = createSignal(false);
@@ -132,7 +132,7 @@ function App() {
     setBoard(
       Array(CONFIG.rows)
         .fill(null)
-        .map(() => Array(CONFIG.cols).fill(0))
+        .map(() => Array(CONFIG.cols).fill(0)),
     );
     setMessageContent("Player 1 starts");
   }
@@ -168,8 +168,7 @@ function App() {
         startNewGame={startNewGame}
       />
 
-      <MenuSection 
-      showMenu={showMenu()} startNewGame={startNewGame} />
+      <MenuSection showMenu={showMenu()} startNewGame={startNewGame} />
     </div>
   );
 }

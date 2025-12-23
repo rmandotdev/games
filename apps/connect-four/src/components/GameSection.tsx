@@ -44,14 +44,14 @@ const GameSection: Component<GameSectionProps> = (props) => {
                           cell === 1
                             ? "red"
                             : cell === 2
-                            ? "yellow"
-                            : props.hoveredCell &&
-                              props.hoveredCell.row === rowIndex() &&
-                              props.hoveredCell.col === colIndex()
-                            ? props.currentPlayer === 1
-                              ? "hover-red"
-                              : "hover-yellow"
-                            : ""
+                              ? "yellow"
+                              : props.hoveredCell &&
+                                  props.hoveredCell.row === rowIndex() &&
+                                  props.hoveredCell.col === colIndex()
+                                ? props.currentPlayer === 1
+                                  ? "hover-red"
+                                  : "hover-yellow"
+                                : ""
                         }`}
                       />
                     </div>

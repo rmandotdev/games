@@ -52,7 +52,7 @@ const KeyboardButton = (props: {
 function getKeysArray(
   settings: Settings,
   handleBoardAction: (action: BoardAction) => void,
-  keycolors: Record<string, KeyColor>
+  keycolors: Record<string, KeyColor>,
 ) {
   const elements = [];
 
@@ -64,7 +64,7 @@ function getKeysArray(
         name={key}
         color={keycolors[key] ?? ""}
         onClick={() => handleBoardAction({ type: "INPUT-LETTER", data: key })}
-      />
+      />,
     );
   }
 
@@ -76,7 +76,7 @@ function getKeysArray(
         width={1}
         height={2}
         onClick={() => handleBoardAction({ type: "SUBMIT-GUESS" })}
-      />
+      />,
     );
   } else if (settings.keyboardLayout === "AZERTY") {
     elements.push(
@@ -86,7 +86,7 @@ function getKeysArray(
         width={2}
         height={1}
         onClick={() => handleBoardAction({ type: "SUBMIT-GUESS" })}
-      />
+      />,
     );
   }
 
@@ -96,7 +96,7 @@ function getKeysArray(
         name={key}
         color={keycolors[key] ?? ""}
         onClick={() => handleBoardAction({ type: "INPUT-LETTER", data: key })}
-      />
+      />,
     );
   }
 
@@ -107,7 +107,7 @@ function getKeysArray(
       width={2}
       height={1}
       onClick={() => handleBoardAction({ type: "DELETE-LETTER" })}
-    />
+    />,
   );
 
   if (settings.submitButtonType === "SUBMIT") {
@@ -118,7 +118,7 @@ function getKeysArray(
         width={10}
         height={1}
         onClick={() => handleBoardAction({ type: "SUBMIT-GUESS" })}
-      />
+      />,
     );
   }
 

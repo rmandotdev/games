@@ -23,7 +23,7 @@ function App() {
     setHeaps(
       Array(CONFIG.HEAP_COUNT)
         .fill(0)
-        .map(() => random(CONFIG.MIN_STONES, CONFIG.MAX_STONES))
+        .map(() => random(CONFIG.MIN_STONES, CONFIG.MAX_STONES)),
     );
   }
 

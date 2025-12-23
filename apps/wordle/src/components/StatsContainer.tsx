@@ -52,7 +52,7 @@ const StatsContainer = (props: { stats: Stats }) => (
         label="Win %"
         value={`${getNormalizedPercentage(
           props.stats.gamesWon,
-          props.stats.gamesPlayed
+          props.stats.gamesPlayed,
         )}%`}
       />
 

@@ -91,8 +91,9 @@ function App() {
   };
 
   const playSound = (color: Color) => {
-    const audioContext = new (window.AudioContext ||
-      (window as any).webkitAudioContext)();
+    const audioContext = new (
+      window.AudioContext || (window as any).webkitAudioContext
+    )();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();
     oscillator.connect(gainNode);
@@ -116,7 +117,7 @@ function App() {
     oscillator.start(audioContext.currentTime);
     gainNode.gain.exponentialRampToValueAtTime(
       0.001,
-      audioContext.currentTime + 0.5
+      audioContext.currentTime + 0.5,
     );
     oscillator.stop(audioContext.currentTime + 0.5);
   };

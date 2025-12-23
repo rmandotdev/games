@@ -20,7 +20,8 @@
       "recommended": true,
       "style": {
         "noNonNullAssertion": "warn"
-      }
+      },
+      "a11y": "warn"
     }
   },
   "css": {

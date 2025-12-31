@@ -1,10 +1,16 @@
-/           https://rman.dev/games              301
+/          https://rman.dev/games     301
 
-/wordle     https://wordle.games.rman.dev/      301
-/wordle/    https://wordle.games.rman.dev/      301
+/2048      https://2048.rman.dev/     301
+/2048/     https://2048.rman.dev/     301
 
-/2048       https://2048.games.rman.dev/        301
-/2048/      https://2048.games.rman.dev/        301
+/wordle    https://wordle.rman.dev/   301
+/wordle/   https://wordle.rman.dev/   301
 
-/tetris     https://tetris.games.rman.dev/      301
-/tetris/    https://tetris.games.rman.dev/      301
+/tetris    https://tetris.rman.dev/   301
+/tetris/   https://tetris.rman.dev/   301
+
+/connect-four      https://connect-four.rman.dev/     301
+/connect-four/     https://connect-four.rman.dev/     301
+
+/bulls-and-cows    https://bulls-and-cows.rman.dev/   301
+/bulls-and-cows/   https://bulls-and-cows.rman.dev/   301

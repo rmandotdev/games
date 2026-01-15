@@ -14,7 +14,9 @@
     }
   },
   "scripts": {
-    "format": "bunx biome format --write"
+    "test": "bun test",
+    "lint": "biome lint",
+    "format": "biome format --write"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.10",

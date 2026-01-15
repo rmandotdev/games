@@ -9,7 +9,10 @@ function getTileColors(guessWord: string, secretWord: string): TileColor[] {
     "absent",
   );
   const letterCounts = [...secret].reduce<Record<string, number>>(
-    (res, char) => ((res[char] = (res[char] || 0) + 1), res),
+    (res, char) => {
+      res[char] = (res[char] || 0) + 1;
+      return res;
+    },
     {},
   );
 

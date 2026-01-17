@@ -68,10 +68,13 @@ export function useTiles() {
     }, 150);
   }
 
-  function shakeCurrentRow() {
+  async function shakeCurrentRow() {
     const row = getCurrentRow();
     const start = row * CONFIG.wordLength;
     const end = start + CONFIG.wordLength;
+
+    // Wait for any ongoing pop animations to finish (150ms)
+    await delay(150);
 
     setTiles((prev) => {
       const copy = [...prev];

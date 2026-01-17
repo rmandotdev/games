@@ -1,20 +1,17 @@
-import { createSignal, batch } from "solid-js";
-
-import type {
-  CurrentSection,
-  GameMode,
-  KeyColor,
-  TileColor,
-  BoardAction,
-  State,
-} from "~/types";
-
-import { WORDS, CONFIG } from "~/config";
-
+import { batch, createSignal } from "solid-js";
+import { CONFIG, WORDS } from "~/config";
 import { getNewWord } from "~/lib/get-new-word";
 import { getTileColors } from "~/lib/get-tile-colors";
 import { showNotification } from "~/lib/show-notification";
 import { showSharePopup } from "~/lib/show-share-popup";
+import type {
+  BoardAction,
+  CurrentSection,
+  GameMode,
+  KeyColor,
+  State,
+  TileColor,
+} from "~/types";
 
 import { useSettings } from "./useSettings";
 import { useStats } from "./useStats";
@@ -102,9 +99,9 @@ export function useGame() {
     setKeycolors((prev) => ({ ...prev, ...newKeyColors }));
   }
 
-  function submitGuess(guess: string) {
+  async function submitGuess(guess: string) {
     if (!WORDS.guesses.includes(guess)) {
-      shakeCurrentRow();
+      await shakeCurrentRow();
       showNotification(`Word ${guess.toUpperCase()} does not exist`);
       return;
     }

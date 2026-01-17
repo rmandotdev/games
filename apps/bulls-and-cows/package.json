@@ -3,16 +3,16 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "bunx astro build",
-    "deploy": "bunx wrangler deploy",
-    "dev": "bunx astro dev"
+    "build": "astro build",
+    "deploy": "wrangler deploy",
+    "dev": "astro dev"
   },
   "dependencies": {
-    "@astrojs/solid-js": "catalog:",
     "astro": "catalog:",
     "solid-js": "catalog:"
   },
   "devDependencies": {
+    "@astrojs/solid-js": "catalog:",
     "wrangler": "catalog:"
   }
 }

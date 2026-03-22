@@ -17,7 +17,7 @@
     "test": "bun test",
     "lint": "biome check",
     "format": "biome check --fix --diagnostic-level error",
-    "build": "bun run --filter='./apps/**' build",
+    "build": "bun run --sequential --filter='./apps/**' build",
     "deploy": "bun run --filter='./apps/**' deploy"
   },
   "devDependencies": {

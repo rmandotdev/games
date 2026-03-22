@@ -1,7 +1,7 @@
 import { createSignal } from "solid-js";
-import levels from "../_data/levels";
-import CONFIG from "../config";
-import type { TubeType } from "../types";
+import CONFIG from "~/config";
+import levels from "~/data/levels";
+import type { TubeType } from "~/types";
 
 export function useGame() {
   const [currentLevel, setCurrentLevel] = createSignal<number>(0);

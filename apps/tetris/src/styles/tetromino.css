@@ -6,20 +6,20 @@
   --tetromino-color-4: #00ff00;
   --tetromino-color-5: #ff00ff;
   --tetromino-color-6: #ff0000;
-  --tetromino-glow-0: 0 0 5px var(--tetromino-color-0),
-    0 0 10px var(--tetromino-color-0);
-  --tetromino-glow-1: 0 0 5px var(--tetromino-color-1),
-    0 0 10px var(--tetromino-color-1);
-  --tetromino-glow-2: 0 0 5px var(--tetromino-color-2),
-    0 0 10px var(--tetromino-color-2);
-  --tetromino-glow-3: 0 0 5px var(--tetromino-color-3),
-    0 0 10px var(--tetromino-color-3);
-  --tetromino-glow-4: 0 0 5px var(--tetromino-color-4),
-    0 0 10px var(--tetromino-color-4);
-  --tetromino-glow-5: 0 0 5px var(--tetromino-color-5),
-    0 0 10px var(--tetromino-color-5);
-  --tetromino-glow-6: 0 0 5px var(--tetromino-color-6),
-    0 0 10px var(--tetromino-color-6);
+  --tetromino-glow-0:
+    0 0 5px var(--tetromino-color-0), 0 0 10px var(--tetromino-color-0);
+  --tetromino-glow-1:
+    0 0 5px var(--tetromino-color-1), 0 0 10px var(--tetromino-color-1);
+  --tetromino-glow-2:
+    0 0 5px var(--tetromino-color-2), 0 0 10px var(--tetromino-color-2);
+  --tetromino-glow-3:
+    0 0 5px var(--tetromino-color-3), 0 0 10px var(--tetromino-color-3);
+  --tetromino-glow-4:
+    0 0 5px var(--tetromino-color-4), 0 0 10px var(--tetromino-color-4);
+  --tetromino-glow-5:
+    0 0 5px var(--tetromino-color-5), 0 0 10px var(--tetromino-color-5);
+  --tetromino-glow-6:
+    0 0 5px var(--tetromino-color-6), 0 0 10px var(--tetromino-color-6);
 }
 
 .tetromino {

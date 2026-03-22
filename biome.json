@@ -1,57 +1,6 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.11/schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
-  "files": {
-    "ignoreUnknown": false,
-    "includes": ["**/*.ts", "**/*.tsx", "**/*.astro"]
-  },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "space",
-    "lineEnding": "lf"
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "style": {
-        "noNonNullAssertion": "warn"
-      },
-      "a11y": "warn"
-    }
-  },
-  "css": {
-    "parser": {
-      "tailwindDirectives": true
-    }
-  },
-  "assist": {
-    "enabled": true,
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    }
-  },
-  "overrides": [
-    {
-      "includes": ["**/*.astro"],
-      "linter": {
-        "rules": {
-          "style": {
-            "useConst": "off",
-            "useImportType": "off"
-          },
-          "correctness": {
-            "noUnusedVariables": "off",
-            "noUnusedImports": "off"
-          }
-        }
-      }
-    }
-  ]
+  "$schema": "https://biomejs.dev/schemas/2.4.8/schema.json",
+  "extends": ["@gameroman/config/biome"],
+  "linter": { "rules": { "a11y": "warn" } },
+  "css": { "parser": { "tailwindDirectives": true } }
 }

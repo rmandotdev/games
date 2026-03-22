@@ -63,7 +63,7 @@ function App() {
       [1, -1],
     ] as const;
     const currentBoard = board();
-    for (let [dx, dy] of directions) {
+    for (const [dx, dy] of directions) {
       let count = 1;
       for (let i = 1; i < CONFIG.winLength; i++) {
         const newRow = row + i * dx;

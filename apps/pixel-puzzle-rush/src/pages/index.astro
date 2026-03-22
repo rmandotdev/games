@@ -1,0 +1,15 @@
+---
+import "~/styles/game.css";
+import Game from "~/components/Game.tsx";
+import Layout from "~/layouts/Layout.astro";
+
+const id = "pixel-puzzle-rush";
+const title = "Pixel Puzzle Rush";
+const canonical = `https://games.rman.dev/${id}`;
+const description = `Pixel Puzzle Rush game by GameRoMan. Play on ${canonical}`;
+const thumbnail = `/thumbnails/${id}.png`;
+---
+
+<Layout {title} {description} {canonical} {thumbnail}>
+  <Game client:load />
+</Layout>

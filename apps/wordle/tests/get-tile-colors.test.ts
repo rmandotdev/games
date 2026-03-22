@@ -1,7 +1,6 @@
+import { describe, expect, it } from "bun:test";
 import { getTileColors } from "~/lib/get-tile-colors";
 import type { TileColor } from "~/types";
-
-import { describe, it, expect } from "bun:test";
 
 describe("getTileColors", () => {
   it("should return all green for a perfect match", () => {

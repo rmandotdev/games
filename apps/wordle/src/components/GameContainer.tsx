@@ -1,6 +1,6 @@
 import { Show } from "solid-js";
 
-import type { Settings, BoardAction, TileInfo, KeyColor, State } from "~/types";
+import type { BoardAction, KeyColor, Settings, State, TileInfo } from "~/types";
 
 import GameBoard from "./GameBoard";
 import Keyboard from "./Keyboard";

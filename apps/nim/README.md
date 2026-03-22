@@ -1,3 +1,3 @@
-# Water Sort Puzzle
+# Nim
 
 <https://nim.rman.dev>

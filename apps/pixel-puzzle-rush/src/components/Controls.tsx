@@ -1,6 +1,6 @@
 import type { Component } from "solid-js";
 import { Show } from "solid-js";
-import type { CurrentState } from "../_types";
+import type { CurrentState } from "~/types";
 
 type ControlsProps = {
   currentState: CurrentState;

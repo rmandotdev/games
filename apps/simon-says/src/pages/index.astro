@@ -1,7 +1,7 @@
 ---
-import "./_styles/game.css";
-import BaseLayout from "~/layouts/BaseLayout.astro";
-import Game from "./_components/Game.tsx";
+import "~/styles/game.css";
+import Game from "~/components/Game.tsx";
+import Layout from "~/layouts/Layout.astro";
 
 const id = "simon-says";
 const title = "Simon Says";
@@ -10,6 +10,6 @@ const description = `Classic Simon Says game. Play on ${canonical}`;
 const thumbnail = `/thumbnails/${id}.png`;
 ---
 
-<BaseLayout {id} {title} {description} {canonical} {thumbnail}>
+<Layout {id} {title} {description} {canonical} {thumbnail}>
   <Game client:load />
-</BaseLayout>
+</Layout>

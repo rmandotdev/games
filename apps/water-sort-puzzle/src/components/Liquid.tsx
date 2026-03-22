@@ -1,6 +1,5 @@
-import type { Color } from "../_types";
-
-import CONFIG from "../_config";
+import CONFIG from "~/config";
+import type { Color } from "~/types";
 
 const Liquid = (props: { color: Color }) => (
   <div

@@ -1,6 +1,6 @@
 import { For } from "solid-js";
 
-import type { TubeType } from "../_types";
+import type { TubeType } from "~/types";
 
 import Tube from "./Tube";
 

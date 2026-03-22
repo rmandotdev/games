@@ -39,7 +39,7 @@ export function useGame(gridSize: number, initialTiles: number) {
   }
 
   function pushNumbers(arr: number[], addScore: (val: number) => void) {
-    let newArr = arr.filter((x) => x !== 0);
+    const newArr = arr.filter((x) => x !== 0);
     for (let i = 0; i < newArr.length - 1; i++) {
       if (newArr[i] === newArr[i + 1]) {
         newArr[i]! *= 2;
@@ -63,8 +63,8 @@ export function useGame(gridSize: number, initialTiles: number) {
     switch (direction) {
       case "up":
         for (let j = 0; j < gridSize; j++) {
-          let column = newGrid.map((row) => row[j]!);
-          let newColumn = pushNumbers(column, addScore);
+          const column = newGrid.map((row) => row[j]!);
+          const newColumn = pushNumbers(column, addScore);
           for (let i = 0; i < gridSize; i++) {
             if (newGrid[i]![j] !== newColumn[i]) {
               moved = true;
@@ -75,8 +75,8 @@ export function useGame(gridSize: number, initialTiles: number) {
         break;
       case "down":
         for (let j = 0; j < gridSize; j++) {
-          let column = newGrid.map((row) => row[j]!).reverse();
-          let newColumn = pushNumbers(column, addScore).reverse();
+          const column = newGrid.map((row) => row[j]!).reverse();
+          const newColumn = pushNumbers(column, addScore).reverse();
           for (let i = 0; i < gridSize; i++) {
             if (newGrid[i]![j] !== newColumn[i]) {
               moved = true;
@@ -87,8 +87,8 @@ export function useGame(gridSize: number, initialTiles: number) {
         break;
       case "left":
         for (let i = 0; i < gridSize; i++) {
-          let row = newGrid[i]!;
-          let newRow = pushNumbers(row, addScore);
+          const row = newGrid[i]!;
+          const newRow = pushNumbers(row, addScore);
           for (let j = 0; j < gridSize; j++) {
             if (newGrid[i]![j] !== newRow[j]) {
               moved = true;
@@ -99,8 +99,8 @@ export function useGame(gridSize: number, initialTiles: number) {
         break;
       case "right":
         for (let i = 0; i < gridSize; i++) {
-          let row = [...newGrid[i]!].reverse();
-          let newRow = pushNumbers(row, addScore).reverse();
+          const row = [...newGrid[i]!].reverse();
+          const newRow = pushNumbers(row, addScore).reverse();
           for (let j = 0; j < gridSize; j++) {
             if (newGrid[i]![j] !== newRow[j]) {
               moved = true;

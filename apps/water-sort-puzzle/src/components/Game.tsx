@@ -1,8 +1,6 @@
 import { onMount, Show } from "solid-js";
-
-import { useGame } from "../_hooks/useGame";
-
-import levels from "../_data/levels";
+import levels from "~/data/levels";
+import { useGame } from "~/hooks/useGame";
 
 import TubesContainer from "./TubesContainer";
 

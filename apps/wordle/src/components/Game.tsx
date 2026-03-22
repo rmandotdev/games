@@ -1,14 +1,12 @@
-import { onMount, Switch, Match } from "solid-js";
+import { Match, onMount, Switch } from "solid-js";
 
 import { useGame } from "~/hooks/useGame";
-
-import TopBar from "./TopBar";
-
-import MenuContainer from "./MenuContainer";
 import GameContainer from "./GameContainer";
-import StatsContainer from "./StatsContainer";
-import SettingsContainer from "./SettingsContainer";
 import LeaderboardContainer from "./LeaderboardContainer";
+import MenuContainer from "./MenuContainer";
+import SettingsContainer from "./SettingsContainer";
+import StatsContainer from "./StatsContainer";
+import TopBar from "./TopBar";
 
 function App() {
   const {

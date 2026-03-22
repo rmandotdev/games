@@ -11,8 +11,10 @@
   --stones-in-one-row: 5;
 
   --stones-width: calc(
-    var(--stones-in-one-row) * var(--stone-size) +
-      (var(--stones-in-one-row) - 1) * var(--stones-gap)
+    var(--stones-in-one-row) *
+    var(--stone-size) +
+    (var(--stones-in-one-row) - 1) *
+    var(--stones-gap)
   );
 }
 
@@ -121,7 +123,6 @@ button:active {
   padding: 1em;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  align-content: center;
   width: var(--stones-width);
   height: calc(8 * var(--stone-size) + 7 * var(--stones-gap));
   align-content: start;

@@ -1,6 +1,5 @@
-import { getGuessPattern } from "./get-guess-patern";
-
 import SharePopup from "~/components/SharePopup";
+import { getGuessPattern } from "./get-guess-patern";
 
 export function showSharePopup({
   isWin,

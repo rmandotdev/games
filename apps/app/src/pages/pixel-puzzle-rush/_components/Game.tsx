@@ -1,4 +1,4 @@
-import { createSignal, onMount, For, Show } from "solid-js";
+import { createSignal, For, onMount, Show } from "solid-js";
 
 import type { CurrentState } from "../_types";
 

@@ -1,11 +1,9 @@
 import { onMount } from "solid-js";
 
 import { useGame } from "~/hooks/useGame";
-
-import MenuSection from "./MenuSection";
-import GameSection from "./GameSection";
-
 import type { Direction } from "~/types";
+import GameSection from "./GameSection";
+import MenuSection from "./MenuSection";
 
 export default function App() {
   const CONFIG = {

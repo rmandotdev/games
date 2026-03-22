@@ -3,11 +3,11 @@ import { For } from "solid-js";
 import { CONFIG } from "~/config";
 
 import type {
+  BoardAction,
   KeyColor,
   KeyColorOrNotColored,
-  Settings,
   KeyName,
-  BoardAction,
+  Settings,
 } from "~/types";
 
 const KeyboardButton = (props: {

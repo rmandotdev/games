@@ -123,7 +123,7 @@ export function useGame() {
     return board;
   };
 
-  let gameIntervalId: number | undefined = undefined;
+  let gameIntervalId: number | undefined;
 
   function increaseSpeed(
     gameIntervalId: number | undefined,

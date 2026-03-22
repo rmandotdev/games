@@ -6,16 +6,14 @@ type IsGeneralNumber<N> = number extends N
     : false
   : false;
 
-type BuildTuple<
-  L extends number,
-  T extends unknown[] = [],
-> = IsGeneralNumber<L> extends true
-  ? number[]
-  : T["length"] extends L
-    ? T
-    : T["length"] extends MaxDepth
-      ? number[]
-      : BuildTuple<L, [...T, T["length"]]>;
+type BuildTuple<L extends number, T extends unknown[] = []> =
+  IsGeneralNumber<L> extends true
+    ? number[]
+    : T["length"] extends L
+      ? T
+      : T["length"] extends MaxDepth
+        ? number[]
+        : BuildTuple<L, [...T, T["length"]]>;
 
 type XRange<N extends number> = BuildTuple<N> extends (infer R)[] ? R : never;
 

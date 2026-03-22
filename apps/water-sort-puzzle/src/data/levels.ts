@@ -1,4 +1,4 @@
-import type { TubeType } from "../_types";
+import type { TubeType } from "~/types";
 
 const levels: TubeType[][] = [
   [[0, 0, 1, 1], [1, 1, 0, 0], []],

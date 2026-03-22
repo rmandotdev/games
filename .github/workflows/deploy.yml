@@ -1,9 +1,7 @@
-name: CI
+name: Deploy
 
 on:
   push:
-    branches: [main]
-  pull_request:
     branches: [main]
 
 jobs:
@@ -33,3 +31,9 @@ jobs:
 
       - name: Lint code
         run: bun run lint
+
+      - name: Build
+        run: bun run build
+
+      - name: Deploy
+        run: bun run deploy

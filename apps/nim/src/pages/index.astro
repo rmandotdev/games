@@ -1,7 +1,7 @@
 ---
 import "./_styles/game.css";
-import BaseLayout from "~/layouts/BaseLayout.astro";
-import Game from "./_components/Game.tsx";
+import Layout from "~/layouts/Layout.astro";
+import Game from "~/components/Game.tsx";
 
 const id = "nim";
 const title = "NIM Game";
@@ -10,6 +10,6 @@ const description = `Classic NIM game. Play on ${canonical}`;
 const thumbnail = `/thumbnails/${id}.png`;
 ---
 
-<BaseLayout {id} {title} {description} {canonical} {thumbnail}>
+<Layout {title} {description} {canonical} {thumbnail}>
   <Game client:load />
-</BaseLayout>
+</Layout>

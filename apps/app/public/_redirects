@@ -6,17 +6,23 @@
 /2048      https://2048.rman.dev/     301
 /2048/     https://2048.rman.dev/     301
 
+/tetris    https://tetris.rman.dev/   301
+/tetris/   https://tetris.rman.dev/   301
+
 /wordle    https://wordle.rman.dev/   301
 /wordle/   https://wordle.rman.dev/   301
 
-/tetris    https://tetris.rman.dev/   301
-/tetris/   https://tetris.rman.dev/   301
+/simon-says        https://simon-says.rman.dev/       301
+/simon-says/       https://simon-says.rman.dev/       301
 
 /connect-four      https://connect-four.rman.dev/     301
 /connect-four/     https://connect-four.rman.dev/     301
 
 /bulls-and-cows    https://bulls-and-cows.rman.dev/   301
 /bulls-and-cows/   https://bulls-and-cows.rman.dev/   301
+
+/pixel-puzzle-rush    https://pixel-puzzle-rush.rman.dev/   301
+/pixel-puzzle-rush/   https://pixel-puzzle-rush.rman.dev/   301
 
 /water-sort-puzzle    https://water-sort-puzzle.rman.dev/   301
 /water-sort-puzzle/   https://water-sort-puzzle.rman.dev/   301

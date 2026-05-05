@@ -92,7 +92,9 @@ function App() {
 
   const playSound = (color: Color) => {
     const audioContext = new (
-      window.AudioContext || (window as any).webkitAudioContext
+      window.AudioContext ||
+      // @ts-expect-error
+      window.webkitAudioContext
     )();
     const oscillator = audioContext.createOscillator();
     const gainNode = audioContext.createGain();

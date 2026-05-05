@@ -8,11 +8,9 @@
     "dev": "astro dev"
   },
   "dependencies": {
-    "astro": "catalog:",
-    "solid-js": "catalog:"
+    "astro": "catalog:"
   },
   "devDependencies": {
-    "@astrojs/solid-js": "catalog:",
     "wrangler": "catalog:"
   }
 }

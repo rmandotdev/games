@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.8",
-    "@gameroman/config": "^0.0.3",
+    "@gameroman/config": "^0.1.0",
     "typescript": "^5.9.3"
   }
 }

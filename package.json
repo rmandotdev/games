@@ -21,7 +21,7 @@
     "deploy": "bun run --filter='./apps/**' deploy"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.14",
+    "@biomejs/biome": "2.4.15",
     "@gameroman/config": "0.1.0",
     "typescript": "6.0.3"
   },

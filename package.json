@@ -6,11 +6,11 @@
     ],
     "catalog": {
       "@astrojs/solid-js": "6.0.1",
-      "@tailwindcss/vite": "4.2.4",
-      "astro": "6.2.2",
+      "@tailwindcss/vite": "4.3.0",
+      "astro": "6.4.2",
       "solid-js": "1.9.12",
-      "tailwindcss": "4.2.4",
-      "wrangler": "4.88.0"
+      "tailwindcss": "4.3.0",
+      "wrangler": "4.95.0"
     }
   },
   "scripts": {
@@ -26,7 +26,14 @@
     "typescript": "6.0.3"
   },
   "overrides": {
+    "@babel/core": "7.29.7",
+    "@babel/generator": "7.29.7",
+    "@babel/helper-module-imports": "7.29.7",
+    "@babel/parser": "7.29.7",
+    "@babel/types": "7.29.7",
+    "esbuild": "0.28.0",
     "is-docker": "4.0.0",
+    "rosie-skills": "npm:@gameroman/empty@0.0.0",
     "semver": "7.8.1",
     "unstorage": "2.0.0-alpha.7"
   }

@@ -1,27 +1,29 @@
 import { For } from "solid-js";
 
-import type { TubeType } from "~/types";
+import type { TubeType } from "#types";
 
 import Tube from "./Tube";
 
-const TubeRow = (props: {
+function TubeRow(props: {
   tubeArray: {
     tube: TubeType;
     isSelected: boolean;
     onClick: () => void;
   }[];
-}) => (
-  <div class="tube-row">
-    <For each={props.tubeArray}>
-      {(tube) => (
-        <Tube
-          tube={tube.tube}
-          isSelected={tube.isSelected}
-          onClick={tube.onClick}
-        />
-      )}
-    </For>
-  </div>
-);
+}) {
+  return (
+    <div class="tube-row">
+      <For each={props.tubeArray}>
+        {(tube) => (
+          <Tube
+            tube={tube.tube}
+            isSelected={tube.isSelected}
+            onClick={tube.onClick}
+          />
+        )}
+      </For>
+    </div>
+  );
+}
 
 export default TubeRow;

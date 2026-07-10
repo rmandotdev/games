@@ -1,4 +1,3 @@
-import type { Component } from "solid-js";
 import { Show } from "solid-js";
 
 type GameSectionProps = {
@@ -6,11 +5,11 @@ type GameSectionProps = {
   gameOver: boolean;
   score: number;
   grid: number[][];
-  onShowMenu: () => void;
-  onRestartGame: () => void;
+  onShowMenu(): void;
+  onRestartGame(): void;
 };
 
-const GameSection: Component<GameSectionProps> = (props) => {
+function GameSection(props: GameSectionProps) {
   return (
     <Show when={!props.inMenu}>
       <div id="game-section" class="section">
@@ -54,6 +53,6 @@ const GameSection: Component<GameSectionProps> = (props) => {
       </div>
     </Show>
   );
-};
+}
 
 export default GameSection;

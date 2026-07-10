@@ -1,3 +1,3 @@
 # 2048
 
-<https://2048.rman.dev>
+[2048.rman.dev](https://2048.rman.dev)

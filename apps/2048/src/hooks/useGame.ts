@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js";
 
-import type { Direction } from "~/types";
+import type { Direction } from "#types";
 
 export function useGame(gridSize: number, initialTiles: number) {
   const createEmptyGrid = () =>
@@ -17,7 +17,7 @@ export function useGame(gridSize: number, initialTiles: number) {
     const emptyCells: { i: number; j: number }[] = [];
     for (let i = 0; i < gridSize; i++) {
       for (let j = 0; j < gridSize; j++) {
-        if (currentGrid[i]![j] === 0) emptyCells.push({ i, j });
+        if (currentGrid[i]?.[j] === 0) emptyCells.push({ i, j });
       }
     }
     if (emptyCells.length === 0) return currentGrid;
@@ -66,7 +66,7 @@ export function useGame(gridSize: number, initialTiles: number) {
           const column = newGrid.map((row) => row[j]!);
           const newColumn = pushNumbers(column, addScore);
           for (let i = 0; i < gridSize; i++) {
-            if (newGrid[i]![j] !== newColumn[i]) {
+            if (newGrid[i]?.[j] !== newColumn[i]) {
               moved = true;
               newGrid[i]![j] = newColumn[i]!;
             }
@@ -78,7 +78,7 @@ export function useGame(gridSize: number, initialTiles: number) {
           const column = newGrid.map((row) => row[j]!).reverse();
           const newColumn = pushNumbers(column, addScore).reverse();
           for (let i = 0; i < gridSize; i++) {
-            if (newGrid[i]![j] !== newColumn[i]) {
+            if (newGrid[i]?.[j] !== newColumn[i]) {
               moved = true;
               newGrid[i]![j] = newColumn[i]!;
             }
@@ -90,7 +90,7 @@ export function useGame(gridSize: number, initialTiles: number) {
           const row = newGrid[i]!;
           const newRow = pushNumbers(row, addScore);
           for (let j = 0; j < gridSize; j++) {
-            if (newGrid[i]![j] !== newRow[j]) {
+            if (newGrid[i]?.[j] !== newRow[j]) {
               moved = true;
               newGrid[i]![j] = newRow[j]!;
             }
@@ -102,7 +102,7 @@ export function useGame(gridSize: number, initialTiles: number) {
           const row = [...newGrid[i]!].reverse();
           const newRow = pushNumbers(row, addScore).reverse();
           for (let j = 0; j < gridSize; j++) {
-            if (newGrid[i]![j] !== newRow[j]) {
+            if (newGrid[i]?.[j] !== newRow[j]) {
               moved = true;
               newGrid[i]![j] = newRow[j]!;
             }
@@ -124,10 +124,10 @@ export function useGame(gridSize: number, initialTiles: number) {
   function checkGameOver(currentGrid: number[][]) {
     for (let i = 0; i < gridSize; i++) {
       for (let j = 0; j < gridSize; j++) {
-        if (currentGrid[i]![j] === 0) return false;
-        if (i < gridSize - 1 && currentGrid[i]![j] === currentGrid[i + 1]![j])
+        if (currentGrid[i]?.[j] === 0) return false;
+        if (i < gridSize - 1 && currentGrid[i]?.[j] === currentGrid[i + 1]?.[j])
           return false;
-        if (j < gridSize - 1 && currentGrid[i]![j] === currentGrid[i]![j + 1])
+        if (j < gridSize - 1 && currentGrid[i]?.[j] === currentGrid[i]?.[j + 1])
           return false;
       }
     }

@@ -37,7 +37,7 @@ function App() {
   function getLowestEmptyRow(col: number) {
     const currentBoard = board();
     for (let row = CONFIG.rows - 1; row >= 0; row--) {
-      if (currentBoard[row]![col] === 0) return row;
+      if (currentBoard[row]?.[col] === 0) return row;
     }
     return -1;
   }
@@ -45,7 +45,7 @@ function App() {
   function dropPiece(col: number) {
     const currentBoard = board();
     for (let row = CONFIG.rows - 1; row >= 0; row--) {
-      if (currentBoard[row]![col] === 0) {
+      if (currentBoard[row]?.[col] === 0) {
         const newBoard = currentBoard.map((r) => [...r]);
         newBoard[row]![col] = currentPlayer();
         setBoard(newBoard);
@@ -73,7 +73,7 @@ function App() {
           newRow >= CONFIG.rows ||
           newCol < 0 ||
           newCol >= CONFIG.cols ||
-          currentBoard[newRow]![newCol] !== currentPlayer()
+          currentBoard[newRow]?.[newCol] !== currentPlayer()
         )
           break;
         count++;
@@ -86,7 +86,7 @@ function App() {
           newRow >= CONFIG.rows ||
           newCol < 0 ||
           newCol >= CONFIG.cols ||
-          currentBoard[newRow]![newCol] !== currentPlayer()
+          currentBoard[newRow]?.[newCol] !== currentPlayer()
         )
           break;
         count++;
@@ -97,7 +97,7 @@ function App() {
   }
 
   function checkDraw() {
-    return board()[0]!.every((cell) => cell !== 0);
+    return board()[0]?.every((cell) => cell !== 0);
   }
 
   function handleClick(col: number) {

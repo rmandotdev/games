@@ -1,6 +1,6 @@
 import { Match, onMount, Switch } from "solid-js";
 
-import { useGame } from "~/hooks/useGame";
+import { useGame } from "#hooks/useGame";
 import GameContainer from "./GameContainer";
 import LeaderboardContainer from "./LeaderboardContainer";
 import MenuContainer from "./MenuContainer";

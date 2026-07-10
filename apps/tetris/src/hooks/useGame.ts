@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js";
 
-import { randomInt } from "~/lib/randomInt";
+import { randomInt } from "#lib/randomInt";
 
 type Shape = (0 | 1)[][];
 
@@ -147,7 +147,7 @@ export function useGame() {
       shape: JSON.parse(JSON.stringify(tetrominoData.shape)) as Shape,
       x:
         Math.floor(CONFIG.boardWidth / 2) -
-        Math.floor(tetrominoData.shape[0]!.length / 2),
+        Math.floor(tetrominoData.shape[0]?.length / 2),
       y: 0,
       color: tetrominoData.color,
       colorIndex: shapeIndex,
@@ -170,7 +170,7 @@ export function useGame() {
           newY >= CONFIG.boardHeight ||
           newX < 0 ||
           newX >= CONFIG.boardWidth ||
-          (newY >= 0 && gameBoard()[newY]![newX])
+          (newY >= 0 && gameBoard()[newY]?.[newX])
         );
       }),
     );
@@ -219,7 +219,7 @@ export function useGame() {
     const board = window.structuredClone(gameBoard());
 
     for (let y = CONFIG.boardHeight - 1; y >= 0; y--) {
-      if (board[y]!.every((cell) => cell !== 0)) {
+      if (board[y]?.every((cell) => cell !== 0)) {
         linesCleared++;
         board.splice(y, 1);
         board.unshift(Array(CONFIG.boardWidth).fill(0));

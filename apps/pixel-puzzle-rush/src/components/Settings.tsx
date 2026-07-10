@@ -1,6 +1,5 @@
-import type { Component } from "solid-js";
 import { Show } from "solid-js";
-import type { CurrentState } from "../_types";
+import type { CurrentState } from "#types";
 
 type SettingsProps = {
   currentState: CurrentState;
@@ -10,7 +9,7 @@ type SettingsProps = {
   setColorCountInput: (_: string) => void;
 };
 
-const Settings: Component<SettingsProps> = (props) => {
+function Settings(props: SettingsProps) {
   return (
     <Show when={props.currentState === "menu"}>
       <div id="settings" class="no-select">
@@ -49,6 +48,6 @@ const Settings: Component<SettingsProps> = (props) => {
       </div>
     </Show>
   );
-};
+}
 
 export default Settings;

@@ -1,7 +1,13 @@
 {
   "name": "pixel-puzzle-rush",
-  "type": "module",
   "private": true,
+  "type": "module",
+  "imports": {
+    "#layout": "./src/layouts/Layout.astro",
+    "#styles": "./src/styles/game.css",
+    "#types": "./src/types.ts",
+    "#components/*": "./src/components/*.tsx"
+  },
   "scripts": {
     "build": "astro build",
     "deploy": "wrangler deploy",

@@ -2,7 +2,7 @@ import { For } from "solid-js";
 
 import Cell from "./Cell";
 
-const GameBoard = (props: { board: () => number[][] }) => {
+function GameBoard(props: { board: () => number[][] }) {
   return (
     <For each={props.board()}>
       {(cells, y) => (
@@ -12,6 +12,6 @@ const GameBoard = (props: { board: () => number[][] }) => {
       )}
     </For>
   );
-};
+}
 
 export default GameBoard;

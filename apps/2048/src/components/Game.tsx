@@ -1,7 +1,7 @@
 import { onMount } from "solid-js";
 
-import { useGame } from "~/hooks/useGame";
-import type { Direction } from "~/types";
+import { useGame } from "#hooks/useGame";
+import type { Direction } from "#types";
 import GameSection from "./GameSection";
 import MenuSection from "./MenuSection";
 

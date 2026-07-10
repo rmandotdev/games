@@ -122,7 +122,7 @@
       let colorIndex = 0;
       for (let i = 0; i < x; i++) {
         for (let j = 0; j < 4; j++) {
-          level[i % x]!.push(colorsArr[colorIndex++]!);
+          level[i % x]?.push(colorsArr[colorIndex++]!);
         }
       }
 
@@ -161,7 +161,7 @@
         } else {
           alert("Invalid format. Please enter a valid array.");
         }
-      } catch (error) {
+      } catch (_error) {
         alert("Invalid format. Please enter a valid JSON array.");
       }
     }
@@ -175,7 +175,7 @@
         document.getElementById("tube-count").value,
         10,
       );
-      if (isNaN(tubeCount) || tubeCount < 1) {
+      if (Number.isNaN(tubeCount) || tubeCount < 1) {
         alert("Please enter a valid number of tubes.");
         return;
       }

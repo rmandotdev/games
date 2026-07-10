@@ -1,13 +1,13 @@
 import { Show } from "solid-js";
 
-import type { BoardAction, KeyColor, Settings, State, TileInfo } from "~/types";
+import type { BoardAction, KeyColor, Settings, State, TileInfo } from "#types";
 
 import GameBoard from "./GameBoard";
 import Keyboard from "./Keyboard";
 
 import Button from "./ui/Button";
 
-const GameContainer = (props: {
+function GameContainer(props: {
   tiles: TileInfo[];
   keycolors: Record<string, KeyColor>;
   state: State;
@@ -15,22 +15,24 @@ const GameContainer = (props: {
   handleBoardAction: (action: BoardAction) => void;
 
   startNewGame: () => void;
-}) => (
-  <div class="content-container">
-    <GameBoard tiles={props.tiles} />
+}) {
+  return (
+    <div class="content-container">
+      <GameBoard tiles={props.tiles} />
 
-    <Show when={props.state === "playing"}>
-      <Keyboard
-        settings={props.settings}
-        keycolors={props.keycolors}
-        handleBoardAction={props.handleBoardAction}
-      />
-    </Show>
+      <Show when={props.state === "playing"}>
+        <Keyboard
+          settings={props.settings}
+          keycolors={props.keycolors}
+          handleBoardAction={props.handleBoardAction}
+        />
+      </Show>
 
-    <Show when={props.state === "gameover"}>
-      <Button label="New Game" onClick={props.startNewGame} />
-    </Show>
-  </div>
-);
+      <Show when={props.state === "gameover"}>
+        <Button label="New Game" onClick={props.startNewGame} />
+      </Show>
+    </div>
+  );
+}
 
 export default GameContainer;

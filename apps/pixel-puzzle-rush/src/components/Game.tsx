@@ -1,6 +1,6 @@
 import { createSignal, For, onMount, Show } from "solid-js";
 
-import type { CurrentState } from "~/types";
+import type { CurrentState } from "#types";
 
 import Controls from "./Controls";
 import Settings from "./Settings";
@@ -69,8 +69,8 @@ function App() {
   }
 
   function updateGameConfig() {
-    const gridSize = parseInt(gridSizeInput());
-    const colorCount = parseInt(colorCountInput());
+    const gridSize = parseInt(gridSizeInput(), 10);
+    const colorCount = parseInt(colorCountInput(), 10);
     const colors = generateColors(colorCount);
     setGameState((prev) => ({ ...prev, gridSize, colors }));
   }

@@ -1,3 +1,3 @@
 # Bulls and Cows
 
-<https://bulls-and-cows.rman.dev>
+[bulls-and-cows.rman.dev](https://bulls-and-cows.rman.dev)

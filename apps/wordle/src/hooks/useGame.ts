@@ -1,9 +1,9 @@
 import { batch, createSignal } from "solid-js";
-import { CONFIG, WORDS } from "~/config";
-import { getNewWord } from "~/lib/get-new-word";
-import { getTileColors } from "~/lib/get-tile-colors";
-import { showNotification } from "~/lib/show-notification";
-import { showSharePopup } from "~/lib/show-share-popup";
+import { CONFIG, WORDS } from "#config";
+import { getNewWord } from "#lib/get-new-word";
+import { getTileColors } from "#lib/get-tile-colors";
+import { showNotification } from "#lib/show-notification";
+import { showSharePopup } from "#lib/show-share-popup";
 import type {
   BoardAction,
   CurrentSection,
@@ -11,7 +11,7 @@ import type {
   KeyColor,
   State,
   TileColor,
-} from "~/types";
+} from "#types";
 
 import { useSettings } from "./useSettings";
 import { useStats } from "./useStats";

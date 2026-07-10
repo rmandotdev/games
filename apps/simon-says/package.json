@@ -1,7 +1,12 @@
 {
   "name": "simon-says",
-  "type": "module",
   "private": true,
+  "type": "module",
+  "imports": {
+    "#layout": "./src/layouts/Layout.astro",
+    "#styles": "./src/styles/game.css",
+    "#components/*": "./src/components/*.tsx"
+  },
   "scripts": {
     "build": "astro build",
     "deploy": "wrangler deploy",

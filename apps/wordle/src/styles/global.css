@@ -164,8 +164,8 @@ body {
   @apply flex;
   @apply justify-between;
   @apply items-center;
-  @apply h-[3.75rem];
-  @apply border-b-[1px];
+  @apply h-15;
+  @apply border-b;
   @apply border-solid;
   @apply border-(--text-color-light) dark:border-(--text-color-dark);
   @apply w-full;
@@ -174,7 +174,7 @@ body {
 }
 
 .tile {
-  @apply size-[60px];
+  @apply size-15;
   @apply border-2;
   @apply border-solid;
   @apply border-(--border-color-light);
@@ -238,7 +238,7 @@ body {
 }
 
 .setting-select {
-  @apply w-32 p-2 text-base border-[1px] border-solid rounded-[5px] text-(--text-color-light) dark:text-(--text-color-dark) border-(--border-color-light) dark:border-(--border-color-dark) bg-white dark:bg-(--content-bg-dark);
+  @apply w-32 p-2 text-base border border-solid rounded-[5px] text-(--text-color-light) dark:text-(--text-color-dark) border-(--border-color-light) dark:border-(--border-color-dark) bg-white dark:bg-(--content-bg-dark);
   @apply focus:outline-0;
 }
 
@@ -254,7 +254,7 @@ body {
 
 .guess-bar {
   @apply grow;
-  @apply h-[30px];
+  @apply h-7.5;
   @apply relative;
   @apply rounded-sm;
   background-color: var(--absent-color);

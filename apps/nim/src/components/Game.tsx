@@ -221,7 +221,9 @@ function App() {
                 min="1"
                 max={heaps()[selectedHeap()!]}
                 value={takeAmount()}
-                onInput={(e) => setTakeAmount(parseInt(e.currentTarget.value))}
+                onInput={(e) =>
+                  setTakeAmount(parseInt(e.currentTarget.value, 10))
+                }
               />
               <div id="stones-selected">
                 {takeAmount()} {takeAmount() === 1 ? "stone" : "stones"}{" "}

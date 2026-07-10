@@ -1,3 +1,3 @@
 # Wordle
 
-<https://wordle.rman.dev>
+[wordle.rman.dev](https://wordle.rman.dev)

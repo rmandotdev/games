@@ -1,6 +1,6 @@
-import { createLocalStorageSignal } from "~/lib/create-local-storage-signal";
+import { createLocalStorageSignal } from "#lib/create-local-storage-signal";
 
-import type { Settings } from "~/types";
+import type { Settings } from "#types";
 
 const DEFAULT_SETTINGS: Settings = {
   theme: "system",

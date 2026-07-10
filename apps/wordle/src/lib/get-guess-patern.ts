@@ -1,4 +1,4 @@
-import type { TileColor } from "~/types";
+import type { TileColor } from "#types";
 
 import { getTileColors } from "./get-tile-colors";
 

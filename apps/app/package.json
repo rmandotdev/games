@@ -1,16 +1,25 @@
 {
   "name": "app",
-  "type": "module",
   "private": true,
+  "type": "module",
+  "imports": {
+    "#layout": "./src/layouts/Layout.astro",
+    "#styles": "./src/styles/global.css",
+    "#components/*": "./src/components/*.astro"
+  },
   "scripts": {
     "build": "astro build",
     "deploy": "wrangler deploy",
     "dev": "astro dev"
   },
   "dependencies": {
-    "astro": "catalog:"
+    "astro": "catalog:",
+    "solid-js": "catalog:",
+    "tailwindcss": "catalog:"
   },
   "devDependencies": {
+    "@astrojs/solid-js": "catalog:",
+    "@tailwindcss/vite": "catalog:",
     "wrangler": "catalog:"
   }
 }

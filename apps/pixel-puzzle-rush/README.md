@@ -1,3 +1,3 @@
 # Pixel Puzzle Rush
 
-<https://pixel-puzzle-rush.rman.dev>
+[pixel-puzzle-rush.rman.dev](https://pixel-puzzle-rush.rman.dev)

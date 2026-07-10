@@ -1,3 +1,3 @@
 # Symon Says
 
-<https://simon-says.rman.dev>
+[simon-says.rman.dev](https://simon-says.rman.dev)

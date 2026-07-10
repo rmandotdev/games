@@ -64,7 +64,7 @@ export function useGame() {
 
   async function colorTilesAndKeys() {
     const row = getCurrentRow();
-    const guess = getGuesses()[row]!.toLowerCase();
+    const guess = getGuesses()[row]?.toLowerCase();
     const tileColors = getTileColors(guess, getSecretWord());
 
     const newKeyColors: Record<string, KeyColor> = {};
@@ -162,7 +162,7 @@ export function useGame() {
 
     if (action.type === "SUBMIT-GUESS") {
       if (currentTile !== CONFIG.wordLength) return;
-      const guess = getGuesses()[currentRow]!.toLowerCase();
+      const guess = getGuesses()[currentRow]?.toLowerCase();
       submitGuess(guess);
       return;
     }
@@ -179,7 +179,7 @@ export function useGame() {
       });
 
       const guesses = window.structuredClone(getGuesses());
-      guesses[currentRow] = guesses[currentRow]!.slice(0, -1);
+      guesses[currentRow] = guesses[currentRow]?.slice(0, -1);
       setGuesses(guesses);
 
       setCurrentTile(currentTile - 1);

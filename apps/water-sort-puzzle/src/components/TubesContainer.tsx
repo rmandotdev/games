@@ -50,12 +50,12 @@ function getRows(props: {
   return rows;
 }
 
-const TubesContainer = (props: {
+function TubesContainer(props: {
   tubes: TubeType[];
   selectedTubeIndex: number | null;
   selectTube: (index: number) => void;
   hidden: boolean;
-}): JSXElement => {
+}): JSXElement {
   const rows = () =>
     getRows({
       tubes: props.tubes,
@@ -71,6 +71,6 @@ const TubesContainer = (props: {
       <For each={rows()}>{(row) => <TubeRow tubeArray={row} />}</For>
     </div>
   );
-};
+}
 
 export default TubesContainer;

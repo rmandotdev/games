@@ -1,7 +1,7 @@
 {
   "name": "bulls-and-cows",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "astro build",
     "deploy": "wrangler deploy",

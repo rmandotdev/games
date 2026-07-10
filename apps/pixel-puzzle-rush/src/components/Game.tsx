@@ -69,8 +69,8 @@ function App() {
   }
 
   function updateGameConfig() {
-    const gridSize = parseInt(gridSizeInput());
-    const colorCount = parseInt(colorCountInput());
+    const gridSize = parseInt(gridSizeInput(), 10);
+    const colorCount = parseInt(colorCountInput(), 10);
     const colors = generateColors(colorCount);
     setGameState((prev) => ({ ...prev, gridSize, colors }));
   }

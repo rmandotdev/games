@@ -1,0 +1,29 @@
+---
+import "#styles";
+
+import LinkCard from "#components/LinkCard";
+import LinkCardGroup from "#components/LinkCardGroup";
+import Layout from "#layout";
+
+const title = "Games";
+const canonical = `https://games.rman.dev`;
+const description = `Games by Roman. Play on ${canonical}`;
+---
+
+<Layout {title} {description} {canonical}>
+  <LinkCardGroup>
+    <LinkCard title="2048" href="/2048" />
+    <LinkCard title="Bulls and Cows" href="/bulls-and-cows" />
+    <LinkCard title="Connect Four" href="/connect-four" />
+    <LinkCard title="Nim" href="/nim" />
+    <LinkCard title="Pixel Puzzle Rush" href="/pixel-puzzle-rush" />
+    <LinkCard title="Simon Says" href="/simon-says" />
+    <LinkCard title="Tetris" href="/tetris" />
+    <LinkCard title="Water Sort Puzzle" href="/water-sort-puzzle" />
+    <LinkCard title="Wordle" href="/wordle" />
+
+    <LinkCard title="Cookie Clicker" href="/cookie-clicker" />
+
+    <LinkCard title="Source code" href="/github" />
+  </LinkCardGroup>
+</Layout>

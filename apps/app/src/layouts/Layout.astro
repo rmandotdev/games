@@ -1,15 +1,12 @@
 ---
-import type { JSXElement } from "solid-js";
-
 interface Props {
   title: string;
   description: string;
   canonical: string;
-  thumbnail: string;
-  children: () => JSXElement;
+  children: unknown;
 }
 
-const { title, description, canonical, thumbnail } = Astro.props;
+const { title, description, canonical } = Astro.props;
 ---
 
 <html lang="en">
@@ -27,16 +24,13 @@ const { title, description, canonical, thumbnail } = Astro.props;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={thumbnail} />
     <meta property="og:type" content="website" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={thumbnail} />
 
     <link rel="canonical" href={canonical} />
-    <link rel="shortcut icon" href={thumbnail} type="image/x-icon" />
   </head>
 
   <body>

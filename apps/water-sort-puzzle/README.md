@@ -1,3 +1,3 @@
 # Water Sort Puzzle
 
-<https://water-sort-puzzle.rman.dev>
+[water-sort-puzzle.rman.dev](https://water-sort-puzzle.rman.dev)

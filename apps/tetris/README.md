@@ -1,3 +1,3 @@
 # Tetris
 
-<https://tetris.rman.dev>
+[tetris.rman.dev](https://tetris.rman.dev)

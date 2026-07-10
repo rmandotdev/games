@@ -149,7 +149,7 @@ export function useGame() {
   function selectTube(index: number) {
     const selectedTube = selectedTubeIndex();
     if (selectedTube === null) {
-      if (tubes()[index]!.length > 0) {
+      if (tubes()[index]?.length > 0) {
         setSelectedTubeIndex(index);
       }
     } else {

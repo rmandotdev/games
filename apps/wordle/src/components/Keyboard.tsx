@@ -10,14 +10,14 @@ import type {
   Settings,
 } from "~/types";
 
-const KeyboardButton = (props: {
+function KeyboardButton(props: {
   name: KeyName;
   label?: string;
   width?: number;
   height?: number;
   color?: KeyColorOrNotColored;
   onClick: () => void;
-}) => {
+}) {
   const width: number = props.width ?? 1;
   const height: number = props.height ?? 1;
 
@@ -47,7 +47,7 @@ const KeyboardButton = (props: {
       {label}
     </button>
   );
-};
+}
 
 function getKeysArray(
   settings: Settings,
@@ -125,11 +125,11 @@ function getKeysArray(
   return elements;
 }
 
-const Keyboard = (props: {
+function Keyboard(props: {
   settings: Settings;
   keycolors: Record<string, KeyColor>;
   handleBoardAction: (action: BoardAction) => void;
-}) => {
+}) {
   const keysArray = () =>
     getKeysArray(props.settings, props.handleBoardAction, props.keycolors);
 
@@ -138,6 +138,6 @@ const Keyboard = (props: {
       <For each={keysArray()}>{(key) => key}</For>
     </div>
   );
-};
+}
 
 export default Keyboard;

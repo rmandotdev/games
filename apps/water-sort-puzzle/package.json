@@ -1,7 +1,7 @@
 {
   "name": "water-sort-puzzle",
-  "type": "module",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "astro build",
     "deploy": "wrangler deploy",

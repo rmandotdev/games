@@ -1,4 +1,3 @@
-import type { Component } from "solid-js";
 import { For, Show } from "solid-js";
 
 type HistoryProps = {
@@ -9,7 +8,7 @@ type HistoryProps = {
   }[];
 };
 
-const History: Component<HistoryProps> = (props) => {
+function History(props: HistoryProps) {
   return (
     <Show when={props.history.length > 0}>
       <div id="history">
@@ -32,6 +31,6 @@ const History: Component<HistoryProps> = (props) => {
       </div>
     </Show>
   );
-};
+}
 
 export default History;

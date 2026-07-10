@@ -1,5 +1,5 @@
-import { CONFIG, WORDS } from "~/config";
-import type { GameMode } from "~/types";
+import { CONFIG, WORDS } from "#config";
+import type { GameMode } from "#types";
 
 function getRandomWord(): string {
   const randomIndex = Math.floor(Math.random() * WORDS.answers.length);

@@ -1,4 +1,3 @@
-import type { Component } from "solid-js";
 import { Show } from "solid-js";
 
 type MenuSectionProps = {
@@ -6,7 +5,7 @@ type MenuSectionProps = {
   startNewGame: () => void;
 };
 
-const MenuSection: Component<MenuSectionProps> = (props) => {
+function MenuSection(props: MenuSectionProps) {
   return (
     <Show when={props.showMenu}>
       <div id="menu-section" class="section">
@@ -16,6 +15,6 @@ const MenuSection: Component<MenuSectionProps> = (props) => {
       </div>
     </Show>
   );
-};
+}
 
 export default MenuSection;

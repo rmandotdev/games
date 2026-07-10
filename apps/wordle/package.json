@@ -2,6 +2,15 @@
   "name": "wordle",
   "private": true,
   "type": "module",
+  "imports": {
+    "#layout": "./src/layouts/Layout.astro",
+    "#styles": "./src/styles/global.css",
+    "#config": "./src/config.ts",
+    "#types": "./src/types.ts",
+    "#components/*": "./src/components/*.tsx",
+    "#lib/*": "./src/lib/*.ts",
+    "#hooks/*": "./src/hooks/*.ts"
+  },
   "scripts": {
     "build": "astro build",
     "deploy": "wrangler deploy",

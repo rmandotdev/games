@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js";
-import { CONFIG } from "~/config";
-import type { TileColor, TileInfo } from "~/types";
+import { CONFIG } from "#config";
+import type { TileColor, TileInfo } from "#types";
 
 function getArrayFullOf<T, Length extends number = number>(
   item: T,

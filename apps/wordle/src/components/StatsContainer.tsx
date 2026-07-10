@@ -1,5 +1,5 @@
 import { For } from "solid-js";
-import type { Stats } from "~/types";
+import type { Stats } from "#types";
 
 function GuessDistributionRow(props: { v: number; i: number; p: number }) {
   return (

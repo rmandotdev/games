@@ -1,5 +1,5 @@
-import { CONFIG } from "~/config";
-import type { TileColor } from "~/types";
+import { CONFIG } from "#config";
+import type { TileColor } from "#types";
 
 function getTileColors(guessWord: string, secretWord: string): TileColor[] {
   const guess = guessWord.toLowerCase();

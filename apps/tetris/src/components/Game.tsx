@@ -1,6 +1,6 @@
 import { onMount, Show } from "solid-js";
 
-import { useGame } from "~/hooks/useGame";
+import { useGame } from "#hooks/useGame";
 
 import GameBoard from "./GameBoard";
 

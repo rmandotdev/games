@@ -1,16 +1,15 @@
-import type { Component } from "solid-js";
 import { Show } from "solid-js";
-import type { CurrentState } from "~/types";
+import type { CurrentState } from "#types";
 
 type ControlsProps = {
   currentState: CurrentState;
-  startGame: () => void;
-  pauseGame: () => void;
-  cancelGame: () => void;
-  showMenu: () => void;
+  startGame(): void;
+  pauseGame(): void;
+  cancelGame(): void;
+  showMenu(): void;
 };
 
-const Controls: Component<ControlsProps> = (props) => {
+function Controls(props: ControlsProps) {
   return (
     <div id="controls" class="no-select">
       <Show when={props.currentState === "menu"}>
@@ -40,6 +39,6 @@ const Controls: Component<ControlsProps> = (props) => {
       </Show>
     </div>
   );
-};
+}
 
 export default Controls;

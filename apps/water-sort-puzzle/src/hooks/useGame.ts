@@ -1,7 +1,7 @@
 import { createSignal } from "solid-js";
-import CONFIG from "~/config";
-import levels from "~/data/levels";
-import type { TubeType } from "~/types";
+import CONFIG from "#config";
+import levels from "#data/levels";
+import type { TubeType } from "#types";
 
 export function useGame() {
   const [currentLevel, setCurrentLevel] = createSignal<number>(0);
@@ -149,7 +149,7 @@ export function useGame() {
   function selectTube(index: number) {
     const selectedTube = selectedTubeIndex();
     if (selectedTube === null) {
-      if (tubes()[index]?.length > 0) {
+      if (tubes()[index]!.length > 0) {
         setSelectedTubeIndex(index);
       }
     } else {

@@ -1,5 +1,5 @@
-import { createLocalStorageSignal } from "~/lib/create-local-storage-signal";
-import type { Stats } from "~/types";
+import { createLocalStorageSignal } from "#lib/create-local-storage-signal";
+import type { Stats } from "#types";
 
 const EMPTY_STATS_STATE: Stats = {
   gamesPlayed: 0,

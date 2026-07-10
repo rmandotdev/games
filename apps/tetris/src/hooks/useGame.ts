@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js";
 
-import { randomInt } from "~/lib/randomInt";
+import { randomInt } from "#lib/randomInt";
 
 type Shape = (0 | 1)[][];
 
@@ -327,7 +327,7 @@ export function useGame() {
 
     if (!tetromino) return;
 
-    const rotated = tetromino.shape[0]?.map((_, index) =>
+    const rotated = tetromino.shape[0]!.map((_, index) =>
       tetromino.shape.map((row) => row[index]!).reverse(),
     );
 

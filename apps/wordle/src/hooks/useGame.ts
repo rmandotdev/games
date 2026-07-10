@@ -1,9 +1,9 @@
 import { batch, createSignal } from "solid-js";
-import { CONFIG, WORDS } from "~/config";
-import { getNewWord } from "~/lib/get-new-word";
-import { getTileColors } from "~/lib/get-tile-colors";
-import { showNotification } from "~/lib/show-notification";
-import { showSharePopup } from "~/lib/show-share-popup";
+import { CONFIG, WORDS } from "#config";
+import { getNewWord } from "#lib/get-new-word";
+import { getTileColors } from "#lib/get-tile-colors";
+import { showNotification } from "#lib/show-notification";
+import { showSharePopup } from "#lib/show-share-popup";
 import type {
   BoardAction,
   CurrentSection,
@@ -11,7 +11,7 @@ import type {
   KeyColor,
   State,
   TileColor,
-} from "~/types";
+} from "#types";
 
 import { useSettings } from "./useSettings";
 import { useStats } from "./useStats";
@@ -64,7 +64,7 @@ export function useGame() {
 
   async function colorTilesAndKeys() {
     const row = getCurrentRow();
-    const guess = getGuesses()[row]?.toLowerCase();
+    const guess = getGuesses()[row]!.toLowerCase();
     const tileColors = getTileColors(guess, getSecretWord());
 
     const newKeyColors: Record<string, KeyColor> = {};
@@ -162,7 +162,7 @@ export function useGame() {
 
     if (action.type === "SUBMIT-GUESS") {
       if (currentTile !== CONFIG.wordLength) return;
-      const guess = getGuesses()[currentRow]?.toLowerCase();
+      const guess = getGuesses()[currentRow]!.toLowerCase();
       submitGuess(guess);
       return;
     }
@@ -179,7 +179,7 @@ export function useGame() {
       });
 
       const guesses = window.structuredClone(getGuesses());
-      guesses[currentRow] = guesses[currentRow]?.slice(0, -1);
+      guesses[currentRow] = guesses[currentRow]!.slice(0, -1);
       setGuesses(guesses);
 
       setCurrentTile(currentTile - 1);

@@ -1,4 +1,4 @@
-import type { TileInfo } from "~/types";
+import type { TileInfo } from "#types";
 
 function Tile(props: { tile: TileInfo }) {
   return (

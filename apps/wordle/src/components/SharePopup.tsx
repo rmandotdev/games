@@ -1,4 +1,4 @@
-import { showNotification } from "~/lib/show-notification";
+import { showNotification } from "#lib/show-notification";
 
 import Button from "./ui/Button";
 

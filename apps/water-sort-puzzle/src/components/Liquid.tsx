@@ -1,5 +1,5 @@
-import CONFIG from "~/config";
-import type { Color } from "~/types";
+import CONFIG from "#config";
+import type { Color } from "#types";
 
 function Liquid(props: { color: Color }) {
   return (

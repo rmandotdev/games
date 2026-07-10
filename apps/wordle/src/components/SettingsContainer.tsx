@@ -1,4 +1,4 @@
-import type { Settings } from "~/types";
+import type { Settings } from "#types";
 
 function SettingGroup<T extends string>(props: {
   id: string;

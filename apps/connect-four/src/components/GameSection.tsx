@@ -1,4 +1,3 @@
-import type { Component } from "solid-js";
 import { For, Show } from "solid-js";
 
 type GameSectionProps = {
@@ -15,7 +14,7 @@ type GameSectionProps = {
   showMainMenu: () => void;
 };
 
-const GameSection: Component<GameSectionProps> = (props) => {
+function GameSection(props: GameSectionProps) {
   return (
     <Show when={!props.showMenu}>
       <div id="game-section" class="section">
@@ -77,6 +76,6 @@ const GameSection: Component<GameSectionProps> = (props) => {
       </div>
     </Show>
   );
-};
+}
 
 export default GameSection;

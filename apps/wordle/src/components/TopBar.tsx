@@ -1,5 +1,5 @@
 import type { JSX } from "solid-js";
-import type { CurrentSection } from "~/types";
+import type { CurrentSection } from "#types";
 
 function TopbarButton(props: {
   section: CurrentSection;
@@ -25,7 +25,7 @@ function TopbarButton(props: {
         width="24"
         height="24"
         viewBox="0 0 24 24"
-        class="size-[30px] stroke-(--text-color-light) dark:stroke-(--text-color-dark)"
+        class="size-7.5 stroke-(--text-color-light) dark:stroke-(--text-color-dark)"
         fill="none"
         stroke="currentColor"
         stroke-width="2"

@@ -1,6 +1,6 @@
 import { For } from "solid-js";
 
-import type { TubeType } from "~/types";
+import type { TubeType } from "#types";
 
 import Liquid from "./Liquid";
 

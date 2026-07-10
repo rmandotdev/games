@@ -1,7 +1,7 @@
 import type { JSXElement } from "solid-js";
 import { For } from "solid-js";
 
-import type { Color, TubeType } from "~/types";
+import type { Color, TubeType } from "#types";
 
 import TubeRow from "./TubeRow";
 

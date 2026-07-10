@@ -1,6 +1,6 @@
 import { For } from "solid-js";
 
-import { CONFIG } from "~/config";
+import { CONFIG } from "#config";
 
 import type {
   BoardAction,
@@ -8,7 +8,7 @@ import type {
   KeyColorOrNotColored,
   KeyName,
   Settings,
-} from "~/types";
+} from "#types";
 
 function KeyboardButton(props: {
   name: KeyName;

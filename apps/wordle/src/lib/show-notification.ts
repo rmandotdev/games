@@ -1,4 +1,4 @@
-import NotificationPopup from "~/components/NotificationPopup";
+import NotificationPopup from "#components/NotificationPopup";
 
 const notificationTimeout: { id: number | null } = { id: null };
 

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import { getGuessPattern } from "~/lib/get-guess-patern";
+import { getGuessPattern } from "#lib/get-guess-patern";
 
 describe("getGuessPatern", () => {
   it("should return the correct pattern", () => {

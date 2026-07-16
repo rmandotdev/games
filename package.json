@@ -34,6 +34,6 @@
   "devDependencies": {
     "@biomejs/biome": "2.5.4",
     "@gameroman/config": "0.2.5",
-    "typescript": "6.0.3"
+    "typescript": "7.0.2"
   }
 }

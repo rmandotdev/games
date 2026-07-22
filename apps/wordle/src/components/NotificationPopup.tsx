@@ -1,9 +1,15 @@
-import { onMount } from "solid-js";
+import { createEffect, onCleanup } from "solid-js";
 
-function NotificationPopup(props: { message: string }) {
+import { getNotificationMessage } from "#lib/show-notification";
+
+function NotificationPopup() {
   let ref!: HTMLDivElement;
 
-  onMount(() => {
+  createEffect(() => {
+    const message = getNotificationMessage();
+    if (!message) return ref.classList.remove("show");
+
+    ref.classList.remove("show");
     setTimeout(() => ref.classList.add("show"), 0);
   });
 
@@ -12,7 +18,7 @@ function NotificationPopup(props: { message: string }) {
       ref={ref}
       class="notification fixed top-1/10 left-1/2 bg-black/80 dark:bg-white/80 text-white dark:text-black py-2.5 px-5 rounded-[5px] text-[1.2em] w-fit"
     >
-      {props.message}
+      {getNotificationMessage()}
     </div>
   );
 }

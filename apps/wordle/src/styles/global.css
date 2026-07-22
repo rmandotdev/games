@@ -104,10 +104,10 @@
 
 .notification {
   opacity: 0;
-  transform: translateX(-50%) translateY(-100%);
+  transform: translateX(-50%) translateY(-20px);
   transition:
-    transform 0.3s,
-    opacity 0.3s;
+    transform 0.15s ease-out,
+    opacity 0.15s ease-out;
 }
 
 .notification.show {

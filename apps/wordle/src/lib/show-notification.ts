@@ -11,16 +11,12 @@ export function showNotification(message: string) {
     timeoutId = null;
   }
 
-  setNotificationMessage("");
+  setNotificationMessage(message);
 
-  setTimeout(() => {
-    setNotificationMessage(message);
-
-    timeoutId = window.setTimeout(() => {
-      setNotificationMessage("");
-      timeoutId = null;
-    }, 2000);
-  }, 0);
+  timeoutId = window.setTimeout(() => {
+    setNotificationMessage("");
+    timeoutId = null;
+  }, 2000);
 }
 
 export { getNotificationMessage };

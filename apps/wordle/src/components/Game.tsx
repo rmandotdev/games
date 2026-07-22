@@ -1,8 +1,7 @@
-import { Match, onMount, Show, Switch } from "solid-js";
+import { Match, onMount, Switch } from "solid-js";
 import { Portal } from "solid-js/web";
 
 import { useGame } from "#hooks/useGame";
-import { getNotificationMessage } from "#lib/show-notification";
 import GameContainer from "./GameContainer";
 import LeaderboardContainer from "./LeaderboardContainer";
 import MenuContainer from "./MenuContainer";
@@ -79,11 +78,9 @@ function App() {
         </Match>
       </Switch>
 
-      <Show when={getNotificationMessage()}>
-        <Portal>
-          <NotificationPopup message={getNotificationMessage()} />
-        </Portal>
-      </Show>
+      <Portal>
+        <NotificationPopup />
+      </Portal>
     </div>
   );
 }

@@ -16,6 +16,7 @@
   --color-absent: #787c7e;
 
   --spacing-container: 450px;
+  --spacing-keyboard: min(5px, 1vw);
 
   --font-courier: "Courier New", Courier, monospace;
 
@@ -98,7 +99,6 @@
 
   --enter-key-font-size: min(32px, 8vw);
 
-  --keyboard-gap: min(5px, 1vw);
   --key-size: min(40px, 8vw, 6vh);
 }
 

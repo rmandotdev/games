@@ -9,9 +9,9 @@ function Tile(props: { tile: TileInfo }) {
           props.tile.color !== "correct" &&
           props.tile.color !== "present" &&
           props.tile.color !== "absent",
-        correct: props.tile.color === "correct",
-        present: props.tile.color === "present",
-        absent: props.tile.color === "absent",
+        "bg-correct": props.tile.color === "correct",
+        "bg-present": props.tile.color === "present",
+        "bg-absent": props.tile.color === "absent",
         "animate-flip": props.tile.anim === "flip",
         "animate-shake": props.tile.anim === "shake",
         "animate-pop": props.tile.anim === "pop",

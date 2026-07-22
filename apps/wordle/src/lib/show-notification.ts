@@ -1,28 +1,21 @@
-import NotificationPopup from "#components/NotificationPopup";
+import { createSignal } from "solid-js";
 
-const notificationTimeout: { id: number | null } = { id: null };
+const [getNotificationMessage, setNotificationMessage] =
+  createSignal<string>("");
+
+let timeoutId: number | null = null;
 
 export function showNotification(message: string) {
-  if (notificationTimeout.id) {
-    window.clearTimeout(notificationTimeout.id);
-    const existingNotification = document.querySelector(".notification");
-    if (existingNotification) {
-      existingNotification.remove();
-    }
+  if (timeoutId) {
+    clearTimeout(timeoutId);
   }
 
-  const notification = NotificationPopup({ message }) as HTMLDivElement;
-  document.body.appendChild(notification);
+  setNotificationMessage(message);
 
-  window.setTimeout(() => {
-    notification.classList.add("show");
-  }, 100);
-
-  notificationTimeout.id = window.setTimeout(() => {
-    notification.classList.remove("show");
-    window.setTimeout(() => {
-      notification.remove();
-      notificationTimeout.id = null;
-    }, 300);
+  timeoutId = window.setTimeout(() => {
+    setNotificationMessage("");
+    timeoutId = null;
   }, 2000);
 }
+
+export { getNotificationMessage };

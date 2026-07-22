@@ -25,8 +25,7 @@ function TopbarButton(props: {
         width="24"
         height="24"
         viewBox="0 0 24 24"
-        class="size-7.5"
-        style={{ stroke: "var(--text-color-light)" }}
+        class="size-7.5 text-(--text-color-light) dark:text-white"
         fill="none"
         stroke="currentColor"
         stroke-width="2"
@@ -45,10 +44,9 @@ function TopBar(props: {
 }) {
   return (
     <div
-      class="flex justify-between items-center h-15 border-b border-solid w-full mb-5"
+      class="flex justify-between items-center h-15 border-b border-solid border-current text-(--text-color-light) dark:text-white w-full mb-5"
       style={{
         "max-width": "var(--content-max-width)",
-        "border-color": "var(--text-color-light)",
       }}
     >
       <div class="flex flex-row gap-2.5 basis-1/3">

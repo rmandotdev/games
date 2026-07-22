@@ -4,3 +4,7 @@
 /_astro/*
   ! Cache-Control
   Cache-Control: public, max-age=31536000, immutable
+
+/data/*
+  ! Cache-Control
+  Cache-Control: public, max-age=31536000, immutable

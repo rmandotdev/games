@@ -1,5 +1,7 @@
 import { Show } from "solid-js";
 
+import Button from "./ui/Button";
+
 type MenuSectionProps = {
   inMenu: boolean;
   onStartGame(): void;
@@ -11,19 +13,12 @@ function MenuSection(props: MenuSectionProps) {
   return (
     <Show when={props.inMenu}>
       <div class="flex flex-col items-center">
-        <button
-          class="text-base py-2.5 px-5 m-2.5 cursor-pointer bg-btn text-btn-text border-0 rounded-[5px] flex items-center justify-center"
-          onClick={props.onStartGame}
-        >
-          Start Game
-        </button>
-        <button
-          class="text-base py-2.5 px-5 m-2.5 cursor-pointer bg-btn text-btn-text border-0 rounded-[5px] flex items-center justify-center"
+        <Button label="Start Game" onClick={props.onStartGame} />
+        <Button
+          label="Resume Game"
           onClick={props.onResumeGame}
           disabled={props.isGameOver}
-        >
-          Resume Game
-        </button>
+        />
       </div>
     </Show>
   );

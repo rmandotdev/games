@@ -1,11 +1,9 @@
 import { Match, onMount, Switch } from "solid-js";
-import { Portal } from "solid-js/web";
 
 import { useGame } from "#hooks/useGame";
 import GameContainer from "./GameContainer";
 import LeaderboardContainer from "./LeaderboardContainer";
 import MenuContainer from "./MenuContainer";
-import NotificationPopup from "./NotificationPopup";
 import SettingsContainer from "./SettingsContainer";
 import StatsContainer from "./StatsContainer";
 import TopBar from "./TopBar";
@@ -77,10 +75,6 @@ function App() {
           <LeaderboardContainer />
         </Match>
       </Switch>
-
-      <Portal>
-        <NotificationPopup />
-      </Portal>
     </div>
   );
 }

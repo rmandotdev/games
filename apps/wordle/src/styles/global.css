@@ -102,27 +102,17 @@
   --key-size: min(40px, 8vw, 6vh);
 }
 
-@keyframes notification-slide {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-20px);
-  }
-  10% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-  80% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(-20px);
-  }
-}
-
 .notification {
   opacity: 0;
+  transform: translateX(-50%) translateY(-100%);
+  transition:
+    transform 0.3s ease-out,
+    opacity 0.3s ease-out;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .share-popup-game-over {

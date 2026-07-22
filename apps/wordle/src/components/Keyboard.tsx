@@ -135,7 +135,10 @@ function Keyboard(props: {
   return (
     <div
       class="grid gap-keyboard"
-      style={{ "grid-template-columns": "repeat(10, var(--key-size))" }}
+      style={{
+        "grid-template-columns": "repeat(10, var(--key-size))",
+        "grid-template-rows": "repeat(3, var(--key-size))",
+      }}
     >
       <For each={keysArray()}>{(key) => key}</For>
     </div>

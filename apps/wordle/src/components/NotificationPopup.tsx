@@ -1,4 +1,4 @@
-import { createEffect, onCleanup } from "solid-js";
+import { createEffect } from "solid-js";
 
 import { getNotificationMessage } from "#lib/show-notification";
 
@@ -6,11 +6,12 @@ function NotificationPopup() {
   let ref!: HTMLDivElement;
 
   createEffect(() => {
-    const message = getNotificationMessage();
-    if (!message) return ref.classList.remove("show");
-
-    ref.classList.remove("show");
-    setTimeout(() => ref.classList.add("show"), 0);
+    const msg = getNotificationMessage();
+    if (msg) {
+      ref.style.animation = "none";
+      void ref.offsetHeight;
+      ref.style.animation = "";
+    }
   });
 
   return (

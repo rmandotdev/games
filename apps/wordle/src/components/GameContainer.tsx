@@ -17,7 +17,10 @@ function GameContainer(props: {
   startNewGame: () => void;
 }) {
   return (
-    <div class="content-container">
+    <div
+      class="w-full flex flex-col items-center my-0 mx-auto"
+      style={{ "max-width": "var(--content-max-width)" }}
+    >
       <GameBoard tiles={props.tiles} />
 
       <Show when={props.state === "playing"}>

@@ -33,7 +33,10 @@ function App() {
   onMount(init);
 
   return (
-    <div id="main-container">
+    <div
+      class="w-[95%] flex flex-col items-center my-0 mx-auto"
+      style={{ "max-width": "var(--content-max-width)" }}
+    >
       <TopBar
         currentSection={currentSection()}
         setCurrentSection={setCurrentSection}

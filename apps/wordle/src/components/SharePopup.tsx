@@ -15,7 +15,13 @@ function SharePopup(props: {
   shareText: string;
 }) {
   const popup = (
-    <div class="share-popup-game-over">
+    <div
+      class="left-1/2 top-1/2 text-white text-[1.2em] opacity-0 absolute bg-black/95 py-5 px-10 rounded-[10px] text-center w-fit"
+      style={{
+        transform: "translate(-50%, -50%) scale(0.8)",
+        "box-shadow": "0 4px 12px rgba(0, 0, 0, 0.2)",
+      }}
+    >
       <button
         textContent="×"
         class="absolute top-[5px] right-[5px] bg-transparent border-none text-inherit text-2xl cursor-pointer p-[5px] leading-[0.8] opacity-70 transition-opacity duration-200 hover:opacity-100"

@@ -25,7 +25,8 @@ function TopbarButton(props: {
         width="24"
         height="24"
         viewBox="0 0 24 24"
-        class="size-7.5 stroke-(--text-color-light) dark:stroke-(--text-color-dark)"
+        class="size-7.5"
+        style={{ stroke: "var(--text-color-light)" }}
         fill="none"
         stroke="currentColor"
         stroke-width="2"
@@ -43,7 +44,13 @@ function TopBar(props: {
   setCurrentSection: (section: CurrentSection) => void;
 }) {
   return (
-    <div id="top-bar">
+    <div
+      class="flex justify-between items-center h-15 border-b border-solid w-full mb-5"
+      style={{
+        "max-width": "var(--content-max-width)",
+        "border-color": "var(--text-color-light)",
+      }}
+    >
       <div class="flex flex-row gap-2.5 basis-1/3">
         <TopbarButton
           section="menu"

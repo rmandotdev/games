@@ -4,7 +4,10 @@ import Button from "./ui/Button";
 
 function MenuContainer(props: { startNewGame: (gameMode?: GameMode) => void }) {
   return (
-    <div id="menu-container" class="content-container">
+    <div
+      class="w-full flex flex-col items-center my-0 mx-auto"
+      style={{ "max-width": "var(--content-max-width)" }}
+    >
       <Button label="Play Daily" onClick={() => props.startNewGame("daily")} />
       <Button
         label="Play Unlimited"

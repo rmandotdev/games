@@ -15,7 +15,12 @@ function SettingGroup<T extends string>(props: {
 
       <select
         id={props.id}
-        class="setting-select"
+        class="w-32 p-2 text-base border border-solid rounded-[5px]"
+        style={{
+          color: "var(--text-color-light)",
+          "border-color": "var(--border-color-light)",
+          "background-color": "white",
+        }}
         value={props.value}
         onChange={(event) => props.onChange(event.target.value as T)}
       >
@@ -32,7 +37,10 @@ function SettingsContainer(props: {
   updateSettings: (settings: Partial<Settings>) => void;
 }) {
   return (
-    <div class="content-container">
+    <div
+      class="w-full flex flex-col items-center my-0 mx-auto"
+      style={{ "max-width": "var(--content-max-width)" }}
+    >
       <SettingGroup
         id="theme-select"
         label="Theme"

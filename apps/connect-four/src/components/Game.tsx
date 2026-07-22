@@ -1,4 +1,4 @@
-import { createSignal, onMount } from "solid-js";
+import { createSignal, onMount, Show } from "solid-js";
 
 import GameSection from "./GameSection";
 import MenuSection from "./MenuSection";
@@ -152,7 +152,7 @@ function App() {
 
   return (
     <div
-      class="bg-menu-bg rounded-[10px] flex flex-col"
+      class="bg-menu-bg rounded-[10px] flex flex-col items-center w-fit"
       style={{
         padding: "min(20px, 10%)",
         "box-shadow": "0 0 var(--shadow-blur) var(--shadow-color)",
@@ -169,21 +169,24 @@ function App() {
         Connect Four
       </h1>
 
-      <GameSection
-        board={board()}
-        currentPlayer={currentPlayer()}
-        gameOver={gameOver()}
-        handleClick={handleClick}
-        handleHover={handleHover}
-        handleMouseOut={handleMouseOut}
-        hoveredCell={hoveredCell()}
-        message={message()}
-        showMainMenu={showMainMenu}
-        showMenu={showMenu()}
-        startNewGame={startNewGame}
-      />
+      <Show when={!showMenu()}>
+        <GameSection
+          board={board()}
+          currentPlayer={currentPlayer()}
+          gameOver={gameOver()}
+          handleClick={handleClick}
+          handleHover={handleHover}
+          handleMouseOut={handleMouseOut}
+          hoveredCell={hoveredCell()}
+          message={message()}
+          showMainMenu={showMainMenu}
+          startNewGame={startNewGame}
+        />
+      </Show>
 
-      <MenuSection showMenu={showMenu()} startNewGame={startNewGame} />
+      <Show when={showMenu()}>
+        <MenuSection startNewGame={startNewGame} />
+      </Show>
     </div>
   );
 }

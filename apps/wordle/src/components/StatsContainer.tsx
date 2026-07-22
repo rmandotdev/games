@@ -5,9 +5,21 @@ function GuessDistributionRow(props: { v: number; i: number; p: number }) {
   return (
     <div class="flex items-center w-9/10">
       <div class="w-5 text-right mr-2.5 font-bold text-base">{props.i + 1}</div>
-      <div class="guess-bar">
-        <div class="guess-bar-fill" style={{ width: `${props.p}%` }} />
-        <div class="absolute right-[5px] top-1/2 font-bold text-base text-(--text-color-light) dark:text-(--text-color-dark) -translate-y-1/2">
+      <div
+        class="grow h-7.5 relative rounded-sm"
+        style={{ "background-color": "var(--absent-color)" }}
+      >
+        <div
+          class="h-full rounded-sm"
+          style={{
+            "background-color": "var(--correct-color)",
+            width: `${props.p}%`,
+          }}
+        />
+        <div
+          class="absolute right-[5px] top-1/2 font-bold text-base -translate-y-1/2"
+          style={{ color: "var(--text-color-light)" }}
+        >
           {props.v}
         </div>
       </div>
@@ -37,7 +49,13 @@ function StatBox(props: {
   label: string;
 }) {
   return (
-    <div class="bg-(--content-bg-light) dark:bg-(--background-color-dark) border-(--border-color-light) dark:border-(--text-color-dark) border-2 border-solid rounded-[5px] p-2.5 text-center">
+    <div
+      class="border-2 border-solid rounded-[5px] p-2.5 text-center"
+      style={{
+        "background-color": "var(--content-bg-light)",
+        "border-color": "var(--border-color-light)",
+      }}
+    >
       <div class="text-2xl font-bold mb-[5px]" id={props.id}>
         {props.value}
       </div>
@@ -51,7 +69,10 @@ const getNormalizedPercentage = (part: number, total: number) =>
 
 function StatsContainer(props: { stats: Stats }) {
   return (
-    <div class="content-container">
+    <div
+      class="w-full flex flex-col items-center my-0 mx-auto"
+      style={{ "max-width": "var(--content-max-width)" }}
+    >
       <div class="grid grid-cols-2 gap-5 mb-5">
         <StatBox label="Played" value={props.stats.gamesPlayed} />
 

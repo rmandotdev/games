@@ -137,6 +137,8 @@ export function useGame() {
       setGuesses([]);
       setKeycolors({});
 
+      setSharePopup(null);
+
       setSecretWord(getNewWord(gamemode));
       setCurrentSection("game");
     });

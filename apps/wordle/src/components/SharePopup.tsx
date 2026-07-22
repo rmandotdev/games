@@ -15,7 +15,7 @@ function SharePopup(props: { data: SharePopupData; onClose: () => void }) {
   let ref!: HTMLDivElement;
 
   onMount(() => {
-    requestAnimationFrame(() => ref.classList.add("show"));
+    setTimeout(() => ref.classList.add("show"), 0);
   });
 
   const copyTextToClipboard = (text: string) =>
@@ -27,7 +27,7 @@ function SharePopup(props: { data: SharePopupData; onClose: () => void }) {
   return (
     <div
       ref={ref}
-      class="share-popup-game-over absolute left-1/2 top-1/2 text-white dark:text-black text-[1.2em] opacity-0 bg-black/95 dark:bg-white/95 py-5 px-10 rounded-[10px] text-center w-fit z-10"
+      class="share-popup-game-over absolute left-1/2 top-1/2 text-white text-[1.2em] opacity-0 bg-black/95 py-5 px-10 rounded-[10px] text-center w-fit z-10"
       style={{
         transform: "translate(-50%, -50%) scale(0.8)",
         transition: "transform 0.3s, opacity 0.3s",
@@ -44,7 +44,6 @@ function SharePopup(props: { data: SharePopupData; onClose: () => void }) {
       <pre textContent={props.data.pattern} class="my-3.75 mx-0 text-base" />
       <Button
         label="Share"
-        class="my-2.5"
         onClick={() => copyTextToClipboard(props.data.shareText)}
       />
     </div>

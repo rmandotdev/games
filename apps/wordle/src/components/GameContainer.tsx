@@ -33,14 +33,11 @@ function GameContainer(props: {
       </Show>
 
       <Show when={props.state === "gameover"}>
-        <Button label="New Game" class="mt-5" onClick={props.startNewGame} />
+        <Button label="New Game" onClick={props.startNewGame} />
       </Show>
 
-      <Show when={props.sharePopup}>
-        <SharePopup
-          data={props.sharePopup!}
-          onClose={props.onCloseSharePopup}
-        />
+      <Show when={props.sharePopup} keyed>
+        {(data) => <SharePopup data={data} onClose={props.onCloseSharePopup} />}
       </Show>
     </div>
   );

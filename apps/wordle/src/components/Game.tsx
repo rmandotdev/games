@@ -1,11 +1,10 @@
-import { Match, onMount, Show, Switch } from "solid-js";
+import { Match, onMount, Switch } from "solid-js";
 
 import { useGame } from "#hooks/useGame";
 import GameContainer from "./GameContainer";
 import LeaderboardContainer from "./LeaderboardContainer";
 import MenuContainer from "./MenuContainer";
 import SettingsContainer from "./SettingsContainer";
-import SharePopup from "./SharePopup";
 import StatsContainer from "./StatsContainer";
 import TopBar from "./TopBar";
 
@@ -56,6 +55,8 @@ function App() {
             keycolors={getKeyColors()}
             handleBoardAction={handleBoardAction}
             state={getState()}
+            sharePopup={getSharePopup()}
+            onCloseSharePopup={() => setSharePopup(null)}
           />
         </Match>
 
@@ -74,12 +75,6 @@ function App() {
           <LeaderboardContainer />
         </Match>
       </Switch>
-
-      <Show when={getSharePopup()} keyed>
-        {(data) => (
-          <SharePopup data={data} onClose={() => setSharePopup(null)} />
-        )}
-      </Show>
     </div>
   );
 }

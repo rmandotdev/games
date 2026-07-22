@@ -36,7 +36,9 @@ const { title, description, canonical, thumbnail } = Astro.props;
     <link rel="shortcut icon" href={thumbnail} type="image/x-icon" />
   </head>
 
-  <body class="bg-bg dark:bg-bg-dark text-text dark:text-text-dark font-sans">
+  <body
+    class="flex justify-center items-center h-screen m-0 bg-bg dark:bg-bg-dark text-text dark:text-text-dark font-sans"
+  >
     <slot />
   </body>
 </html>

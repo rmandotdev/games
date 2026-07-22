@@ -115,6 +115,15 @@
   transform: translateX(-50%) translateY(0);
 }
 
+.share-popup-game-over {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 .share-popup-game-over.show {
   opacity: 1;
   transform: translate(-50%, -50%) scale(1);

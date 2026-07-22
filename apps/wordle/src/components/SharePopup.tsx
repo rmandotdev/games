@@ -27,12 +27,7 @@ function SharePopup(props: { data: SharePopupData; onClose: () => void }) {
   return (
     <div
       ref={ref}
-      class="share-popup-game-over absolute left-1/2 top-1/2 text-white text-[1.2em] opacity-0 bg-black/95 py-5 px-10 rounded-[10px] text-center w-fit z-10"
-      style={{
-        transform: "translate(-50%, -50%) scale(0.8)",
-        transition: "transform 0.3s, opacity 0.3s",
-        "box-shadow": "0 4px 12px rgba(0, 0, 0, 0.2)",
-      }}
+      class="share-popup-game-over absolute left-1/2 top-1/2 text-white text-[1.2em] bg-black/95 py-5 px-10 rounded-[10px] text-center w-fit z-10"
     >
       <button
         type="button"

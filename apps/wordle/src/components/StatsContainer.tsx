@@ -56,10 +56,7 @@ const getNormalizedPercentage = (part: number, total: number) =>
 
 function StatsContainer(props: { stats: Stats }) {
   return (
-    <div
-      class="w-full flex flex-col items-center my-0 mx-auto"
-      style={{ "max-width": "var(--content-max-width)" }}
-    >
+    <div class="w-full flex flex-col items-center my-0 mx-auto max-w-container">
       <div class="grid grid-cols-2 gap-5 mb-5">
         <StatBox label="Played" value={props.stats.gamesPlayed} />
 

@@ -27,7 +27,13 @@ function KeyboardButton(props: {
 
   return (
     <button
-      class={`text-black border-0 text-2xl font-bold cursor-pointer p-0 bg-content-bg hover:bg-content-hover size-(--key-size) ${color}`}
+      class="text-white border-0 text-2xl font-bold cursor-pointer p-0 size-(--key-size)"
+      classList={{
+        "bg-content-bg hover:bg-content-hover": !color,
+        "bg-correct": color === "correct",
+        "bg-present": color === "present",
+        "bg-absent": color === "absent",
+      }}
       onClick={props.onClick}
       style={{
         "grid-column": `span ${width}`,

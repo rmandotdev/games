@@ -43,12 +43,7 @@ function TopBar(props: {
   setCurrentSection: (section: CurrentSection) => void;
 }) {
   return (
-    <div
-      class="flex justify-between items-center h-15 border-b border-solid border-current text-dark dark:text-white w-full mb-5"
-      style={{
-        "max-width": "var(--content-max-width)",
-      }}
-    >
+    <div class="flex justify-between items-center h-15 border-b border-solid border-current text-dark dark:text-white w-full mb-5 max-w-container">
       <div class="flex flex-row gap-2.5 basis-1/3">
         <TopbarButton
           section="menu"

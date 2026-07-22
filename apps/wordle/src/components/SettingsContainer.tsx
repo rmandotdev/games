@@ -5,7 +5,7 @@ function SettingGroup<T extends string>(props: {
   label: string;
   value: T;
   options: { value: T; label: string }[];
-  onChange: (value: T) => void;
+  onChange(value: T): void;
 }) {
   return (
     <div class="flex justify-between items-end w-full mb-4">
@@ -15,7 +15,7 @@ function SettingGroup<T extends string>(props: {
 
       <select
         id={props.id}
-        class="w-32 p-2 text-base border border-solid rounded-[5px] text-dark dark:text-light border-border-light dark:border-border-dark bg-white"
+        class="w-32 p-2 text-base border border-solid rounded-[5px] text-dark dark:text-light border-border-light dark:border-border-dark bg-white dark:bg-content-bg-dark"
         value={props.value}
         onChange={(event) => props.onChange(event.target.value as T)}
       >
@@ -29,13 +29,10 @@ function SettingGroup<T extends string>(props: {
 
 function SettingsContainer(props: {
   settings: Settings;
-  updateSettings: (settings: Partial<Settings>) => void;
+  updateSettings(settings: Partial<Settings>): void;
 }) {
   return (
-    <div
-      class="w-full flex flex-col items-center my-0 mx-auto"
-      style={{ "max-width": "var(--content-max-width)" }}
-    >
+    <div class="w-full flex flex-col items-center my-0 mx-auto max-w-container">
       <SettingGroup
         id="theme-select"
         label="Theme"

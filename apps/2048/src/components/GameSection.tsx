@@ -18,7 +18,7 @@ function GameSection(props: GameSectionProps) {
         </Show>
 
         <div class="text-xl">
-          Score: <span class="font-bold">{props.score}</span>
+          Score: <span>{props.score}</span>
         </div>
 
         <div

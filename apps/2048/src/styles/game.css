@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: Arial, sans-serif;
+
   --color-bg: #faf8ef;
   --color-bg-dark: #111;
   --color-text: #000;

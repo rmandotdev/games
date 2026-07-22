@@ -17,10 +17,7 @@ function GameContainer(props: {
   startNewGame: () => void;
 }) {
   return (
-    <div
-      class="w-full flex flex-col items-center my-0 mx-auto"
-      style={{ "max-width": "var(--content-max-width)" }}
-    >
+    <div class="w-full flex flex-col items-center my-0 mx-auto max-w-container">
       <GameBoard tiles={props.tiles} />
 
       <Show when={props.state === "playing"}>
@@ -32,7 +29,7 @@ function GameContainer(props: {
       </Show>
 
       <Show when={props.state === "gameover"}>
-        <Button label="New Game" onClick={props.startNewGame} />
+        <Button label="New Game" class="mt-5" onClick={props.startNewGame} />
       </Show>
     </div>
   );

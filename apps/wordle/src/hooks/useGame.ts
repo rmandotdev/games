@@ -1,9 +1,10 @@
 import { batch, createSignal } from "solid-js";
+import type { SharePopupData } from "#components/SharePopup";
 import { CONFIG, WORDS } from "#config";
 import { getNewWord } from "#lib/get-new-word";
 import { getTileColors } from "#lib/get-tile-colors";
 import { showNotification } from "#lib/show-notification";
-import { showSharePopup } from "#lib/show-share-popup";
+import { getSharePopupData } from "#lib/show-share-popup";
 import type {
   BoardAction,
   CurrentSection,
@@ -47,14 +48,20 @@ export function useGame() {
     setCurrentTile,
   } = useTiles();
 
+  const [getSharePopup, setSharePopup] = createSignal<SharePopupData | null>(
+    null,
+  );
+
   function finishGame(isWin: boolean) {
     setState("gameover");
     updateStats(isWin, getCurrentRow());
-    showSharePopup({
-      isWin,
-      guesses: getGuesses(),
-      secretWord: getSecretWord(),
-    });
+    setSharePopup(
+      getSharePopupData({
+        isWin,
+        guesses: getGuesses(),
+        secretWord: getSecretWord(),
+      }),
+    );
   }
 
   const DELAY_BETWEEN_FLIPS = 175;
@@ -240,6 +247,9 @@ export function useGame() {
 
     getTiles,
     getKeyColors,
+
+    getSharePopup,
+    setSharePopup,
 
     startNewGame,
 

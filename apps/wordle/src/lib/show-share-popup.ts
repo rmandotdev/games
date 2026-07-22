@@ -1,7 +1,6 @@
-import SharePopup from "#components/SharePopup";
 import { getGuessPattern } from "./get-guess-patern";
 
-export function showSharePopup({
+export function getSharePopupData({
   isWin,
   guesses,
   secretWord,
@@ -22,10 +21,5 @@ export function showSharePopup({
     : `I did not guess a word in Wordle`;
   const shareText = `${topText}\n\n${pattern}\n\nPlay on ${window.location.href}`;
 
-  const popup = SharePopup({ isWin, title, pattern, shareText });
-  document.body.appendChild(popup);
-
-  window.setTimeout(() => {
-    popup.classList.add("show");
-  }, 100);
+  return { isWin, title, pattern, shareText };
 }

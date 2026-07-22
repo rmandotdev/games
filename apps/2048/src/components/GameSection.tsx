@@ -12,27 +12,25 @@ type GameSectionProps = {
 function GameSection(props: GameSectionProps) {
   return (
     <Show when={!props.inMenu}>
-      <div id="game-section" class="section">
+      <div class="flex flex-col items-center">
         <Show when={props.gameOver}>
-          <h2 id="game-over">Game Over!</h2>
+          <h2 class="text-2xl font-bold">Game Over!</h2>
         </Show>
 
-        <div id="score">
-          Score: <span id="score-value">{props.score}</span>
+        <div class="text-xl">
+          Score: <span class="font-bold">{props.score}</span>
         </div>
 
         <div
-          id="grid"
-          class="no-select"
+          class="grid bg-grid rounded-[5px] p-2.5 m-5 gap-(--spacing-grid-gap)"
           style={{
-            display: "grid",
             "grid-template-columns": `repeat(${props.grid.length}, 1fr)`,
           }}
         >
           {props.grid.map((row, i) =>
             row.map((cell, j) => (
               <div
-                class={`cell color-${cell === 0 ? "empty" : cell}`}
+                class={`cell color-${cell === 0 ? "empty" : cell} size-(--spacing-cell) bg-cell rounded-[5px] flex justify-center items-center text-2xl font-bold text-cell-text`}
                 data-row={i}
                 data-col={j}
               >
@@ -42,11 +40,17 @@ function GameSection(props: GameSectionProps) {
           )}
         </div>
 
-        <div id="controls">
-          <button onClick={props.onShowMenu} id="show-menu">
+        <div class="flex justify-center">
+          <button
+            class="text-base py-2.5 px-5 m-2.5 cursor-pointer bg-btn text-btn-text border-0 rounded-[5px] flex items-center justify-center"
+            onClick={props.onShowMenu}
+          >
             Menu
           </button>
-          <button onClick={props.onRestartGame} id="restart-game">
+          <button
+            class="text-base py-2.5 px-5 m-2.5 cursor-pointer bg-btn text-btn-text border-0 rounded-[5px] flex items-center justify-center"
+            onClick={props.onRestartGame}
+          >
             Restart
           </button>
         </div>

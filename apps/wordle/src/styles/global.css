@@ -3,6 +3,18 @@
 @custom-variant dark (&:where(.dark-mode, .dark-mode *));
 
 @theme {
+  --color-light: #f0f0f0;
+  --color-dark: #1a1a1a;
+  --color-border-light: #ccc;
+  --color-border-dark: #555;
+  --color-content-bg: #d6d6d6;
+  --color-content-bg-dark: #3a3a3a;
+  --color-content-hover: #bbb;
+  --color-content-hover-dark: #4a4a4a;
+  --color-correct: #6aaa64;
+  --color-present: #c9b458;
+  --color-absent: #787c7e;
+
   --font-courier: "Courier New", Courier, monospace;
 
   --animate-pop: pop var(--animation-pop-duration)

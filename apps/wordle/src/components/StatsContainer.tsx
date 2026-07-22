@@ -5,21 +5,14 @@ function GuessDistributionRow(props: { v: number; i: number; p: number }) {
   return (
     <div class="flex items-center w-9/10">
       <div class="w-5 text-right mr-2.5 font-bold text-base">{props.i + 1}</div>
-      <div
-        class="grow h-7.5 relative rounded-sm"
-        style={{ "background-color": "var(--absent-color)" }}
-      >
+      <div class="grow h-7.5 relative rounded-sm bg-absent">
         <div
-          class="h-full rounded-sm"
+          class="h-full rounded-sm bg-correct"
           style={{
-            "background-color": "var(--correct-color)",
             width: `${props.p}%`,
           }}
         />
-        <div
-          class="absolute right-[5px] top-1/2 font-bold text-base -translate-y-1/2"
-          style={{ color: "var(--text-color-light)" }}
-        >
+        <div class="absolute right-[5px] top-1/2 font-bold text-base text-dark -translate-y-1/2">
           {props.v}
         </div>
       </div>
@@ -49,13 +42,7 @@ function StatBox(props: {
   label: string;
 }) {
   return (
-    <div
-      class="border-2 border-solid rounded-[5px] p-2.5 text-center"
-      style={{
-        "background-color": "var(--content-bg-light)",
-        "border-color": "var(--border-color-light)",
-      }}
-    >
+    <div class="border-2 border-solid border-border-light dark:border-border-dark bg-content-bg dark:bg-content-bg-dark rounded-[5px] p-2.5 text-center">
       <div class="text-2xl font-bold mb-[5px]" id={props.id}>
         {props.value}
       </div>

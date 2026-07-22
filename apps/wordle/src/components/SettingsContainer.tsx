@@ -15,12 +15,7 @@ function SettingGroup<T extends string>(props: {
 
       <select
         id={props.id}
-        class="w-32 p-2 text-base border border-solid rounded-[5px]"
-        style={{
-          color: "var(--text-color-light)",
-          "border-color": "var(--border-color-light)",
-          "background-color": "white",
-        }}
+        class="w-32 p-2 text-base border border-solid rounded-[5px] text-dark dark:text-light border-border-light dark:border-border-dark bg-white"
         value={props.value}
         onChange={(event) => props.onChange(event.target.value as T)}
       >

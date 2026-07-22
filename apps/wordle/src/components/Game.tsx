@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div
-      class="w-[95%] flex flex-col items-center my-0 mx-auto"
+      class="w-[95%] flex flex-col items-center my-0 mx-auto text-dark dark:text-light"
       style={{ "max-width": "var(--content-max-width)" }}
     >
       <TopBar

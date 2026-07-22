@@ -151,8 +151,23 @@ function App() {
   });
 
   return (
-    <div id="game-container">
-      <h1 id="title">Connect Four</h1>
+    <div
+      class="bg-menu-bg rounded-[10px] flex flex-col"
+      style={{
+        padding: "min(20px, 10%)",
+        "box-shadow": "0 0 var(--shadow-blur) var(--shadow-color)",
+      }}
+    >
+      <h1
+        class="text-white text-center whitespace-nowrap"
+        style={{
+          "font-size": "min(2em, 12vw)",
+          "text-shadow": "0 0 var(--text-shadow-blur) white",
+          "margin-bottom": "min(20px, 10%)",
+        }}
+      >
+        Connect Four
+      </h1>
 
       <GameSection
         board={board()}

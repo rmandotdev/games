@@ -8,8 +8,12 @@ type MenuSectionProps = {
 function MenuSection(props: MenuSectionProps) {
   return (
     <Show when={props.showMenu}>
-      <div id="menu-section" class="section">
-        <button id="start-game-button" onClick={props.startNewGame}>
+      <div class="justify-items-center text-center items-center">
+        <button
+          class="whitespace-nowrap inline-block text-white border-0 rounded-[5px] cursor-pointer text-base bg-btn hover:bg-btn-hover"
+          style={{ margin: "10px", padding: "10px min(20px, 10%)" }}
+          onClick={props.startNewGame}
+        >
           NEW GAME
         </button>
       </div>

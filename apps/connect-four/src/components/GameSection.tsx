@@ -17,15 +17,25 @@ type GameSectionProps = {
 function GameSection(props: GameSectionProps) {
   return (
     <Show when={!props.showMenu}>
-      <div id="game-section" class="section">
-        <div id="game-board">
-          <div id="board">
+      <div class="justify-items-center text-center items-center">
+        <div class="flex flex-col items-center">
+          <div
+            class="flex flex-wrap bg-board rounded-[5px] p-[5px]"
+            style={{
+              width: `calc(7 * (var(--cell-size) + var(--cell-padding) * 2))`,
+            }}
+          >
             <For each={props.board}>
               {(row, rowIndex) => (
                 <For each={row}>
                   {(cell, colIndex) => (
                     <div
-                      class="cell-wrapper"
+                      class="cursor-pointer flex justify-center items-center"
+                      style={{
+                        width: "var(--cell-size)",
+                        height: "var(--cell-size)",
+                        padding: "var(--cell-padding)",
+                      }}
                       data-col={colIndex()}
                       data-row={rowIndex()}
                       onClick={() =>
@@ -39,18 +49,18 @@ function GameSection(props: GameSectionProps) {
                       }
                     >
                       <div
-                        class={`cell ${
+                        class={`cell w-full h-full rounded-full ${
                           cell === 1
-                            ? "red"
+                            ? "bg-player1"
                             : cell === 2
-                              ? "yellow"
+                              ? "bg-player2"
                               : props.hoveredCell &&
                                   props.hoveredCell.row === rowIndex() &&
                                   props.hoveredCell.col === colIndex()
                                 ? props.currentPlayer === 1
-                                  ? "hover-red"
-                                  : "hover-yellow"
-                                : ""
+                                  ? "bg-red-500/70"
+                                  : "bg-yellow-400/70"
+                                : "bg-black"
                         }`}
                       />
                     </div>
@@ -61,14 +71,27 @@ function GameSection(props: GameSectionProps) {
           </div>
         </div>
 
-        <div id="message">{props.message}</div>
+        <div
+          class="text-white text-center text-xl h-6 mt-5"
+          style={{ "margin-top": "min(20px, 10%)" }}
+        >
+          {props.message}
+        </div>
 
         <Show when={props.gameOver}>
-          <div id="game-over-menu">
-            <button id="new-game-button" onClick={props.startNewGame}>
+          <div class="w-full">
+            <button
+              class="whitespace-nowrap inline-block text-white border-0 rounded-[5px] cursor-pointer text-base bg-btn hover:bg-btn-hover"
+              style={{ margin: "10px", padding: "10px min(20px, 10%)" }}
+              onClick={props.startNewGame}
+            >
               NEW GAME
             </button>
-            <button id="menu-button" onClick={props.showMainMenu}>
+            <button
+              class="whitespace-nowrap inline-block text-white border-0 rounded-[5px] cursor-pointer text-base bg-btn hover:bg-btn-hover"
+              style={{ margin: "10px", padding: "10px min(20px, 10%)" }}
+              onClick={props.showMainMenu}
+            >
               MAIN MENU
             </button>
           </div>

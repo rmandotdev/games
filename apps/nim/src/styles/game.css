@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-
 :root {
   --primary-color: #e6b980;
   --text-color: #fff;
@@ -19,7 +17,7 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-poppins), sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,7 +65,7 @@ button {
   border: 2px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   transition: all 0.3s ease;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-poppins), sans-serif;
   position: relative;
   overflow: hidden;
 }

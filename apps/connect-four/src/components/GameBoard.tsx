@@ -12,8 +12,8 @@ function GameBoard(props: {
   handleMouseOut(): void;
 }) {
   return (
-    <div class="flex flex-col items-center">
-      <div class="flex w-board flex-wrap rounded-5 bg-board p-1.25">
+    <div class="grid min-h-screen w-full place-items-center p-4">
+      <div class="grid w-full max-w-11/12 grid-cols-7 gap-1.5 rounded-5 bg-board p-2 sm:gap-2.5 sm:p-4 lg:max-w-175 xl:max-w-200">
         <For each={props.board}>
           {(row, rowIndex) => (
             <For each={row}>

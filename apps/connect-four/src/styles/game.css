@@ -14,13 +14,9 @@
   --radius-5: 0.3125rem;
   --radius-10: 0.625rem;
 
-  --spacing-cell: var(--cell-size);
-  --spacing-cell-padding: calc(var(--spacing-cell) / 15);
-  --spacing-board: calc(7 * var(--spacing-cell));
-
   --spacing-fluid: min(1.25rem, 10%);
 
-  --text-board-title: min(2em, 12vw);
+  --text-board-title: min(2rem, 12vw);
 
   --duration-transition: 0.3s;
 
@@ -33,10 +29,6 @@
 
 @utility text-shadow-title-glow {
   text-shadow: 0 0 10px white;
-}
-
-:root {
-  --cell-size: 15rem;
 }
 
 body {

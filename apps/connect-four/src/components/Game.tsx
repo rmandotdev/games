@@ -1,4 +1,4 @@
-import { createSignal, onMount, Show } from "solid-js";
+import { createSignal, Show } from "solid-js";
 
 import type { Cell, Player } from "#types";
 
@@ -26,14 +26,20 @@ function App() {
     col: number;
   } | null>(null);
 
+  function resetGame() {
+    setCurrentPlayer(1);
+    setBoard(
+      Array(CONFIG.rows)
+        .fill(null)
+        .map(() => Array(CONFIG.cols).fill(0)),
+    );
+    setMessageContent("Player 1 starts");
+  }
+
   function startNewGame() {
     setShowMenu(false);
     setGameOver(false);
     resetGame();
-  }
-
-  function showMainMenu() {
-    setShowMenu(true);
   }
 
   function getLowestEmptyRow(col: number) {
@@ -125,36 +131,9 @@ function App() {
     }
   }
 
-  function handleMouseOut() {
-    setHoveredCell(null);
-  }
-
-  function resetGame() {
-    setCurrentPlayer(1);
-    setBoard(
-      Array(CONFIG.rows)
-        .fill(null)
-        .map(() => Array(CONFIG.cols).fill(0)),
-    );
-    setMessageContent("Player 1 starts");
-  }
-
-  function updateCellSize() {
-    const width = (window.innerWidth - 70) / (CONFIG.cols * 1.15);
-    const height = (window.innerHeight - 270) / (CONFIG.rows * 1.15);
-    const cellSize = Math.min(height, width);
-    document.documentElement.style.setProperty("--cell-size", `${cellSize}px`);
-  }
-
-  onMount(() => {
-    updateCellSize();
-    window.addEventListener("resize", updateCellSize);
-    return () => window.removeEventListener("resize", updateCellSize);
-  });
-
   return (
     <div class="menu-bg flex w-fit flex-col items-center rounded-10 bg-black/80 p-fluid shadow-menu">
-      <h1 class="mb-fluid whitespace-nowrap text-center text-board-title text-shadow-title-glow text-white">
+      <h1 class="mb-fluid whitespace-nowrap text-center font-bold text-board-title text-shadow-title-glow text-white">
         Connect Four
       </h1>
 
@@ -165,10 +144,10 @@ function App() {
           gameOver={gameOver()}
           handleClick={handleClick}
           handleHover={handleHover}
-          handleMouseOut={handleMouseOut}
+          handleMouseOut={() => setHoveredCell(null)}
           hoveredCell={hoveredCell()}
           message={message()}
-          showMainMenu={showMainMenu}
+          showMainMenu={() => setShowMenu(true)}
           startNewGame={startNewGame}
         />
       </Show>

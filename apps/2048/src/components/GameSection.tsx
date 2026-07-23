@@ -1,5 +1,7 @@
 import { Show } from "solid-js";
 
+import Button from "./ui/Button";
+
 type GameSectionProps = {
   inMenu: boolean;
   gameOver: boolean;
@@ -12,27 +14,25 @@ type GameSectionProps = {
 function GameSection(props: GameSectionProps) {
   return (
     <Show when={!props.inMenu}>
-      <div id="game-section" class="section">
+      <div class="flex flex-col items-center">
         <Show when={props.gameOver}>
-          <h2 id="game-over">Game Over!</h2>
+          <h2 class="font-bold text-2xl">Game Over!</h2>
         </Show>
 
-        <div id="score">
-          Score: <span id="score-value">{props.score}</span>
+        <div class="text-2xl">
+          Score: <span>{props.score}</span>
         </div>
 
         <div
-          id="grid"
-          class="no-select"
+          class="m-5 grid gap-grid-gap rounded-[5px] bg-grid p-2.5 dark:bg-grid-dark"
           style={{
-            display: "grid",
             "grid-template-columns": `repeat(${props.grid.length}, 1fr)`,
           }}
         >
           {props.grid.map((row, i) =>
             row.map((cell, j) => (
               <div
-                class={`cell color-${cell === 0 ? "empty" : cell}`}
+                class={`cell color-${cell === 0 ? "empty" : cell} flex size-cell items-center justify-center rounded-[5px] bg-cell font-bold text-2xl text-cell-text dark:bg-cell-dark`}
                 data-row={i}
                 data-col={j}
               >
@@ -42,13 +42,9 @@ function GameSection(props: GameSectionProps) {
           )}
         </div>
 
-        <div id="controls">
-          <button onClick={props.onShowMenu} id="show-menu">
-            Menu
-          </button>
-          <button onClick={props.onRestartGame} id="restart-game">
-            Restart
-          </button>
+        <div class="flex justify-center">
+          <Button label="Menu" onClick={props.onShowMenu} />
+          <Button label="Restart" onClick={props.onRestartGame} />
         </div>
       </div>
     </Show>

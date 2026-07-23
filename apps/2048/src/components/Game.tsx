@@ -38,7 +38,7 @@ export default function App() {
   });
 
   return (
-    <div id="game-container" class="container">
+    <div class="flex justify-center text-center">
       <MenuSection
         inMenu={inMenu()}
         onStartGame={initGame}

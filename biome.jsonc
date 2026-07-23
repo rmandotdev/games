@@ -1,8 +1,14 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": ["@gameroman/config/biome"],
+  "extends": ["@gameroman/config/biome", "@gameroman/config/biome/tailwind"],
   "linter": {
-    "rules": { "a11y": "warn", "style": { "noNonNullAssertion": "warn" } }
-  },
-  "css": { "parser": { "tailwindDirectives": true } }
+    "rules": {
+      "a11y": "warn",
+      "style": {
+        "noNonNullAssertion": { "fix": "none", "level": "warn" },
+        "noHexColors": "warn"
+      },
+      "nursery": { "useSortedClasses": { "fix": "safe", "level": "error" } }
+    }
+  }
 }

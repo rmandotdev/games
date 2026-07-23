@@ -1,80 +1,45 @@
-import { For, Show } from "solid-js";
+import { Show } from "solid-js";
+import type { Cell, Player } from "#types";
+import GameBoard from "./GameBoard";
+import Button from "./ui/Button";
 
 type GameSectionProps = {
-  showMenu: boolean;
-  board: number[][];
+  board: Cell[][];
   gameOver: boolean;
   hoveredCell: { row: number; col: number } | null;
-  currentPlayer: number;
+  currentPlayer: Player;
   message: string;
-  handleClick: (_: number) => void;
-  handleHover: (_: number) => void;
-  handleMouseOut: () => void;
-  startNewGame: () => void;
-  showMainMenu: () => void;
+  handleClick(col: number): void;
+  handleHover(col: number): void;
+  handleMouseOut(): void;
+  startNewGame(): void;
+  showMainMenu(): void;
 };
 
 function GameSection(props: GameSectionProps) {
   return (
-    <Show when={!props.showMenu}>
-      <div id="game-section" class="section">
-        <div id="game-board">
-          <div id="board">
-            <For each={props.board}>
-              {(row, rowIndex) => (
-                <For each={row}>
-                  {(cell, colIndex) => (
-                    <div
-                      class="cell-wrapper"
-                      data-col={colIndex()}
-                      data-row={rowIndex()}
-                      onClick={() =>
-                        !props.gameOver && props.handleClick(colIndex())
-                      }
-                      onMouseOver={() =>
-                        !props.gameOver && props.handleHover(colIndex())
-                      }
-                      onMouseOut={() =>
-                        !props.gameOver && props.handleMouseOut()
-                      }
-                    >
-                      <div
-                        class={`cell ${
-                          cell === 1
-                            ? "red"
-                            : cell === 2
-                              ? "yellow"
-                              : props.hoveredCell &&
-                                  props.hoveredCell.row === rowIndex() &&
-                                  props.hoveredCell.col === colIndex()
-                                ? props.currentPlayer === 1
-                                  ? "hover-red"
-                                  : "hover-yellow"
-                                : ""
-                        }`}
-                      />
-                    </div>
-                  )}
-                </For>
-              )}
-            </For>
-          </div>
-        </div>
+    <div class="items-center justify-items-center text-center">
+      <GameBoard
+        board={props.board}
+        currentPlayer={props.currentPlayer}
+        gameOver={props.gameOver}
+        hoveredCell={props.hoveredCell}
+        handleClick={props.handleClick}
+        handleHover={props.handleHover}
+        handleMouseOut={props.handleMouseOut}
+      />
 
-        <div id="message">{props.message}</div>
-
-        <Show when={props.gameOver}>
-          <div id="game-over-menu">
-            <button id="new-game-button" onClick={props.startNewGame}>
-              NEW GAME
-            </button>
-            <button id="menu-button" onClick={props.showMainMenu}>
-              MAIN MENU
-            </button>
-          </div>
-        </Show>
+      <div class="mt-fluid h-6 text-center text-white text-xl">
+        {props.message}
       </div>
-    </Show>
+
+      <Show when={props.gameOver}>
+        <div class="w-full">
+          <Button onClick={props.startNewGame} label="NEW GAME" />
+          <Button onClick={props.showMainMenu} label="MAIN MENU" />
+        </div>
+      </Show>
+    </div>
   );
 }
 

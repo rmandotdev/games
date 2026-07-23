@@ -27,19 +27,18 @@ function KeyboardButton(props: {
 
   return (
     <button
-      class={`key ${color}`}
+      type="button"
+      class="cursor-pointer touch-manipulation border-0 p-0 font-bold text-2xl text-black"
+      classList={{
+        "bg-content-bg hover:bg-content-hover": !color,
+        "bg-correct": color === "correct",
+        "bg-present": color === "present",
+        "bg-absent": color === "absent",
+      }}
       onClick={props.onClick}
       style={{
         "grid-column": `span ${width}`,
         "grid-row": `span ${height}`,
-
-        width: `calc((var(--key-size) * ${width}) + (var(--keyboard-gap) * ${
-          width - 1
-        }))`,
-        height: `calc((var(--key-size) * ${height}) + (var(--keyboard-gap) * ${
-          height - 1
-        }))`,
-
         "font-size":
           props.name === "Enter" ? "var(--enter-key-font-size)" : undefined,
       }}
@@ -134,7 +133,13 @@ function Keyboard(props: {
     getKeysArray(props.settings, props.handleBoardAction, props.keycolors);
 
   return (
-    <div class="grid grid-cols-10 gap-(--keyboard-gap)">
+    <div
+      class="grid gap-keyboard"
+      style={{
+        "grid-template-columns": "repeat(10, var(--key-size))",
+        "grid-template-rows": "repeat(3, var(--key-size))",
+      }}
+    >
       <For each={keysArray()}>{(key) => key}</For>
     </div>
   );

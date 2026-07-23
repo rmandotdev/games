@@ -112,9 +112,10 @@ export function useGame(gridSize: number, initialTiles: number) {
     }
 
     if (moved) {
-      setGrid(addRandomTile(newGrid));
+      const updatedGrid = addRandomTile(newGrid);
+      setGrid(updatedGrid);
       setScore(newScore);
-      if (checkGameOver(newGrid)) {
+      if (checkGameOver(updatedGrid)) {
         setGameOver(true);
         setInMenu(false);
       }

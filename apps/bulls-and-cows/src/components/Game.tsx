@@ -1,5 +1,6 @@
 import { createSignal, onMount, Show } from "solid-js";
-import History from "./History";
+import History, { type HistoryItem } from "./History";
+import Button from "./ui/Button";
 
 function App() {
   const CONFIG = {
@@ -13,9 +14,7 @@ function App() {
     gameOver: false,
   });
 
-  const [history, setHistory] = createSignal<
-    { guess: string; bulls: number; cows: number }[]
-  >([]);
+  const [history, setHistory] = createSignal<HistoryItem[]>([]);
   const [guess, setGuess] = createSignal("");
   const [error, setError] = createSignal("");
   const [result, setResult] = createSignal("");
@@ -107,26 +106,30 @@ function App() {
   });
 
   return (
-    <div class="game-container">
-      <h1>Bulls and Cows</h1>
+    <div class="w-full max-w-container rounded-2xl bg-background p-container text-center shadow-container">
+      <h1 class="my-6 text-3xl">Bulls and Cows</h1>
 
-      <div class="game-info">
+      <div class="rounded text-app-600 text-sm dark:text-app-500">
         <p>Guess the 4-digit number</p>
         <p>Bulls: correct digits in the correct position</p>
         <p>Cows: correct digits in the wrong position</p>
       </div>
 
-      <History history={history()} />
+      <Show when={history().length > 0}>
+        <History history={history()} />
+      </Show>
 
       <Show when={result()}>
-        <p id="result">{result()}</p>
+        <p class="scrollbar-thin my-1.25 items-center rounded-5 p-2 font-bold text-black dark:text-light">
+          {result()}
+        </p>
       </Show>
 
       <Show when={!gameState().gameOver}>
-        <form id="guess-form" onSubmit={handleSubmit}>
+        <form class="flex items-center justify-center" onSubmit={handleSubmit}>
           <input
             type="number"
-            id="guessInput"
+            class="no-spinner my-2.5 mr-1.25 w-auto flex-1 rounded-5 border-2 border-app-400 border-solid bg-background p-2.5 text-base outline-none transition-colors duration-300 ease-[ease] focus:border-primary dark:border-app-700"
             value={guess()}
             onInput={handleInput}
             min="0"
@@ -139,9 +142,9 @@ function App() {
             classList={{ invalid: !!error() }}
           />
           <Show when={error()}>
-            <span class="error">{error()}</span>
+            <span class="text-red-500">{error()}</span>
           </Show>
-          <button type="submit">Guess</button>
+          <Button type="submit" label="Guess" />
         </form>
       </Show>
     </div>

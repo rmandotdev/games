@@ -17,7 +17,7 @@ function BoardCell(props: {
       role="button"
       tabIndex={props.gameOver ? -1 : 0}
       aria-label={`Column ${props.colIndex + 1}, Row ${props.rowIndex + 1}`}
-      class="aspect-square w-full cursor-pointer touch-manipulation p-0.75 sm:p-1.25"
+      class="aspect-square w-full cursor-pointer touch-manipulation p-0.5 screen-40:p-1.25"
       data-col={props.colIndex}
       data-row={props.rowIndex}
       onClick={() => !props.gameOver && props.handleClick(props.colIndex)}

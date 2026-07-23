@@ -106,10 +106,10 @@ function App() {
   });
 
   return (
-    <div class="game-container rounded-2xl text-center w-full bg-background shadow-container p-container max-w-container">
-      <h1>Bulls and Cows</h1>
+    <div class="w-full max-w-container rounded-2xl bg-background p-container text-center shadow-container">
+      <h1 class="my-6 text-3xl">Bulls and Cows</h1>
 
-      <div class="rounded text-sm space-y-2 text-app-600 dark:text-app-500">
+      <div class="rounded text-app-600 text-sm dark:text-app-500">
         <p>Guess the 4-digit number</p>
         <p>Bulls: correct digits in the correct position</p>
         <p>Cows: correct digits in the wrong position</p>
@@ -120,16 +120,16 @@ function App() {
       </Show>
 
       <Show when={result()}>
-        <p class="text-black dark:text-light font-bold p-2 my-1.25 items-center rounded-5 scrollbar-thin">
+        <p class="scrollbar-thin my-1.25 items-center rounded-5 p-2 font-bold text-black dark:text-light">
           {result()}
         </p>
       </Show>
 
       <Show when={!gameState().gameOver}>
-        <form class="flex justify-center items-center" onSubmit={handleSubmit}>
+        <form class="flex items-center justify-center" onSubmit={handleSubmit}>
           <input
             type="number"
-            class="flex-1 w-auto p-2.5 my-2.5 mr-1.25 no-spinner text-base rounded-5 outline-none border-2 border-solid border-app-400 dark:border-app-700 focus:border-primary bg-background transition-colors duration-300 ease-[ease]"
+            class="no-spinner my-2.5 mr-1.25 w-auto flex-1 rounded-5 border-2 border-app-400 border-solid bg-background p-2.5 text-base outline-none transition-colors duration-300 ease-[ease] focus:border-primary dark:border-app-700"
             value={guess()}
             onInput={handleInput}
             min="0"
@@ -142,7 +142,7 @@ function App() {
             classList={{ invalid: !!error() }}
           />
           <Show when={error()}>
-            <span class="error">{error()}</span>
+            <span class="text-red-500">{error()}</span>
           </Show>
           <Button type="submit" label="Guess" />
         </form>

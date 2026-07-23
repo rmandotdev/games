@@ -1,7 +1,7 @@
 function LeaderboardContainer() {
   return (
-    <div class="w-full flex flex-col items-center my-0 mx-auto max-w-container">
-      <h2 class="font-bold text-2xl text-center mb-5">
+    <div class="mx-auto my-0 flex w-full max-w-container flex-col items-center">
+      <h2 class="mb-5 text-center font-bold text-2xl">
         {"Leaderboard (not coming soon)"}
       </h2>
     </div>

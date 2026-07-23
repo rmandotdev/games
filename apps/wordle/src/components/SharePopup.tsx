@@ -27,16 +27,16 @@ function SharePopup(props: { data: SharePopupData; onClose: () => void }) {
   return (
     <div
       ref={ref}
-      class="share-popup-game-over absolute left-1/2 top-1/2 text-white text-[1.2em] bg-black/95 py-5 px-10 rounded-[10px] text-center w-fit z-10"
+      class="share-popup-game-over absolute top-1/2 left-1/2 z-10 w-fit rounded-[10px] bg-black/95 px-10 py-5 text-center text-[1.2em] text-white"
     >
       <button
         type="button"
         textContent="×"
-        class="absolute top-1.25 right-1.25 bg-transparent border-none text-inherit text-2xl cursor-pointer p-1.25 leading-[0.8] opacity-70 transition-opacity duration-200 hover:opacity-100"
+        class="absolute top-1.25 right-1.25 cursor-pointer border-none bg-transparent p-1.25 text-2xl text-inherit leading-[0.8] opacity-70 transition-opacity duration-200 hover:opacity-100"
         onClick={props.onClose}
       />
-      <div textContent={props.data.title} class="text-2xl mb-3.75" />
-      <pre textContent={props.data.pattern} class="my-3.75 mx-0 text-base" />
+      <div textContent={props.data.title} class="mb-3.75 text-2xl" />
+      <pre textContent={props.data.pattern} class="mx-0 my-3.75 text-base" />
       <Button
         label="Share"
         onClick={() => copyTextToClipboard(props.data.shareText)}

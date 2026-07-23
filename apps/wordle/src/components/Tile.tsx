@@ -3,7 +3,7 @@ import type { TileInfo } from "#types";
 function Tile(props: { tile: TileInfo }) {
   return (
     <div
-      class="size-15 border-2 border-solid flex justify-center items-center text-[2em] font-bold uppercase transition duration-300 ease-[ease]"
+      class="flex size-15 items-center justify-center border-2 border-solid font-bold text-[2em] uppercase transition duration-300 ease-[ease]"
       classList={{
         "border-border-light dark:border-border-dark":
           props.tile.color !== "correct" &&

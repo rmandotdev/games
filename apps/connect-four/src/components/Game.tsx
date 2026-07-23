@@ -153,8 +153,8 @@ function App() {
   });
 
   return (
-    <div class="bg-black/80 menu-bg rounded-10 flex flex-col items-center w-fit p-fluid shadow-menu">
-      <h1 class="text-white text-center whitespace-nowrap text-board-title mb-fluid text-shadow-title-glow">
+    <div class="menu-bg flex w-fit flex-col items-center rounded-10 bg-black/80 p-fluid shadow-menu">
+      <h1 class="mb-fluid whitespace-nowrap text-center text-board-title text-shadow-title-glow text-white">
         Connect Four
       </h1>
 

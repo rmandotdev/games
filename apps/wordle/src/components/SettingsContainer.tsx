@@ -8,14 +8,14 @@ function SettingGroup<T extends string>(props: {
   onChange(value: T): void;
 }) {
   return (
-    <div class="flex justify-between items-end w-full mb-4">
+    <div class="mb-4 flex w-full items-end justify-between">
       <label for={props.id} class="font-bold text-2xl">
         {props.label}
       </label>
 
       <select
         id={props.id}
-        class="w-32 p-2 text-base border border-solid rounded-[5px] text-dark dark:text-light border-border-light dark:border-border-dark bg-white dark:bg-content-bg-dark"
+        class="w-32 rounded-[5px] border border-border-light border-solid bg-white p-2 text-base text-dark dark:border-border-dark dark:bg-content-bg-dark dark:text-light"
         value={props.value}
         onChange={(event) => props.onChange(event.target.value as T)}
       >
@@ -32,7 +32,7 @@ function SettingsContainer(props: {
   updateSettings(settings: Partial<Settings>): void;
 }) {
   return (
-    <div class="w-full flex flex-col items-center my-0 mx-auto max-w-container">
+    <div class="mx-auto my-0 flex w-full max-w-container flex-col items-center">
       <SettingGroup
         id="theme-select"
         label="Theme"

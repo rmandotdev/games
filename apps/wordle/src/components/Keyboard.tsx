@@ -28,7 +28,7 @@ function KeyboardButton(props: {
   return (
     <button
       type="button"
-      class="text-black border-0 text-2xl font-bold cursor-pointer p-0 touch-manipulation"
+      class="cursor-pointer touch-manipulation border-0 p-0 font-bold text-2xl text-black"
       classList={{
         "bg-content-bg hover:bg-content-hover": !color,
         "bg-correct": color === "correct",

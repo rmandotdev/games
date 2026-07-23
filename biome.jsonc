@@ -4,7 +4,8 @@
   "linter": {
     "rules": {
       "a11y": "warn",
-      "style": { "noNonNullAssertion": "warn", "noHexColors": "warn" }
+      "style": { "noNonNullAssertion": "warn", "noHexColors": "warn" },
+      "nursery": { "useSortedClasses": "error" }
     }
   }
 }

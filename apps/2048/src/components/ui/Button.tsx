@@ -8,7 +8,7 @@ function Button(props: ButtonProps) {
   return (
     <button
       type="button"
-      class="text-lg font-arial-sans py-2.5 px-5 m-2.5 cursor-pointer bg-btn text-light border-0 rounded-[5px] flex items-center justify-center"
+      class="m-2.5 flex cursor-pointer items-center justify-center rounded-[5px] border-0 bg-btn px-5 py-2.5 font-arial-sans text-lg text-light"
       onClick={props.onClick}
       disabled={props.disabled}
     >

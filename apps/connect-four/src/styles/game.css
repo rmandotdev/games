@@ -14,29 +14,29 @@
   --radius-5: 0.3125rem;
   --radius-10: 0.625rem;
 
-  --spacing-cell: 60px;
+  --spacing-cell: var(--cell-size);
   --spacing-cell-padding: calc(var(--spacing-cell) / 15);
+  --spacing-board: calc(7 * var(--spacing-cell));
 
   --spacing-fluid: min(1.25rem, 10%);
 
   --text-board-title: min(2em, 12vw);
-
-  --spacing-board: calc(
-    7 *
-    (var(--spacing-cell) + var(--spacing-cell-padding) * 2)
-  );
 
   --duration-transition: 0.3s;
 
   --shadow-glow-p1: 0 0 10px var(--color-player1);
   --shadow-glow-p2: 0 0 10px var(--color-player2);
 
-  --color-shadow-menu: rgba(255, 255, 255, 0.2);
+  --color-shadow-menu: oklch(100% 0 271.152 / 0.2);
   --shadow-menu: 0 0 20px var(--color-shadow-menu);
 }
 
 @utility text-shadow-title-glow {
   text-shadow: 0 0 10px white;
+}
+
+:root {
+  --cell-size: 15rem;
 }
 
 body {

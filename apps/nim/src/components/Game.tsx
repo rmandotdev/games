@@ -1,4 +1,4 @@
-import { createSignal, For, Show } from "solid-js";
+import { createSignal, Show } from "solid-js";
 import HeapsDisplay from "./HeapsDisplay";
 import Button from "./ui/Button";
 
@@ -130,7 +130,7 @@ function App() {
     <>
       <Show when={currentScreen() === "menu"}>
         <div id="menu" class="screen">
-          <h1 class="text-white text-5xl mb-4">NIM Game</h1>
+          <h1 class="mb-4 text-5xl text-white">NIM Game</h1>
 
           <Button onClick={startTwoPlayer} label="Player vs Player" />
           <Button onClick={startBot} label="Player vs Bot" />

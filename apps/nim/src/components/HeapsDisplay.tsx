@@ -16,7 +16,7 @@ function HeapsDisplay(props: HeapsDisplayProps) {
         {(count, index) => (
           <div
             id="turn-indicator"
-            class="heap flex flex-col items-center p-6 rounded-10 relative"
+            class="heap relative flex flex-col items-center rounded-10 p-6"
             classList={{
               selectable: props.interactive && count > 0,
               selected: props.selectedHeap === index(),

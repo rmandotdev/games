@@ -18,7 +18,7 @@ type GameSectionProps = {
 
 function GameSection(props: GameSectionProps) {
   return (
-    <div class="justify-items-center text-center items-center">
+    <div class="items-center justify-items-center text-center">
       <GameBoard
         board={props.board}
         currentPlayer={props.currentPlayer}
@@ -29,7 +29,7 @@ function GameSection(props: GameSectionProps) {
         handleMouseOut={props.handleMouseOut}
       />
 
-      <div class="text-white text-center text-xl h-6 mt-fluid">
+      <div class="mt-fluid h-6 text-center text-white text-xl">
         {props.message}
       </div>
 

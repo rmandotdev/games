@@ -15,7 +15,7 @@ function TopbarButton(props: {
   return (
     <button
       type="button"
-      class="bg-none border-0 cursor-pointer touch-manipulation p-1 flex items-center justify-center transition-transform duration-300 ease-in-out hover:scale-110"
+      class="flex cursor-pointer touch-manipulation items-center justify-center border-0 bg-none p-1 transition-transform duration-300 ease-in-out hover:scale-110"
       onClick={() => props.setCurrentSection(targetSection())}
       aria-label={`Open "${targetSection()}" section`}
     >
@@ -43,8 +43,8 @@ function TopBar(props: {
   setCurrentSection: (section: CurrentSection) => void;
 }) {
   return (
-    <div class="flex justify-between items-center h-15 border-b border-solid border-current text-dark dark:text-white w-full mb-5 max-w-container">
-      <div class="flex flex-row gap-2.5 basis-1/3">
+    <div class="mb-5 flex h-15 w-full max-w-container items-center justify-between border-current border-b border-solid text-dark dark:text-white">
+      <div class="flex basis-1/3 flex-row gap-2.5">
         <TopbarButton
           section="menu"
           currentSection={props.currentSection}
@@ -64,11 +64,11 @@ function TopBar(props: {
         </TopbarButton>
       </div>
 
-      <h1 class="font-bold text-[2em] m-0 text-center tracking-[2px] grow font-courier leading-none">
+      <h1 class="m-0 grow text-center font-bold font-courier text-[2em] leading-none tracking-[2px]">
         Wordle
       </h1>
 
-      <div class="flex flex-row gap-2.5 basis-1/3 justify-end">
+      <div class="flex basis-1/3 flex-row justify-end gap-2.5">
         <TopbarButton
           section="stats"
           currentSection={props.currentSection}

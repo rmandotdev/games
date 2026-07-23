@@ -9,7 +9,7 @@ function Button(props: ButtonProps) {
   return (
     <button
       type={props.type}
-      class="py-2.5 px-5 text-white bg-primary hover:bg-secondary border-none rounded-5 cursor-pointer text-base whitespace-nowrap transition-colors duration-300 ease-[ease]"
+      class="cursor-pointer whitespace-nowrap rounded-5 border-none bg-primary px-5 py-2.5 text-base text-white transition-colors duration-300 ease-[ease] hover:bg-secondary"
     >
       {props.label}
     </button>

@@ -14,7 +14,7 @@ function Button(props: ButtonProps) {
     <button
       {...rest}
       type="button"
-      class="mt-5 py-2.5 px-5 text-lg leading-none text-dark dark:text-light border-2 border-solid border-border-light dark:border-border-dark cursor-pointer font-bold uppercase bg-content-bg dark:bg-content-bg-dark hover:bg-content-hover dark:hover:bg-content-hover-dark transition-colors duration-300 touch-manipulation"
+      class="mt-5 cursor-pointer touch-manipulation border-2 border-border-light border-solid bg-content-bg px-5 py-2.5 font-bold text-dark text-lg uppercase leading-none transition-colors duration-300 hover:bg-content-hover dark:border-border-dark dark:bg-content-bg-dark dark:text-light dark:hover:bg-content-hover-dark"
       textContent={label}
     />
   );

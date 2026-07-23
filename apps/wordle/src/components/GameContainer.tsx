@@ -21,7 +21,7 @@ function GameContainer(props: {
   onCloseSharePopup: () => void;
 }) {
   return (
-    <div class="relative w-full flex flex-col items-center my-0 mx-auto max-w-container">
+    <div class="relative mx-auto my-0 flex w-full max-w-container flex-col items-center">
       <GameBoard tiles={props.tiles} />
 
       <Show when={props.state === "playing"}>

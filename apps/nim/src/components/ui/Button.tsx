@@ -2,7 +2,7 @@ function Button(props: { label: string; onClick(): void }) {
   return (
     <button
       type="button"
-      class="cursor-pointer text-white rounded-lg relative overflow-hidden font-poppins-sans bg-transparent"
+      class="relative cursor-pointer overflow-hidden rounded-lg bg-transparent font-poppins-sans text-white"
       onClick={props.onClick}
     >
       {props.label}

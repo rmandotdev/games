@@ -13,7 +13,7 @@ function GameBoard(props: {
 }) {
   return (
     <div class="flex flex-col items-center">
-      <div class="flex flex-wrap bg-board w-board rounded-5 p-1.25">
+      <div class="flex w-board flex-wrap rounded-5 bg-board p-1.25">
         <For each={props.board}>
           {(row, rowIndex) => (
             <For each={row}>

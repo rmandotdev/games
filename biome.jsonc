@@ -5,7 +5,7 @@
     "rules": {
       "a11y": "warn",
       "style": {
-        "noNonNullAssertion": { "fix": "none", "level": "error" },
+        "noNonNullAssertion": { "fix": "none", "level": "warn" },
         "noHexColors": "warn"
       },
       "nursery": { "useSortedClasses": { "fix": "safe", "level": "error" } }

@@ -16,7 +16,10 @@
 
   --spacing-fluid: min(1.25rem, 10%);
 
-  --spacing-game-board: min(85vw, 50vh * 7 / 6);
+  --spacing-game-board-600: min(85vw, 65vh * 7 / 6);
+  --spacing-game-board-700: min(85vw, 70vh * 7 / 6);
+  --spacing-game-board-800: min(85vw, 75vh * 7 / 6);
+  --spacing-game-board: min(85vw, 80vh * 7 / 6);
 
   --text-board-title: min(2rem, 12vw);
 
@@ -32,6 +35,10 @@
 @utility text-shadow-title-glow {
   text-shadow: 0 0 10px white;
 }
+
+@custom-variant height-600 (@media (height <= 600px));
+@custom-variant height-700 (@media (height <= 700px));
+@custom-variant height-800 (@media (height <= 800px));
 
 body {
   background: black

@@ -36,9 +36,9 @@
   text-shadow: 0 0 10px white;
 }
 
-@custom-variant height-min-600 (@media (height >= 600px));
-@custom-variant height-min-700 (@media (height >= 700px));
-@custom-variant height-min-800 (@media (height >= 800px));
+@custom-variant height-600 (@media (height >= 600px));
+@custom-variant height-700 (@media (height >= 700px));
+@custom-variant height-800 (@media (height >= 800px));
 
 body {
   background: black

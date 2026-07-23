@@ -9,16 +9,15 @@ function TopbarButton(props: {
 
   children: JSX.Element;
 }): JSX.Element {
+  const targetSection = () =>
+    props.currentSection === props.section ? "game" : props.section;
+
   return (
     <button
-      class="bg-none border-0 cursor-pointer p-1 flex items-center justify-center transition-transform duration-300 ease-in-out hover:scale-110"
-      onClick={() => {
-        if (props.currentSection === props.section) {
-          props.setCurrentSection("game");
-        } else {
-          props.setCurrentSection(props.section);
-        }
-      }}
+      type="button"
+      class="bg-none border-0 cursor-pointer touch-manipulation p-1 flex items-center justify-center transition-transform duration-300 ease-in-out hover:scale-110"
+      onClick={() => props.setCurrentSection(targetSection())}
+      aria-label={`Open "${targetSection()}" section`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -31,6 +30,7 @@ function TopbarButton(props: {
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
+        aria-hidden="true"
       >
         {props.children}
       </svg>

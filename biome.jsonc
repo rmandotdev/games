@@ -2,7 +2,10 @@
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "extends": ["@gameroman/config/biome"],
   "linter": {
-    "rules": { "a11y": "warn", "style": { "noNonNullAssertion": "warn" } }
+    "rules": {
+      "a11y": "warn",
+      "style": { "noNonNullAssertion": "warn", "noHexColors": "warn" }
+    }
   },
   "css": { "parser": { "tailwindDirectives": true } }
 }

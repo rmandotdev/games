@@ -4,7 +4,7 @@ function SettingGroup<T extends string>(props: {
   id: string;
   label: string;
   value: T;
-  options: { value: T; label: string }[];
+  options: { value: NoInfer<T>; label: string }[];
   onChange(value: T): void;
 }) {
   return (

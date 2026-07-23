@@ -3,17 +3,21 @@
 @custom-variant dark (&:where(.dark-mode, .dark-mode *));
 
 @theme {
-  --color-light: #f0f0f0;
-  --color-dark: #1a1a1a;
-  --color-border-light: #ccc;
-  --color-border-dark: #555;
-  --color-content-bg: #d6d6d6;
-  --color-content-bg-dark: #3a3a3a;
-  --color-content-hover: #bbb;
-  --color-content-hover-dark: #4a4a4a;
-  --color-correct: #6aaa64;
-  --color-present: #c9b458;
-  --color-absent: #787c7e;
+  --color-light: oklch(95.514% 0.00011 271.152);
+  --color-dark: oklch(21.779% 0.00002 271.152);
+
+  --color-border-light: oklch(84.522% 0.0001 271.152);
+  --color-border-dark: oklch(44.953% 0.00005 271.152);
+
+  --color-content-bg: oklch(87.61% 0.0001 271.152);
+  --color-content-bg-dark: oklch(34.846% 0.00004 271.152);
+
+  --color-content-hover: oklch(79.208% 0.00009 271.152);
+  --color-content-hover-dark: oklch(40.912% 0.00005 271.152);
+
+  --color-correct: oklch(67.715% 0.11982 142.269);
+  --color-present: oklch(76.931% 0.11504 96.678);
+  --color-absent: oklch(58.355% 0.00576 229.328);
 
   --spacing-container: 450px;
   --spacing-keyboard: min(5px, 1vw);

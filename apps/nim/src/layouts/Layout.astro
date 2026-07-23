@@ -19,7 +19,7 @@ const { title, description, canonical, thumbnail } = Astro.props;
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <Font cssVariable="--font-poppins" />
+    <Font cssVariable="--font-poppins" preload />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -39,8 +39,10 @@ const { title, description, canonical, thumbnail } = Astro.props;
     <link rel="shortcut icon" href={thumbnail} type="image/x-icon" />
   </head>
 
-  <body>
-    <main>
+  <body
+    class="font-poppins-sans flex justify-center items-center text-white m-0 min-h-screen"
+  >
+    <main class="flex justify-center">
       <slot />
     </main>
   </body>

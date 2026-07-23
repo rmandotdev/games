@@ -14,7 +14,7 @@ function GameBoard(props: {
   return (
     <div class="flex w-full flex-col items-center">
       {/* must not have gap, otherwise clicking between cells will be broken */}
-      <div class="grid aspect-7/6 max-h-[70vmin] w-full max-w-[70vmin] grid-cols-7 rounded-5 bg-board p-2 sm:p-4">
+      <div class="grid aspect-7/6 max-h-[75vh] w-[85vw] max-w-full grid-cols-7 grid-rows-6 rounded-5 bg-board p-2 sm:p-4 md:w-150 lg:w-187.5 xl:w-225">
         <For each={props.board}>
           {(row, rowIndex) => (
             <For each={row}>

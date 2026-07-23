@@ -16,10 +16,11 @@
 
   --spacing-fluid: min(1.25rem, 10%);
 
-  --spacing-game-board: min(85vw, 65vh * 7 / 6);
-  --spacing-game-board-600: min(85vw, 70vh * 7 / 6);
-  --spacing-game-board-700: min(85vw, 75vh * 7 / 6);
-  --spacing-game-board-800: min(85vw, 80vh * 7 / 6);
+  --spacing-game-board: min(85vw, 60vh * 7 / 6);
+  --spacing-game-board-35: min(85vw, 65vh * 7 / 6);
+  --spacing-game-board-40: min(85vw, 70vh * 7 / 6);
+  --spacing-game-board-45: min(85vw, 75vh * 7 / 6);
+  --spacing-game-board-50: min(85vw, 80vh * 7 / 6);
 
   --text-board-title: min(2rem, 12vw);
 
@@ -36,9 +37,10 @@
   text-shadow: 0 0 10px white;
 }
 
-@custom-variant height-600 (@media (height >= 600px));
-@custom-variant height-700 (@media (height >= 700px));
-@custom-variant height-800 (@media (height >= 800px));
+@custom-variant screen-35 (@media (height >= 35rem) AND (width >= 35rem));
+@custom-variant screen-40 (@media (height >= 40rem) AND (width >= 40rem));
+@custom-variant screen-45 (@media (height >= 45rem) AND (width >= 45rem));
+@custom-variant screen-50 (@media (height >= 50rem) AND (width >= 50rem));
 
 body {
   background: black

@@ -16,11 +16,11 @@
 
   --spacing-fluid: min(1.25rem, 10%);
 
-  --spacing-game-board: min(85vw, 60vh * 7 / 6);
-  --spacing-game-board-35: min(85vw, 65vh * 7 / 6);
-  --spacing-game-board-40: min(85vw, 70vh * 7 / 6);
-  --spacing-game-board-45: min(85vw, 75vh * 7 / 6);
-  --spacing-game-board-50: min(85vw, 80vh * 7 / 6);
+  --spacing-game-board: min(85vw, 50vh * 7 / 6);
+  --spacing-game-board-35: min(85vw, 55vh * 7 / 6);
+  --spacing-game-board-40: min(85vw, 60vh * 7 / 6);
+  --spacing-game-board-45: min(85vw, 65vh * 7 / 6);
+  --spacing-game-board-50: min(85vw, 70vh * 7 / 6);
 
   --text-board-title: min(2rem, 12vw);
 

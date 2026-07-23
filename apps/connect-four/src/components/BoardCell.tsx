@@ -17,7 +17,7 @@ function BoardCell(props: {
       role="button"
       tabIndex={props.gameOver ? -1 : 0}
       aria-label={`Column ${props.colIndex + 1}, Row ${props.rowIndex + 1}`}
-      class="aspect-square w-full cursor-pointer touch-manipulation"
+      class="aspect-square w-full cursor-pointer touch-manipulation p-0.75 sm:p-1.25"
       data-col={props.colIndex}
       data-row={props.rowIndex}
       onClick={() => !props.gameOver && props.handleClick(props.colIndex)}
@@ -33,7 +33,7 @@ function BoardCell(props: {
       onBlur={() => !props.gameOver && props.handleMouseOut()}
     >
       <div
-        class="aspect-square w-full rounded-full transition-colors duration-transition"
+        class="size-full rounded-full transition-colors duration-transition"
         classList={{
           "bg-player1 shadow-glow-p1 scale-100": props.cell === 1,
           "bg-player2 shadow-glow-p2 scale-100": props.cell === 2,

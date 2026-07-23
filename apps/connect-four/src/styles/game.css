@@ -16,6 +16,8 @@
 
   --spacing-fluid: min(1.25rem, 10%);
 
+  --spacing-game-board: min(85vw, 50vh * 7 / 6);
+
   --text-board-title: min(2rem, 12vw);
 
   --duration-transition: 0.3s;

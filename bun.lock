@@ -67,9 +67,11 @@
       "dependencies": {
         "astro": "catalog:",
         "solid-js": "catalog:",
+        "tailwindcss": "catalog:",
       },
       "devDependencies": {
         "@astrojs/solid-js": "catalog:",
+        "@tailwindcss/vite": "catalog:",
         "wrangler": "catalog:",
       },
     },

@@ -22,7 +22,8 @@
   --text-board-title: min(2em, 12vw);
 
   --spacing-board: calc(
-    7 * (var(--spacing-cell) + var(--spacing-cell-padding) * 2)
+    7 *
+    (var(--spacing-cell) + var(--spacing-cell-padding) * 2)
   );
 
   --duration-transition: 0.3s;

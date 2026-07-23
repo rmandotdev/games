@@ -1,39 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  --color-board: #0066cc;
-  --color-player1: #ff4136;
-  --color-player2: #ffdc00;
-  --color-btn: #1a8033;
-  --color-btn-hover: #146628;
-  --color-menu-bg: rgba(0, 0, 0, 0.8);
+  --font-arial-sans: Arial, sans-serif;
+
+  --color-board: oklch(52.198% 0.17716 255.847);
+
+  --color-player1: oklch(65.948% 0.22715 28.428);
+  --color-player2: oklch(89.669% 0.18499 97.454);
+
+  --color-btn: oklch(52.385% 0.14364 147.049);
+  --color-btn-hover: oklch(44.844% 0.12208 147.074);
+
+  --radius-5: 0.3125rem;
+  --radius-10: 0.625rem;
+
+  --spacing-cell: 60px;
+  --spacing-cell-padding: calc(var(--spacing-cell) / 15);
+
+  --spacing-fluid: min(1.25rem, 10%);
+
+  --text-board-title: min(2em, 12vw);
+
+  --spacing-board: calc(
+    7 * (var(--spacing-cell) + var(--spacing-cell-padding) * 2)
+  );
+
+  --duration-transition: 0.3s;
+
+  --shadow-glow-p1: 0 0 10px var(--color-player1);
+  --shadow-glow-p2: 0 0 10px var(--color-player2);
+
+  --color-shadow-menu: rgba(255, 255, 255, 0.2);
+  --shadow-menu: 0 0 20px var(--color-shadow-menu);
 }
 
-:root {
-  --cell-size: 60px;
-  --cell-padding: calc(var(--cell-size) / 15);
-  --transition-duration: 0.3s;
-  --box-shadow-blur: 10px;
-  --text-shadow-blur: 10px;
-  --shadow-blur: 20px;
-  --shadow-color: rgba(255, 255, 255, 0.2);
+@utility text-shadow-title-glow {
+  text-shadow: 0 0 10px white;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: #000
+  background: black
     url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCI+CiAgPGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMC41IiBmaWxsPSJ3aGl0ZSIgLz4KPC9zdmc+")
     repeat;
-}
-
-.cell {
-  transition: background-color var(--transition-duration);
-}
-
-.cell.red {
-  box-shadow: 0 0 var(--box-shadow-blur) var(--color-player1);
-}
-
-.cell.yellow {
-  box-shadow: 0 0 var(--box-shadow-blur) var(--color-player2);
 }

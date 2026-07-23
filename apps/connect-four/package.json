@@ -5,7 +5,8 @@
   "imports": {
     "#layout": "./src/layouts/Layout.astro",
     "#styles": "./src/styles/game.css",
-    "#components/*": "./src/components/*.tsx"
+    "#components/*": "./src/components/*.tsx",
+    "#types": "./src/types.ts"
   },
   "scripts": {
     "build": "astro build",

@@ -1,5 +1,7 @@
 import { createSignal, onMount, Show } from "solid-js";
 
+import type { Cell, Player } from "#types";
+
 import GameSection from "./GameSection";
 import MenuSection from "./MenuSection";
 
@@ -10,11 +12,11 @@ function App() {
     winLength: 4,
   } as const;
 
-  const [currentPlayer, setCurrentPlayer] = createSignal(1);
-  const [board, setBoard] = createSignal(
+  const [currentPlayer, setCurrentPlayer] = createSignal<Player>(1);
+  const [board, setBoard] = createSignal<Cell[][]>(
     Array(CONFIG.rows)
       .fill(null)
-      .map(() => Array(CONFIG.cols).fill(0)) as number[][],
+      .map(() => Array<Cell>(CONFIG.cols).fill(0)),
   );
   const [showMenu, setShowMenu] = createSignal(true);
   const [gameOver, setGameOver] = createSignal(false);
@@ -151,21 +153,8 @@ function App() {
   });
 
   return (
-    <div
-      class="bg-menu-bg rounded-[10px] flex flex-col items-center w-fit"
-      style={{
-        padding: "min(20px, 10%)",
-        "box-shadow": "0 0 var(--shadow-blur) var(--shadow-color)",
-      }}
-    >
-      <h1
-        class="text-white text-center whitespace-nowrap"
-        style={{
-          "font-size": "min(2em, 12vw)",
-          "text-shadow": "0 0 var(--text-shadow-blur) white",
-          "margin-bottom": "min(20px, 10%)",
-        }}
-      >
+    <div class="bg-black/80 menu-bg rounded-10 flex flex-col items-center w-fit p-fluid shadow-menu">
+      <h1 class="text-white text-center whitespace-nowrap text-board-title mb-fluid text-shadow-title-glow">
         Connect Four
       </h1>
 

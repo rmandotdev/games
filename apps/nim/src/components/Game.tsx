@@ -1,6 +1,9 @@
 import { createSignal, Show } from "solid-js";
 import HeapsDisplay from "./HeapsDisplay";
+import ScreenDiv from "./ScreenDiv";
 import Button from "./ui/Button";
+
+type CurrentScreen = "menu" | "game-over" | "game" | "first-choice" | "rules";
 
 function App() {
   const CONFIG = {
@@ -14,7 +17,7 @@ function App() {
   const [gameMode, setGameMode] = createSignal<"1v1" | "bot" | null>(null);
   const [selectedHeap, setSelectedHeap] = createSignal<number | null>(null);
   const [isGameOver, setIsGameOver] = createSignal(false);
-  const [currentScreen, setCurrentScreen] = createSignal("menu");
+  const [currentScreen, setCurrentScreen] = createSignal<CurrentScreen>("menu");
   const [takeAmount, setTakeAmount] = createSignal(1);
 
   function random(min: number, max: number) {
@@ -129,8 +132,8 @@ function App() {
   return (
     <>
       <Show when={currentScreen() === "menu"}>
-        <div id="menu" class="screen">
-          <h1 class="mb-4 text-5xl text-white">NIM Game</h1>
+        <ScreenDiv>
+          <h1 class="mb-4 text-5xl text-glow text-white">NIM Game</h1>
 
           <Button onClick={startTwoPlayer} label="Player vs Player" />
           <Button onClick={startBot} label="Player vs Bot" />
@@ -138,13 +141,13 @@ function App() {
             onClick={() => setCurrentScreen("rules")}
             label="How to Play"
           />
-        </div>
+        </ScreenDiv>
       </Show>
 
       <Show when={currentScreen() === "rules"}>
-        <div id="rules" class="screen">
-          <h2>How to Play</h2>
-          <ul>
+        <ScreenDiv>
+          <h2 class="mb-4 text-white">How to Play</h2>
+          <ul class="pl-6 text-left text-white/90 leading-relaxed">
             <li>The game starts with 3 heaps of stones</li>
             <li>Players take turns removing stones from the heaps</li>
             <li>
@@ -154,23 +157,25 @@ function App() {
             <li>The player who takes the last stone wins!</li>
           </ul>
           <Button onClick={() => setCurrentScreen("menu")} label="Back" />
-        </div>
+        </ScreenDiv>
       </Show>
 
       <Show when={currentScreen() === "first-choice"}>
-        <div id="first-choice" class="screen">
-          <h2>Would you like to make the first move?</h2>
+        <ScreenDiv>
+          <h2 class="mb-4 text-white">
+            Would you like to make the first move?
+          </h2>
 
           <HeapsDisplay heaps={heaps()} />
 
           <Button onClick={() => setFirstPlayer(true)} label="Go First" />
           <Button onClick={() => setFirstPlayer(false)} label="Go Second" />
-        </div>
+        </ScreenDiv>
       </Show>
 
       <Show when={currentScreen() === "game"}>
-        <div id="game" class="screen">
-          <h2 id="turn-indicator">
+        <ScreenDiv>
+          <h2 class="mb-4 text-white">
             {gameMode() === "bot"
               ? `${currentPlayer() === 0 ? "Your" : "Bot's"} turn`
               : `Player ${currentPlayer() + 1}'s turn`}
@@ -187,11 +192,10 @@ function App() {
           />
 
           <Show when={selectedHeap() !== null}>
-            <div id="take-controls">
+            <div class="mt-8 rounded-10 bg-black/5 p-4">
               <input
                 type="range"
-                id="take-amount"
-                class="range-selector"
+                class="custom-slider-thumb m-6 h-2 w-62.5 cursor-pointer rounded-sm bg-white/10"
                 min="1"
                 max={heaps()[selectedHeap()!]}
                 value={takeAmount()}
@@ -199,19 +203,19 @@ function App() {
                   setTakeAmount(parseInt(e.currentTarget.value, 10))
                 }
               />
-              <div id="stones-selected">
+              <div class="mx-0 my-2 text-lg text-primary">
                 {takeAmount()} {takeAmount() === 1 ? "stone" : "stones"}{" "}
                 selected
               </div>
               <Button onClick={confirmTake} label="Take Stones" />
             </div>
           </Show>
-        </div>
+        </ScreenDiv>
       </Show>
 
       <Show when={currentScreen() === "game-over"}>
-        <div id="game-over" class="screen">
-          <h2 id="winner" class="text-3xl text-primary">
+        <ScreenDiv>
+          <h2 class="mb-4 text-3xl text-glow text-primary">
             {gameMode() === "bot"
               ? currentPlayer() === 0
                 ? "You win!"
@@ -219,7 +223,7 @@ function App() {
               : `Player ${currentPlayer() + 1} wins!`}
           </h2>
           <Button onClick={restartGame} label="Play Again" />
-        </div>
+        </ScreenDiv>
       </Show>
     </>
   );

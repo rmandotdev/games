@@ -1,5 +1,6 @@
 import { createSignal, onMount, Show } from "solid-js";
-import History, { type HistoryItem } from "./History";
+import type { HistoryItem } from "./History";
+import History from "./History";
 import Button from "./ui/Button";
 
 function App() {

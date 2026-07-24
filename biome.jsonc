@@ -6,7 +6,11 @@
       "a11y": "warn",
       "style": {
         "noNonNullAssertion": { "fix": "none", "level": "warn" },
-        "noHexColors": "warn"
+        "noHexColors": "warn",
+        "useImportType": {
+          "level": "error",
+          "options": { "style": "separatedType" }
+        }
       },
       "nursery": { "useSortedClasses": { "fix": "safe", "level": "error" } }
     }

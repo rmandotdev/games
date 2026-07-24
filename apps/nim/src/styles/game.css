@@ -27,48 +27,37 @@
     var(--color-seconday-bg) 100%
   );
 
-  --spacing-stone: 1.5rem;
-
   --background-image-gradient-stone: linear-gradient(
     135deg,
     var(--color-primary) 0%,
     var(--color-secondary) 100%
   );
+
+  --spacing-stone: 1.5rem;
+
+  --stones-in-one-row: 5;
+  --stones-in-one-column: 8;
+  --spacing-stones-gap: calc(var(--spacing-stone) / 3);
+
+  --spacing-stones-w: calc(
+    var(--stones-in-one-row) *
+    var(--spacing-stone) +
+    (var(--stones-in-one-row) - 1) *
+    var(--spacing-stones-gap)
+  );
+
+  --spacing-stones-h: calc(
+    var(--stones-in-one-column) *
+    var(--spacing-stone) +
+    (var(--stones-in-one-column) - 1) *
+    var(--spacing-stones-gap)
+  );
+
+  --grid-template-columns-stones: repeat(var(--stones-in-one-row), 1fr);
 }
 
 @utility text-glow {
   text-shadow: 2px 2px 4px oklch(0% 0 0 / 0.3);
-}
-
-:root {
-  --stones-gap: calc(var(--spacing-stone) / 3);
-  --stones-padding: 1em;
-
-  --stones-in-one-row: 5;
-  --stones-in-one-column: 8;
-
-  --stones-width: calc(
-    var(--stones-in-one-row) *
-    var(--spacing-stone) +
-    (var(--stones-in-one-row) - 1) *
-    var(--stones-gap)
-  );
-
-  --stones-height: calc(
-    var(--stones-in-one-column) *
-    var(--spacing-stone) +
-    (var(--stones-in-one-column) - 1) *
-    var(--stones-gap)
-  );
-}
-
-/* stones */
-
-.stones {
-  grid-template-columns: repeat(var(--stones-in-one-row), 1fr);
-  gap: var(--stones-gap);
-  width: var(--stones-width);
-  height: var(--stones-height);
 }
 
 @utility custom-slider-thumb {

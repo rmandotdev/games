@@ -210,7 +210,7 @@ function App() {
 
   return (
     <div class="text-center">
-      <h1 class="select-none">Pixel Puzzle Rush</h1>
+      <h1 class="select-none text-4xl">Pixel Puzzle Rush</h1>
 
       <Show when={gameState().currentState === "menu"}>
         <Settings

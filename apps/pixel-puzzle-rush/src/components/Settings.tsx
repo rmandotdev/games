@@ -9,6 +9,7 @@ function Settings(props: SettingsProps) {
   return (
     <div id="settings" class="mb-5 flex select-none justify-center">
       <select
+        aria-label="Grid size"
         value={props.gridSizeInput}
         onChange={(e) => props.setGridSizeInput(e.target.value)}
       >
@@ -26,6 +27,7 @@ function Settings(props: SettingsProps) {
       </select>
 
       <select
+        aria-label="Color count"
         value={props.colorCountInput}
         onChange={(e) => props.setColorCountInput(e.target.value)}
       >

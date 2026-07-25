@@ -74,10 +74,10 @@ function App() {
   };
 
   const playColor = (button: HTMLButtonElement, color: Color) => {
-    button.classList.add("active");
+    button.classList.add("flashing");
     button.style.opacity = "1";
     setTimeout(() => {
-      button.classList.remove("active");
+      button.classList.remove("flashing");
       button.style.opacity = "0.7";
     }, CONFIG.flashDuration);
     playSound(color);
@@ -154,11 +154,8 @@ function App() {
   };
 
   return (
-    <div
-      id="game-container"
-      class="w-full max-w-125 rounded-2xl border border-white/20 bg-white/10 p-8 text-center backdrop-blur-xs"
-    >
-      <h1 class="mt-6 mb-5 text-4xl">Simon Says</h1>
+    <div class="w-full max-w-125 rounded-2xl border border-white/20 bg-white/10 p-8 text-center shadow-container backdrop-blur-xs">
+      <h1 class="title-shadow mt-6 mb-5 text-4xl">Simon Says</h1>
 
       <div class="mb-5 font-light text-2xl tracking-[1px]">{message()}</div>
 
@@ -169,7 +166,7 @@ function App() {
               type="button"
               id={color}
               aria-label={color}
-              class="simon-button size-30 cursor-pointer touch-manipulation rounded-full border-none opacity-80 transition-all duration-300 ease-out hover:scale-105 hover:opacity-100 active:scale-110"
+              class="button-flashing size-30 cursor-pointer touch-manipulation rounded-full border-none opacity-80 shadow-button transition-all duration-300 ease-out hover:scale-105 hover:opacity-100"
               ref={(el) => buttonRefs.set(color, el)}
               onClick={(e) => handleButtonClick(e.currentTarget, color)}
             />
@@ -180,7 +177,7 @@ function App() {
       <button
         type="button"
         id="start-button"
-        class="cursor-pointer touch-manipulation rounded-3xl border-none px-7.5 py-3 font-bold text-black text-xl uppercase tracking-[1px] transition-all duration-300 ease-out"
+        class="cursor-pointer touch-manipulation rounded-3xl border-none bg-button px-7.5 py-3 font-bold text-black text-xl uppercase tracking-[1px] shadow-button transition-all duration-300 ease-out hover:bg-button-hover hover:shadow-button-hover disabled:transform-none disabled:cursor-not-allowed disabled:bg-light disabled:shadow-none"
         onClick={startGame}
         disabled={startButtonDisabled()}
       >

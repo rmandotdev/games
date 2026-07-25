@@ -13,7 +13,7 @@ export interface TubeProps {
 function Tube(props: TubeProps) {
   return (
     <div
-      class="tube flex cursor-pointer flex-col-reverse overflow-hidden border-2 border-black bg-white/70"
+      class="tube flex cursor-pointer touch-manipulation flex-col-reverse overflow-hidden border-2 border-black bg-white/70"
       style={{
         border: props.isSelected ? "2px solid #FFD700" : "2px solid #000",
       }}

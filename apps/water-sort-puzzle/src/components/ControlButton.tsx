@@ -11,7 +11,7 @@ function ControlButton(props: ControlButtonProps) {
   return (
     <button
       type="button"
-      class="control-button cursor-pointer border-none bg-none disabled:cursor-not-allowed disabled:opacity-50"
+      class="control-button cursor-pointer touch-manipulation border-none bg-none disabled:cursor-not-allowed disabled:opacity-50"
       onClick={props.onClick}
       disabled={props.disabled}
       aria-label={props.label}

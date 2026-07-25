@@ -10,22 +10,24 @@
   --color-button: oklch(41% 0 0);
   --color-button-hover: oklch(51% 0 0);
 
-  --color-button-cancel: oklch(56% 0.23 29.22);
+  --color-button-cancel: oklch(56% 0.23 29.2);
 }
 
-button,
-select {
-  font-family: var(--font-courier);
-  font-size: 1rem;
-  margin: 5px;
-  padding: 10px;
-  background-color: var(--color-button);
-  color: white;
-  border: none;
-  cursor: pointer;
-}
+@layer base {
+  button,
+  select {
+    font-family: var(--font-courier);
+    font-size: 1rem;
+    margin: 5px;
+    padding: 10px;
+    background-color: var(--color-button);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
 
-button:hover,
-select:hover {
-  background-color: var(--color-button-hover);
+  button:hover,
+  select:hover {
+    background-color: var(--color-button-hover);
+  }
 }

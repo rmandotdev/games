@@ -1,47 +1,39 @@
-import { createSignal, For } from "solid-js";
+import { createSignal } from "solid-js";
+import type { Color } from "#components/SimonButton";
+import SimonButton from "#components/SimonButton";
 
 function App() {
-  type Color = "red" | "green" | "blue" | "yellow";
-
   const CONFIG = {
     colors: ["red", "green", "blue", "yellow"] as const,
     startDelay: 1000,
     sequenceDelay: 500,
     flashDuration: 300,
-    startRoundLength: 1,
-    maxRoundLength: 20,
   } as const;
 
   const [gameState, setGameState] = createSignal({
     gameSequence: [] as Color[],
     playerSequence: [] as Color[],
-    round: 0,
-    canPlay: false,
   });
 
+  const [canPlay, setCanPlay] = createSignal(false);
+  const [round, setRound] = createSignal(0);
   const [message, setMessage] = createSignal("Press Start to begin!");
   const [startButtonDisabled, setStartButtonDisabled] = createSignal(false);
 
   const buttonRefs = new Map<Color, HTMLButtonElement>();
 
   const startGame = () => {
-    setGameState({
-      gameSequence: [],
-      playerSequence: [],
-      round: 0,
-      canPlay: false,
-    });
+    setGameState({ gameSequence: [], playerSequence: [] });
+    setCanPlay(false);
+    setRound(0);
     setStartButtonDisabled(true);
     nextRound();
   };
 
   const nextRound = () => {
-    setGameState((prev) => ({
-      ...prev,
-      round: prev.round + 1,
-      playerSequence: [],
-    }));
-    updateRoundDisplay();
+    setGameState((prev) => ({ ...prev, playerSequence: [] }));
+    setRound((prev) => prev + 1);
+    setMessage(`Round ${round()}`);
     addToSequence();
     playSequence();
   };
@@ -56,7 +48,7 @@ function App() {
   };
 
   const playSequence = () => {
-    setGameState((prev) => ({ ...prev, canPlay: false }));
+    setCanPlay(false);
     let i = 0;
     const interval = setInterval(() => {
       const color = gameState().gameSequence[i]!;
@@ -66,7 +58,7 @@ function App() {
       if (i >= gameState().gameSequence.length) {
         clearInterval(interval);
         setTimeout(() => {
-          setGameState((prev) => ({ ...prev, canPlay: true }));
+          setCanPlay(true);
           setMessage("Your turn!");
         }, CONFIG.sequenceDelay);
       }
@@ -126,14 +118,15 @@ function App() {
       endGame();
       return;
     }
+
     if (gameState().playerSequence.length === gameState().gameSequence.length) {
-      setGameState((prev) => ({ ...prev, canPlay: false }));
+      setCanPlay(false);
       setTimeout(nextRound, CONFIG.startDelay);
     }
   };
 
   const handleButtonClick = (button: HTMLButtonElement, color: Color) => {
-    if (gameState().canPlay) {
+    if (canPlay()) {
       playColor(button, color);
       setGameState((prev) => ({
         ...prev,
@@ -144,13 +137,9 @@ function App() {
   };
 
   const endGame = () => {
-    setMessage(`Game Over! You reached round ${gameState().round}`);
+    setMessage(`Game Over! You reached round ${round()}`);
     setStartButtonDisabled(false);
-    setGameState((prev) => ({ ...prev, canPlay: false }));
-  };
-
-  const updateRoundDisplay = () => {
-    setMessage(`Round ${gameState().round}`);
+    setCanPlay(false);
   };
 
   return (
@@ -160,24 +149,31 @@ function App() {
       <div class="mb-5 font-light text-2xl tracking-[1px]">{message()}</div>
 
       <div class="mx-auto mb-8 grid w-70 grid-cols-2 gap-4">
-        <For each={CONFIG.colors}>
-          {(color) => (
-            <button
-              type="button"
-              id={color}
-              aria-label={color}
-              class="button-flashing size-30 cursor-pointer touch-manipulation rounded-full border-none opacity-80 shadow-button transition-all duration-300 ease-out hover:scale-105 hover:opacity-100"
-              ref={(el) => buttonRefs.set(color, el)}
-              onClick={(e) => handleButtonClick(e.currentTarget, color)}
-            />
-          )}
-        </For>
+        <SimonButton
+          variant="red"
+          onRef={(el) => buttonRefs.set("red", el)}
+          onClick={handleButtonClick}
+        />
+        <SimonButton
+          variant="green"
+          onRef={(el) => buttonRefs.set("green", el)}
+          onClick={handleButtonClick}
+        />
+        <SimonButton
+          variant="blue"
+          onRef={(el) => buttonRefs.set("blue", el)}
+          onClick={handleButtonClick}
+        />
+        <SimonButton
+          variant="yellow"
+          onRef={(el) => buttonRefs.set("yellow", el)}
+          onClick={handleButtonClick}
+        />
       </div>
 
       <button
         type="button"
-        id="start-button"
-        class="cursor-pointer touch-manipulation rounded-3xl border-none bg-button px-7.5 py-3 font-bold text-black text-xl uppercase tracking-[1px] shadow-button transition-all duration-300 ease-out hover:bg-button-hover hover:shadow-button-hover disabled:transform-none disabled:cursor-not-allowed disabled:bg-light disabled:shadow-none"
+        class="cursor-pointer touch-manipulation rounded-3xl border-none bg-button px-7.5 py-3 font-bold text-black text-xl uppercase tracking-[1px] shadow-button transition-all duration-300 ease-out hover:bg-btn-green hover:shadow-button-hover disabled:transform-none disabled:cursor-not-allowed disabled:bg-light disabled:shadow-none"
         onClick={startGame}
         disabled={startButtonDisabled()}
       >

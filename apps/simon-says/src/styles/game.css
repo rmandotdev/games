@@ -18,14 +18,13 @@
   --shadow-button-hover: 0 6px 8px rgba(0, 0, 0, 0.15);
 
   --color-button: oklch(87.3% 0.24716 148.864);
-  --color-button-hover: oklch(74% 0.2204 144.3);
 
   --color-light: oklch(73.8% 0 0);
 
-  --color-btn-red: #ff4136;
-  --color-btn-green: #2ecc40;
-  --color-btn-blue: #0074d9;
-  --color-btn-yellow: #ffdc00;
+  --color-btn-red: oklch(66% 0.227 28.43);
+  --color-btn-green: oklch(74% 0.2204 144.3);
+  --color-btn-blue: oklch(56.22% 0.17735 253.727);
+  --color-btn-yellow: oklch(89.67% 0.185 97.454);
 }
 
 @utility title-shadow {
@@ -37,20 +36,4 @@
     transform: scale(1.1);
     box-shadow: 0 0 30px 15px rgba(255, 255, 255, 0.7);
   }
-}
-
-#red {
-  background-color: var(--color-btn-red);
-}
-
-#green {
-  background-color: var(--color-btn-green);
-}
-
-#blue {
-  background-color: var(--color-btn-blue);
-}
-
-#yellow {
-  background-color: var(--color-btn-yellow);
 }

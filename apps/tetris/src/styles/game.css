@@ -7,17 +7,21 @@
   --color-red: red;
   --color-light-red: oklch(64.9% 0.237 27);
 
-  --color-tetromino-1: cyan;
-  --color-tetromino-2: blue;
-  --color-tetromino-3: orange;
-  --color-tetromino-4: yellow;
-  --color-tetromino-5: lime;
-  --color-tetromino-6: magenta;
-  --color-tetromino-7: red;
-
   --spacing-board: min(80vw, 45vh);
 
   --radius-5: 0.3125rem;
+}
+
+@layer base {
+  :root {
+    --color-tetromino-1: cyan;
+    --color-tetromino-2: blue;
+    --color-tetromino-3: orange;
+    --color-tetromino-4: yellow;
+    --color-tetromino-5: lime;
+    --color-tetromino-6: magenta;
+    --color-tetromino-7: red;
+  }
 }
 
 @utility tetromino {

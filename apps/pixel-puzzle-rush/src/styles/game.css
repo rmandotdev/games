@@ -1,102 +1,31 @@
-:root {
-  --font-family: "Courier New", monospace;
-  --bg-color: #1a1a1a;
-  --text-color: #ffffff;
-  --border-color: #333;
-  --button-bg: #4a4a4a;
-  --button-hover-bg: #666666;
-  --cancel-bg: #dd0000;
-  --cancel-hover-bg: #ff0000;
-}
+@import "tailwindcss";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@theme {
+  --font-courier: "Courier New", monospace;
 
-body {
-  font-family: var(--font-family);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  margin: 0;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
+  --color-background: oklch(22% 0 0);
 
-.no-select {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-}
+  --color-border: oklch(32% 0 0);
 
-#game-container {
-  text-align: center;
-}
+  --color-button: oklch(41% 0 0);
+  --color-button-hover: oklch(51% 0 0);
 
-#pattern,
-#grid {
-  display: inline-grid;
-  gap: 2px;
-  margin: 10px;
-}
-
-.pixel {
-  width: 40px;
-  height: 40px;
-  border: 1px solid var(--border-color);
-  cursor: pointer;
-}
-
-#controls {
-  display: flex;
-  margin-top: 20px;
-  justify-content: center;
+  --color-button-cancel: oklch(56% 0.23 29.22);
 }
 
 button,
 select {
-  font-family: var(--font-family);
+  font-family: var(--font-courier);
   font-size: 1rem;
   margin: 5px;
   padding: 10px;
-  background-color: var(--button-bg);
-  color: var(--text-color);
+  background-color: var(--color-button);
+  color: white;
   border: none;
   cursor: pointer;
 }
 
 button:hover,
 select:hover {
-  background-color: var(--button-hover-bg);
-}
-
-#cancel {
-  background-color: var(--cancel-bg);
-}
-
-#cancel:hover {
-  background-color: var(--cancel-hover-bg);
-}
-
-#timer,
-#best-time {
-  font-size: 1.5rem;
-  margin: 10px 0;
-}
-
-#message {
-  font-size: 1.125rem;
-  margin: 10px 0;
-  height: 20px;
-}
-
-#settings {
-  display: flex;
-  margin-bottom: 20px;
-  justify-content: center;
+  background-color: var(--color-button-hover);
 }

@@ -1,41 +1,36 @@
 import { Show } from "solid-js";
 import type { CurrentState } from "#types";
 
-type ControlsProps = {
+interface ControlsProps {
   currentState: CurrentState;
   startGame(): void;
   pauseGame(): void;
   cancelGame(): void;
   showMenu(): void;
-};
+}
 
 function Controls(props: ControlsProps) {
   return (
-    <div id="controls" class="no-select">
+    <div class="mt-5 flex select-none justify-center">
       <Show when={props.currentState === "menu"}>
-        <button id="start" onClick={props.startGame}>
-          Start Game
-        </button>
+        <button onClick={props.startGame}>Start Game</button>
       </Show>
 
-      <Show
-        when={
-          props.currentState === "playing" || props.currentState === "paused"
-        }
-      >
-        <button id="pause" onClick={props.pauseGame}>
+      <Show when={props.currentState !== "menu"}>
+        <button onClick={props.pauseGame}>
           {props.currentState === "paused" ? "Resume" : "Pause"}
         </button>
 
-        <button id="cancel" onClick={props.cancelGame}>
+        <button
+          class="bg-button-cancel hover:bg-red"
+          onClick={props.cancelGame}
+        >
           Cancel
         </button>
       </Show>
 
       <Show when={props.currentState === "finished"}>
-        <button id="menu-button" onClick={props.showMenu}>
-          Main Menu
-        </button>
+        <button onClick={props.showMenu}>Main Menu</button>
       </Show>
     </div>
   );

@@ -21,13 +21,8 @@ function App() {
 
   const [message, setMessage] = createSignal("Press Start to begin!");
   const [startButtonDisabled, setStartButtonDisabled] = createSignal(false);
-  const [pulseMessage, setPulseMessage] = createSignal(false);
-  const [pulseStartButton, setPulseStartButton] = createSignal(false);
 
   const buttonRefs = new Map<Color, HTMLButtonElement>();
-  CONFIG.colors.forEach((color) => {
-    buttonRefs.set(color, null!);
-  });
 
   const startGame = () => {
     setGameState({
@@ -37,7 +32,6 @@ function App() {
       canPlay: false,
     });
     setStartButtonDisabled(true);
-    setPulseStartButton(false);
     nextRound();
   };
 
@@ -65,7 +59,9 @@ function App() {
     setGameState((prev) => ({ ...prev, canPlay: false }));
     let i = 0;
     const interval = setInterval(() => {
-      playColor(gameState().gameSequence[i]!);
+      const color = gameState().gameSequence[i]!;
+      const button = buttonRefs.get(color)!;
+      playColor(button, color);
       i++;
       if (i >= gameState().gameSequence.length) {
         clearInterval(interval);
@@ -77,16 +73,13 @@ function App() {
     }, CONFIG.sequenceDelay + CONFIG.flashDuration);
   };
 
-  const playColor = (color: Color) => {
-    const button = buttonRefs.get(color);
-    if (button) {
-      button.classList.add("active");
-      button.style.opacity = "1";
-      setTimeout(() => {
-        button.classList.remove("active");
-        button.style.opacity = "0.7";
-      }, CONFIG.flashDuration);
-    }
+  const playColor = (button: HTMLButtonElement, color: Color) => {
+    button.classList.add("active");
+    button.style.opacity = "1";
+    setTimeout(() => {
+      button.classList.remove("active");
+      button.style.opacity = "0.7";
+    }, CONFIG.flashDuration);
     playSound(color);
   };
 
@@ -139,9 +132,9 @@ function App() {
     }
   };
 
-  const handleButtonClick = (color: Color) => {
+  const handleButtonClick = (button: HTMLButtonElement, color: Color) => {
     if (gameState().canPlay) {
-      playColor(color);
+      playColor(button, color);
       setGameState((prev) => ({
         ...prev,
         playerSequence: [...prev.playerSequence, color],
@@ -154,43 +147,40 @@ function App() {
     setMessage(`Game Over! You reached round ${gameState().round}`);
     setStartButtonDisabled(false);
     setGameState((prev) => ({ ...prev, canPlay: false }));
-    setPulseStartButton(true);
   };
 
   const updateRoundDisplay = () => {
     setMessage(`Round ${gameState().round}`);
-    setPulseMessage(true);
-    setTimeout(() => {
-      setPulseMessage(false);
-    }, 1000);
   };
 
   return (
     <div id="game-container">
-      <h1>Simon Says</h1>
+      <h1 class="mt-6 mb-5 text-4xl">Simon Says</h1>
 
-      <div id="message" classList={{ pulse: pulseMessage() }}>
+      <div id="message" class="mb-5 font-light text-2xl tracking-[1px]">
         {message()}
       </div>
 
-      <div id="simon-board">
+      <div class="mx-auto mb-8 grid w-70 grid-cols-2 gap-4">
         <For each={CONFIG.colors}>
           {(color) => (
             <button
+              type="button"
               id={color}
-              class="simon-button"
+              class="simon-button cursor-pointer touch-manipulation border-none px-7.5 py-3 text-xl"
               ref={(el) => buttonRefs.set(color, el)}
-              onClick={() => handleButtonClick(color)}
+              onClick={(e) => handleButtonClick(e.currentTarget, color)}
             />
           )}
         </For>
       </div>
 
       <button
+        type="button"
         id="start-button"
+        class="tracking-[1px]"
         onClick={startGame}
         disabled={startButtonDisabled()}
-        classList={{ pulse: pulseStartButton() }}
       >
         Start Game
       </button>

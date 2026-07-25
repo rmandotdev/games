@@ -17,6 +17,7 @@
     "build": "bun run --sequential --filter='./apps/**' build",
     "deploy": "bun run --filter='./apps/**' deploy",
     "format": "biome check --fix --diagnostic-level error",
+    "knip": "knip && knip --production && knip --strict",
     "lint": "biome check",
     "test": "bun test"
   },
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.5.5",
     "@gameroman/config": "0.2.5",
+    "knip": "6.29.0",
     "typescript": "7.0.2"
   }
 }

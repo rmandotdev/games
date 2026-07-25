@@ -4,7 +4,7 @@ import type { Color } from "#types";
 function Liquid(props: { color: Color }) {
   return (
     <div
-      class="liquid"
+      class="liquid h-1/4 w-full"
       style={{ "background-color": CONFIG.colors[props.color] }}
     />
   );

@@ -4,14 +4,16 @@ import type { TubeType } from "#types";
 
 import Liquid from "./Liquid";
 
-function Tube(props: {
+export interface TubeProps {
   tube: TubeType;
   isSelected: boolean;
-  onClick: () => void;
-}) {
+  onClick(): void;
+}
+
+function Tube(props: TubeProps) {
   return (
     <div
-      class="tube"
+      class="tube flex cursor-pointer flex-col-reverse overflow-hidden border-2 border-black bg-white/70"
       style={{
         border: props.isSelected ? "2px solid #FFD700" : "2px solid #000",
       }}

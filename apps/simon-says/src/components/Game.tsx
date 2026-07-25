@@ -154,12 +154,13 @@ function App() {
   };
 
   return (
-    <div id="game-container">
+    <div
+      id="game-container"
+      class="w-full max-w-125 rounded-2xl border border-white/20 bg-white/10 p-8 text-center backdrop-blur-xs"
+    >
       <h1 class="mt-6 mb-5 text-4xl">Simon Says</h1>
 
-      <div id="message" class="mb-5 font-light text-2xl tracking-[1px]">
-        {message()}
-      </div>
+      <div class="mb-5 font-light text-2xl tracking-[1px]">{message()}</div>
 
       <div class="mx-auto mb-8 grid w-70 grid-cols-2 gap-4">
         <For each={CONFIG.colors}>
@@ -167,7 +168,8 @@ function App() {
             <button
               type="button"
               id={color}
-              class="simon-button cursor-pointer touch-manipulation border-none px-7.5 py-3 text-xl"
+              aria-label={color}
+              class="simon-button size-30 cursor-pointer touch-manipulation rounded-full border-none opacity-80 transition-all duration-300 ease-out hover:scale-105 hover:opacity-100 active:scale-110"
               ref={(el) => buttonRefs.set(color, el)}
               onClick={(e) => handleButtonClick(e.currentTarget, color)}
             />
@@ -178,7 +180,7 @@ function App() {
       <button
         type="button"
         id="start-button"
-        class="tracking-[1px]"
+        class="cursor-pointer touch-manipulation rounded-3xl border-none px-7.5 py-3 font-bold text-black text-xl uppercase tracking-[1px] transition-all duration-300 ease-out"
         onClick={startGame}
         disabled={startButtonDisabled()}
       >

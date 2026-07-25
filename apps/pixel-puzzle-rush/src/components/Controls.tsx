@@ -21,10 +21,7 @@ function Controls(props: ControlsProps) {
           {props.currentState === "paused" ? "Resume" : "Pause"}
         </button>
 
-        <button
-          class="bg-button-cancel hover:bg-red"
-          onClick={props.cancelGame}
-        >
+        <button class="bg-dark-red hover:bg-red" onClick={props.cancelGame}>
           Cancel
         </button>
       </Show>

@@ -10,7 +10,8 @@
   --color-button: oklch(41% 0 0);
   --color-button-hover: oklch(51% 0 0);
 
-  --color-button-cancel: oklch(56% 0.23 29.2);
+  --color-dark-red: oklch(56% 0.23 29.2);
+  --color-red: oklch(63% 0.26 29.2);
 }
 
 @layer base {

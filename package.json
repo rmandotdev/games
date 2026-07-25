@@ -17,7 +17,10 @@
     "build": "bun run --sequential --filter='./apps/**' build",
     "deploy": "bun run --filter='./apps/**' deploy",
     "format": "biome check --fix --diagnostic-level error",
-    "knip": "knip && knip --production && knip --strict",
+    "knip": "bun run --parallel knip:default knip:production knip:strict",
+    "knip:default": "knip",
+    "knip:production": "knip --production",
+    "knip:strict": "knip --strict",
     "lint": "biome check",
     "test": "bun test"
   },

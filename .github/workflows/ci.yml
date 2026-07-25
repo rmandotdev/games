@@ -37,3 +37,6 @@ jobs:
 
           - name: Build
             run: bun run build
+
+          - name: Run knip
+            run: bun run knip

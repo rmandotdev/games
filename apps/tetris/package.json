@@ -4,7 +4,7 @@
   "type": "module",
   "imports": {
     "#layout": "./src/layouts/Layout.astro",
-    "#styles/*": "./src/styles/*.css",
+    "#styles": "./src/styles/game.css",
     "#components/*": "./src/components/*.tsx",
     "#hooks/*": "./src/hooks/*.ts",
     "#lib/*": "./src/lib/*.ts"

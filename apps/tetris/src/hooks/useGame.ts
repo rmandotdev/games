@@ -340,30 +340,7 @@ export function useGame() {
     }
   }
 
-  function updateBoardDimensions(): void {
-    const blockSize = 40;
-
-    const newWidth = CONFIG.boardWidth * blockSize;
-    const newHeight = CONFIG.boardHeight * blockSize;
-
-    const documentStyle = document.documentElement.style;
-
-    documentStyle.setProperty("--board-width", `${newWidth}px`);
-    documentStyle.setProperty("--board-height", `${newHeight}px`);
-    documentStyle.setProperty("--block-size", `${blockSize}px`);
-    documentStyle.setProperty(
-      "--grid-columns",
-      `repeat(${CONFIG.boardWidth}, 1fr)`,
-    );
-    documentStyle.setProperty(
-      "--grid-rows",
-      `repeat(${CONFIG.boardHeight}, 1fr)`,
-    );
-  }
-
   const init = () => {
-    updateBoardDimensions();
-
     document.addEventListener("keydown", (e) => {
       if (state() !== "ongoing") return;
 

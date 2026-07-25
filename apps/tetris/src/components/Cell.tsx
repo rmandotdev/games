@@ -1,11 +1,18 @@
 function Cell(props: { x: number; y: number; colorIndex: number }) {
   return (
     <div
-      class={`grid-cell ${
-        props.colorIndex ? `tetromino tetromino-${props.colorIndex - 1}` : ""
-      }`}
-      data-x={props.x}
-      data-y={props.y}
+      class="tetromino border"
+      classList={{
+        "border-white": props.colorIndex !== 0,
+        "border-white/10": props.colorIndex === 0,
+      }}
+      style={
+        props.colorIndex
+          ? {
+              "--tetromino-color": `var(--color-tetromino-${props.colorIndex})`,
+            }
+          : undefined
+      }
     />
   );
 }

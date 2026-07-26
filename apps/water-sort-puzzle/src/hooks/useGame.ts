@@ -1,6 +1,7 @@
 import { createSignal } from "solid-js";
 import CONFIG from "#config";
 import levels from "#data/levels";
+import { canPour, checkWin, pour } from "#lib/game";
 import type { TubeType } from "#types";
 
 export function useGame() {
@@ -99,53 +100,6 @@ export function useGame() {
     );
   }
 
-  function canPour(from: number, to: number): boolean {
-    if (from === to) return false;
-
-    const tubes_from = tubes()[from]!;
-    const tubes_to = tubes()[to]!;
-
-    if (tubes_from.length === 0) return false;
-    if (tubes_to.length === CONFIG.tubeCapacity) return false;
-    if (tubes_to.length === 0) return true;
-
-    return tubes_from[tubes_from.length - 1] === tubes_to[tubes_to.length - 1];
-  }
-
-  function pourLiquid(from: number, to: number): void {
-    const tubes_ = tubes();
-
-    const tubes_from = tubes_[from]!;
-    const tubes_to = tubes_[to]!;
-
-    const colorToPour = tubes_from[tubes_from.length - 1];
-
-    while (
-      tubes_from.length > 0 &&
-      tubes_to.length < CONFIG.tubeCapacity &&
-      tubes_from[tubes_from.length - 1] === colorToPour
-    ) {
-      tubes_to.push(tubes_from.pop()!);
-    }
-    setRestartLevelDisabled(false);
-    setTubes(tubes_);
-  }
-
-  function checkWin() {
-    const win = tubes().every((tube) => {
-      return (
-        tube.length === 0 ||
-        (tube.length === CONFIG.tubeCapacity &&
-          tube.every((color) => color === tube[0]))
-      );
-    });
-    if (win) {
-      setCurrentLevel(currentLevel() + 1);
-      saveData();
-      loadLevel();
-    }
-  }
-
   function selectTube(index: number) {
     const selectedTube = selectedTubeIndex();
     if (selectedTube === null) {
@@ -153,9 +107,15 @@ export function useGame() {
         setSelectedTubeIndex(index);
       }
     } else {
-      if (canPour(selectedTube, index)) {
-        pourLiquid(selectedTube, index);
-        checkWin();
+      if (canPour(tubes(), selectedTube, index)) {
+        pour(tubes(), selectedTube, index);
+        setRestartLevelDisabled(false);
+        setTubes(tubes());
+        if (checkWin(tubes())) {
+          setCurrentLevel(currentLevel() + 1);
+          saveData();
+          loadLevel();
+        }
       }
       setSelectedTubeIndex(null);
     }
@@ -168,7 +128,7 @@ export function useGame() {
       setMessage(CONFIG.finalMessage);
       return;
     }
-    const levelTubes = levels[currentLevel()]!;
+    const levelTubes = structuredClone(levels[currentLevel()]!);
     setTubes(levelTubes);
   }
 

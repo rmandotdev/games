@@ -18,10 +18,9 @@ function ControlButton(props: ControlButtonProps) {
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        height="24px"
-        width="24px"
+        class="size-full"
         viewBox="0 -960 960 960"
-        fill="currrentColor"
+        fill="currentColor"
         aria-hidden="true"
       >
         {props.icon}

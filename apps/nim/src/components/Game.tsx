@@ -133,7 +133,9 @@ function App() {
     <>
       <Show when={currentScreen() === "menu"}>
         <Section>
-          <h1 class="mb-4 font-bold text-5xl text-glow text-white">NIM Game</h1>
+          <h1 class="mt-7 mb-10 font-bold text-5xl text-glow text-white">
+            NIM Game
+          </h1>
 
           <Button onClick={startTwoPlayer} label="Player vs Player" />
           <Button onClick={startBot} label="Player vs Bot" />

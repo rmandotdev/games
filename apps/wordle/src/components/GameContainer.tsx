@@ -24,11 +24,12 @@ function GameContainer(props: {
     <div class="relative mx-auto my-0 flex w-full max-w-container flex-col items-center">
       <GameBoard tiles={props.tiles} />
 
-      <Show when={props.state === "playing"}>
+      <Show when={props.state !== "gameover"}>
         <Keyboard
           settings={props.settings}
           keycolors={props.keycolors}
           handleBoardAction={props.handleBoardAction}
+          disabled={props.state !== "playing"}
         />
       </Show>
 

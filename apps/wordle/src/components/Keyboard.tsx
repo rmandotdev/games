@@ -16,6 +16,7 @@ function KeyboardButton(props: {
   width?: number;
   height?: number;
   color?: KeyColorOrNotColored;
+  disabled?: boolean;
   onClick: () => void;
 }) {
   const width: number = props.width ?? 1;
@@ -28,13 +29,16 @@ function KeyboardButton(props: {
   return (
     <button
       type="button"
-      class="cursor-pointer touch-manipulation border-0 p-0 font-bold text-2xl text-black"
+      class="touch-manipulation border-0 p-0 font-bold text-2xl text-black"
       classList={{
-        "bg-content-bg hover:bg-content-hover": !color,
+        "cursor-pointer bg-content-bg hover:bg-content-hover":
+          !color && !props.disabled,
+        "cursor-not-allowed bg-content-bg": !color && props.disabled,
         "bg-correct": color === "correct",
         "bg-present": color === "present",
         "bg-absent": color === "absent",
       }}
+      disabled={props.disabled}
       onClick={props.onClick}
       style={{
         "grid-column": `span ${width}`,
@@ -52,6 +56,7 @@ function getKeysArray(
   settings: Settings,
   handleBoardAction: (action: BoardAction) => void,
   keycolors: Record<string, KeyColor>,
+  disabled: boolean,
 ) {
   const elements = [];
 
@@ -62,6 +67,7 @@ function getKeysArray(
       <KeyboardButton
         name={key}
         color={keycolors[key] ?? ""}
+        disabled={disabled}
         onClick={() => handleBoardAction({ type: "INPUT-LETTER", data: key })}
       />,
     );
@@ -74,6 +80,7 @@ function getKeysArray(
         label="↵"
         width={1}
         height={2}
+        disabled={disabled}
         onClick={() => handleBoardAction({ type: "SUBMIT-GUESS" })}
       />,
     );
@@ -84,6 +91,7 @@ function getKeysArray(
         label="↵"
         width={2}
         height={1}
+        disabled={disabled}
         onClick={() => handleBoardAction({ type: "SUBMIT-GUESS" })}
       />,
     );
@@ -94,6 +102,7 @@ function getKeysArray(
       <KeyboardButton
         name={key}
         color={keycolors[key] ?? ""}
+        disabled={disabled}
         onClick={() => handleBoardAction({ type: "INPUT-LETTER", data: key })}
       />,
     );
@@ -105,6 +114,7 @@ function getKeysArray(
       label="⌫"
       width={2}
       height={1}
+      disabled={disabled}
       onClick={() => handleBoardAction({ type: "DELETE-LETTER" })}
     />,
   );
@@ -116,6 +126,7 @@ function getKeysArray(
         label="SUBMIT"
         width={10}
         height={1}
+        disabled={disabled}
         onClick={() => handleBoardAction({ type: "SUBMIT-GUESS" })}
       />,
     );
@@ -128,9 +139,15 @@ function Keyboard(props: {
   settings: Settings;
   keycolors: Record<string, KeyColor>;
   handleBoardAction: (action: BoardAction) => void;
+  disabled?: boolean;
 }) {
   const keysArray = () =>
-    getKeysArray(props.settings, props.handleBoardAction, props.keycolors);
+    getKeysArray(
+      props.settings,
+      props.handleBoardAction,
+      props.keycolors,
+      props.disabled ?? false,
+    );
 
   return (
     <div

@@ -11,8 +11,8 @@
 
   --radius-10: 0.625rem;
 
-  --spacing-screen: min(2.5rem, 2.5vw);
-  --radius-screen: min(1.5rem, 1.5vw);
+  --spacing-section: min(2.5rem, 2.5vw);
+  --radius-section: min(1.5rem, 1.5vw);
 
   --shadow-2-4-20: 0 2px 4px oklch(0% 0 0 / 0.2);
   --shadow-5-15-20: 0 5px 15px oklch(0% 0 0 / 0.2);

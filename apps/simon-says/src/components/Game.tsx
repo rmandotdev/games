@@ -144,7 +144,7 @@ function App() {
 
   return (
     <div class="w-full max-w-125 rounded-2xl border border-white/20 bg-white/10 p-8 text-center shadow-container backdrop-blur-xs">
-      <h1 class="title-shadow mt-6 mb-5 text-4xl">Simon Says</h1>
+      <h1 class="title-shadow mt-6 mb-5 font-bold text-4xl">Simon Says</h1>
 
       <div class="mb-5 font-light text-2xl tracking-[1px]">{message()}</div>
 

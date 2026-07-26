@@ -214,6 +214,9 @@ export function useGame() {
   }
 
   function getBoardAction(event: KeyboardEvent): BoardAction | null {
+    if (event.ctrlKey || event.metaKey || event.altKey) {
+      return null;
+    }
     const key = event.key;
     if (key === "Enter") {
       return { type: "SUBMIT-GUESS" };

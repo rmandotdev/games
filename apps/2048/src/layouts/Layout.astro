@@ -16,10 +16,7 @@ const { title, description, canonical, thumbnail } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -39,7 +36,11 @@ const { title, description, canonical, thumbnail } = Astro.props;
     <link rel="shortcut icon" href={thumbnail} type="image/x-icon" />
   </head>
 
-  <body>
-    <slot />
+  <body
+    class="flex justify-center items-center h-screen m-0 bg-bg dark:bg-bg-dark text-black dark:text-light font-arial-sans"
+  >
+    <main class="flex justify-center">
+      <slot />
+    </main>
   </body>
 </html>

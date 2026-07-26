@@ -6,7 +6,7 @@ import Tile from "./Tile";
 
 function GameBoard(props: { tiles: TileInfo[] }) {
   return (
-    <div class="grid grid-cols-5 gap-1.25 mb-5">
+    <div class="mb-5 grid grid-cols-5 gap-1.25">
       <For each={props.tiles}>{(tile) => <Tile tile={tile} />}</For>
     </div>
   );

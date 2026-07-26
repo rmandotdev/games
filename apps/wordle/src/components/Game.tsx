@@ -23,6 +23,9 @@ function App() {
     getTiles,
     getKeyColors,
 
+    getSharePopup,
+    setSharePopup,
+
     startNewGame,
 
     handleBoardAction,
@@ -33,7 +36,7 @@ function App() {
   onMount(init);
 
   return (
-    <div id="main-container">
+    <div class="mx-auto my-0 flex w-[95%] max-w-container flex-col items-center text-dark dark:text-light">
       <TopBar
         currentSection={currentSection()}
         setCurrentSection={setCurrentSection}
@@ -52,6 +55,8 @@ function App() {
             keycolors={getKeyColors()}
             handleBoardAction={handleBoardAction}
             state={getState()}
+            sharePopup={getSharePopup()}
+            onCloseSharePopup={() => setSharePopup(null)}
           />
         </Match>
 

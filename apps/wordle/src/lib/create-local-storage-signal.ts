@@ -1,4 +1,5 @@
-import { createSignal, type Setter, type Signal } from "solid-js";
+import type { Setter, Signal } from "solid-js";
+import { createSignal } from "solid-js";
 
 /**
  * Creates a signal that persists its value to localStorage and initializes

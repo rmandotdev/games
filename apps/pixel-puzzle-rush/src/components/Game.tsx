@@ -1,8 +1,9 @@
-import { createSignal, For, onMount, Show } from "solid-js";
+import { createSignal, onMount, Show } from "solid-js";
 
 import type { CurrentState } from "#types";
 
 import Controls from "./Controls";
+import PixelGrid from "./PixelGrid";
 import Settings from "./Settings";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       "#00ffff",
       "#ffa500",
     ],
+    saveName: "pixel-puzzle-rush-data",
   } as const;
 
   type GameState = {
@@ -50,15 +52,13 @@ function App() {
 
   function saveData() {
     localStorage.setItem(
-      "pixel-puzzle-rush-data",
+      CONFIG.saveName,
       JSON.stringify({ bestTimes: gameState().bestTimes }),
     );
   }
 
   function loadData() {
-    const data = JSON.parse(
-      localStorage.getItem("pixel-puzzle-rush-data") ?? "{}",
-    );
+    const data = JSON.parse(localStorage.getItem(CONFIG.saveName) ?? "{}");
     setGameState((prev) => ({ ...prev, bestTimes: data?.bestTimes ?? {} }));
   }
 
@@ -209,70 +209,45 @@ function App() {
   });
 
   return (
-    <div id="game-container">
-      <h1 class="no-select">Pixel Puzzle Rush</h1>
+    <div class="text-center">
+      <h1 class="select-none font-bold text-4xl">Pixel Puzzle Rush</h1>
 
-      <Settings
-        currentState={gameState().currentState}
-        gridSizeInput={gridSizeInput()}
-        setGridSizeInput={setGridSizeInput}
-        colorCountInput={colorCountInput()}
-        setColorCountInput={setColorCountInput}
-      />
+      <Show when={gameState().currentState === "menu"}>
+        <Settings
+          gridSizeInput={gridSizeInput()}
+          setGridSizeInput={setGridSizeInput}
+          colorCountInput={colorCountInput()}
+          setColorCountInput={setColorCountInput}
+        />
+      </Show>
 
       <Show when={gameState().currentState !== "menu"}>
-        <div id="timer">
+        <div class="my-2.5 text-2xl">
           Time: {(gameState().currentTime / 1000).toFixed(2)}s
         </div>
-        <div id="best-time">{getBestTimeText()}</div>
+        <div class="my-2.5 text-2xl">{getBestTimeText()}</div>
       </Show>
 
       <Show when={gameState().currentState !== "menu"}>
         <div
-          class="no-select"
+          class="select-none"
           style={{
             visibility:
               gameState().currentState === "paused" ? "hidden" : "visible",
           }}
         >
-          <div
-            id="pattern"
-            class="no-select"
-            style={{
-              "grid-template-columns": `repeat(${gameState().gridSize}, 1fr)`,
-            }}
-          >
-            <For each={gameState().pattern}>
-              {(color) => (
-                <div class="pixel" style={{ "background-color": color }}></div>
-              )}
-            </For>
-          </div>
+          <PixelGrid grid={gameState().grid} gridSize={gameState().gridSize} />
 
-          <div
-            id="grid"
-            class="no-select"
-            style={{
-              "grid-template-columns": `repeat(${gameState().gridSize}, 1fr)`,
-              display: "inline-grid",
-            }}
-          >
-            <For each={gameState().grid}>
-              {(color, index) => (
-                <div
-                  class="pixel"
-                  style={{ "background-color": color }}
-                  data-index={index()}
-                  onClick={() => handleGridClick(index())}
-                ></div>
-              )}
-            </For>
-          </div>
+          <PixelGrid
+            grid={gameState().grid}
+            gridSize={gameState().gridSize}
+            handleGridClick={handleGridClick}
+          />
         </div>
       </Show>
 
       <Show when={message()}>
-        <div id="message">{message()}</div>
+        <div class="my-2.5 h-5 text-lg">{message()}</div>
       </Show>
 
       <Controls

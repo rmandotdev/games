@@ -1,20 +1,14 @@
 import type { JSXElement } from "solid-js";
 import { For } from "solid-js";
 
-import type { Color, TubeType } from "#types";
-
+import type { TubeType } from "#types";
+import type { TubeProps } from "./Tube";
 import TubeRow from "./TubeRow";
-
-type TubeParams = {
-  tube: Color[];
-  isSelected: boolean;
-  onClick: () => void;
-};
 
 function getRows(props: {
   tubes: TubeType[];
   selectedTubeIndex: number | null;
-  selectTube: (index: number) => void;
+  selectTube(index: number): void;
 }) {
   const tubeCount = props.tubes.length;
 
@@ -30,10 +24,10 @@ function getRows(props: {
 
   const tubesPerRow = Math.ceil(tubeCount / rowCount);
 
-  const rows: TubeParams[][] = [];
+  const rows: TubeProps[][] = [];
 
   for (let i = 0; i < rowCount; i++) {
-    const row: TubeParams[] = [];
+    const row: TubeProps[] = [];
 
     for (let j = 0; j < tubesPerRow && i * tubesPerRow + j < tubeCount; j++) {
       const tubeIndex = i * tubesPerRow + j;
@@ -66,9 +60,10 @@ function TubesContainer(props: {
   return (
     <div
       id="tubes-container"
+      class="flex grow flex-col items-center justify-center"
       style={{ visibility: props.hidden ? "hidden" : "visible" }}
     >
-      <For each={rows()}>{(row) => <TubeRow tubeArray={row} />}</For>
+      <For each={rows()}>{(row) => <TubeRow tubes={row} />}</For>
     </div>
   );
 }

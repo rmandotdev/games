@@ -9,19 +9,23 @@
     "#types": "./src/types.ts",
     "#components/*": "./src/components/*.tsx",
     "#data/*": "./src/data/*.ts",
-    "#hooks/*": "./src/hooks/*.ts"
+    "#hooks/*": "./src/hooks/*.ts",
+    "#lib/*": "./src/lib/*.ts"
   },
   "scripts": {
     "build": "astro build",
     "deploy": "wrangler deploy",
-    "dev": "astro dev"
+    "dev": "astro dev",
+    "test": "bun test"
   },
   "dependencies": {
     "astro": "catalog:",
-    "solid-js": "catalog:"
+    "solid-js": "catalog:",
+    "tailwindcss": "catalog:"
   },
   "devDependencies": {
     "@astrojs/solid-js": "catalog:",
+    "@tailwindcss/vite": "catalog:",
     "wrangler": "catalog:"
   }
 }

@@ -3,11 +3,16 @@ import type { Stats } from "#types";
 
 function GuessDistributionRow(props: { v: number; i: number; p: number }) {
   return (
-    <div class="flex items-center w-9/10">
-      <div class="w-5 text-right mr-2.5 font-bold text-base">{props.i + 1}</div>
-      <div class="guess-bar">
-        <div class="guess-bar-fill" style={{ width: `${props.p}%` }} />
-        <div class="absolute right-[5px] top-1/2 font-bold text-base text-(--text-color-light) dark:text-(--text-color-dark) -translate-y-1/2">
+    <div class="flex w-9/10 items-center">
+      <div class="mr-2.5 w-5 text-right font-bold text-base">{props.i + 1}</div>
+      <div class="relative h-7.5 grow rounded-sm bg-absent">
+        <div
+          class="h-full rounded-sm bg-correct"
+          style={{
+            width: `${props.p}%`,
+          }}
+        />
+        <div class="absolute top-1/2 right-[5px] -translate-y-1/2 font-bold text-base text-dark">
           {props.v}
         </div>
       </div>
@@ -17,7 +22,7 @@ function GuessDistributionRow(props: { v: number; i: number; p: number }) {
 
 function GuessDistribution(props: { guessDistribution: number[] }) {
   return (
-    <div class="flex flex-col gap-[5px] w-full">
+    <div class="flex w-full flex-col gap-[5px]">
       <For each={props.guessDistribution}>
         {(v, i) => (
           <GuessDistributionRow
@@ -37,8 +42,8 @@ function StatBox(props: {
   label: string;
 }) {
   return (
-    <div class="bg-(--content-bg-light) dark:bg-(--background-color-dark) border-(--border-color-light) dark:border-(--text-color-dark) border-2 border-solid rounded-[5px] p-2.5 text-center">
-      <div class="text-2xl font-bold mb-[5px]" id={props.id}>
+    <div class="rounded-[5px] border-2 border-border-light border-solid bg-content-bg p-2.5 text-center dark:border-border-dark dark:bg-content-bg-dark">
+      <div class="mb-[5px] font-bold text-2xl" id={props.id}>
         {props.value}
       </div>
       <div class="text-base">{props.label}</div>
@@ -51,8 +56,8 @@ const getNormalizedPercentage = (part: number, total: number) =>
 
 function StatsContainer(props: { stats: Stats }) {
   return (
-    <div class="content-container">
-      <div class="grid grid-cols-2 gap-5 mb-5">
+    <div class="mx-auto my-0 flex w-full max-w-container flex-col items-center">
+      <div class="mb-5 grid grid-cols-2 gap-5">
         <StatBox label="Played" value={props.stats.gamesPlayed} />
 
         <StatBox
@@ -68,7 +73,7 @@ function StatsContainer(props: { stats: Stats }) {
         <StatBox label="Max Streak" value={props.stats.maxStreak} />
       </div>
 
-      <h3 class="font-bold text-lg text-center my-2.5">Guess Distribution</h3>
+      <h3 class="my-2.5 text-center font-bold text-lg">Guess Distribution</h3>
 
       <GuessDistribution guessDistribution={props.stats.guessDistribution} />
     </div>

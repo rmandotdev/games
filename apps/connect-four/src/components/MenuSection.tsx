@@ -1,19 +1,10 @@
-import { Show } from "solid-js";
+import Button from "./ui/Button";
 
-type MenuSectionProps = {
-  showMenu: boolean;
-  startNewGame: () => void;
-};
-
-function MenuSection(props: MenuSectionProps) {
+function MenuSection(props: { startNewGame(): void }) {
   return (
-    <Show when={props.showMenu}>
-      <div id="menu-section" class="section">
-        <button id="start-game-button" onClick={props.startNewGame}>
-          NEW GAME
-        </button>
-      </div>
-    </Show>
+    <div class="items-center justify-items-center text-center">
+      <Button onClick={props.startNewGame} label="NEW GAME" />
+    </div>
   );
 }
 

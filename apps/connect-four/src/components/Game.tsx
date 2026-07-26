@@ -1,4 +1,6 @@
-import { createSignal, onMount } from "solid-js";
+import { createSignal, Show } from "solid-js";
+
+import type { Cell, Player } from "#types";
 
 import GameSection from "./GameSection";
 import MenuSection from "./MenuSection";
@@ -10,11 +12,11 @@ function App() {
     winLength: 4,
   } as const;
 
-  const [currentPlayer, setCurrentPlayer] = createSignal(1);
-  const [board, setBoard] = createSignal(
+  const [currentPlayer, setCurrentPlayer] = createSignal<Player>(1);
+  const [board, setBoard] = createSignal<Cell[][]>(
     Array(CONFIG.rows)
       .fill(null)
-      .map(() => Array(CONFIG.cols).fill(0)) as number[][],
+      .map(() => Array<Cell>(CONFIG.cols).fill(0)),
   );
   const [showMenu, setShowMenu] = createSignal(true);
   const [gameOver, setGameOver] = createSignal(false);
@@ -24,14 +26,20 @@ function App() {
     col: number;
   } | null>(null);
 
+  function resetGame() {
+    setCurrentPlayer(1);
+    setBoard(
+      Array(CONFIG.rows)
+        .fill(null)
+        .map(() => Array(CONFIG.cols).fill(0)),
+    );
+    setMessageContent("Player 1 starts");
+  }
+
   function startNewGame() {
     setShowMenu(false);
     setGameOver(false);
     resetGame();
-  }
-
-  function showMainMenu() {
-    setShowMenu(true);
   }
 
   function getLowestEmptyRow(col: number) {
@@ -123,52 +131,30 @@ function App() {
     }
   }
 
-  function handleMouseOut() {
-    setHoveredCell(null);
-  }
-
-  function resetGame() {
-    setCurrentPlayer(1);
-    setBoard(
-      Array(CONFIG.rows)
-        .fill(null)
-        .map(() => Array(CONFIG.cols).fill(0)),
-    );
-    setMessageContent("Player 1 starts");
-  }
-
-  function updateCellSize() {
-    const width = (window.innerWidth - 70) / (CONFIG.cols * 1.15);
-    const height = (window.innerHeight - 270) / (CONFIG.rows * 1.15);
-    const cellSize = Math.min(height, width);
-    document.documentElement.style.setProperty("--cell-size", `${cellSize}px`);
-  }
-
-  onMount(() => {
-    updateCellSize();
-    window.addEventListener("resize", updateCellSize);
-    return () => window.removeEventListener("resize", updateCellSize);
-  });
-
   return (
-    <div id="game-container">
-      <h1 id="title">Connect Four</h1>
+    <div class="menu-bg flex w-fit flex-col items-center rounded-10 bg-black/80 p-fluid shadow-menu">
+      <h1 class="mb-fluid whitespace-nowrap text-center font-bold text-board-title text-shadow-title-glow text-white">
+        Connect Four
+      </h1>
 
-      <GameSection
-        board={board()}
-        currentPlayer={currentPlayer()}
-        gameOver={gameOver()}
-        handleClick={handleClick}
-        handleHover={handleHover}
-        handleMouseOut={handleMouseOut}
-        hoveredCell={hoveredCell()}
-        message={message()}
-        showMainMenu={showMainMenu}
-        showMenu={showMenu()}
-        startNewGame={startNewGame}
-      />
+      <Show when={!showMenu()}>
+        <GameSection
+          board={board()}
+          currentPlayer={currentPlayer()}
+          gameOver={gameOver()}
+          handleClick={handleClick}
+          handleHover={handleHover}
+          handleMouseOut={() => setHoveredCell(null)}
+          hoveredCell={hoveredCell()}
+          message={message()}
+          showMainMenu={() => setShowMenu(true)}
+          startNewGame={startNewGame}
+        />
+      </Show>
 
-      <MenuSection showMenu={showMenu()} startNewGame={startNewGame} />
+      <Show when={showMenu()}>
+        <MenuSection startNewGame={startNewGame} />
+      </Show>
     </div>
   );
 }

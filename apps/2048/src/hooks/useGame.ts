@@ -11,7 +11,7 @@ export function useGame(gridSize: number, initialTiles: number) {
   const [grid, setGrid] = createSignal(createEmptyGrid());
   const [score, setScore] = createSignal(0);
   const [gameOver, setGameOver] = createSignal(false);
-  const [inMenu, setInMenu] = createSignal(true);
+  const [inMenu, setInMenu] = createSignal(false);
 
   function addRandomTile(currentGrid: number[][]) {
     const emptyCells: { i: number; j: number }[] = [];
@@ -29,13 +29,10 @@ export function useGame(gridSize: number, initialTiles: number) {
 
   function initGame() {
     let newGrid = createEmptyGrid();
-    setScore(0);
     for (let i = 0; i < initialTiles; i++) {
       newGrid = addRandomTile(newGrid);
     }
     setGrid(newGrid);
-    setGameOver(false);
-    setInMenu(false);
   }
 
   function pushNumbers(arr: number[], addScore: (val: number) => void) {
@@ -112,9 +109,10 @@ export function useGame(gridSize: number, initialTiles: number) {
     }
 
     if (moved) {
-      setGrid(addRandomTile(newGrid));
+      const updatedGrid = addRandomTile(newGrid);
+      setGrid(updatedGrid);
       setScore(newScore);
-      if (checkGameOver(newGrid)) {
+      if (checkGameOver(updatedGrid)) {
         setGameOver(true);
         setInMenu(false);
       }

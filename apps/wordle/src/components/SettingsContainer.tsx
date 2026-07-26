@@ -4,18 +4,18 @@ function SettingGroup<T extends string>(props: {
   id: string;
   label: string;
   value: T;
-  options: { value: T; label: string }[];
-  onChange: (value: T) => void;
+  options: { value: NoInfer<T>; label: string }[];
+  onChange(value: T): void;
 }) {
   return (
-    <div class="flex justify-between items-end w-full mb-4">
+    <div class="mb-4 flex w-full items-end justify-between">
       <label for={props.id} class="font-bold text-2xl">
         {props.label}
       </label>
 
       <select
         id={props.id}
-        class="setting-select"
+        class="w-32 rounded-[5px] border border-border-light border-solid bg-white p-2 text-base text-dark dark:border-border-dark dark:bg-content-bg-dark dark:text-light"
         value={props.value}
         onChange={(event) => props.onChange(event.target.value as T)}
       >
@@ -29,10 +29,10 @@ function SettingGroup<T extends string>(props: {
 
 function SettingsContainer(props: {
   settings: Settings;
-  updateSettings: (settings: Partial<Settings>) => void;
+  updateSettings(settings: Partial<Settings>): void;
 }) {
   return (
-    <div class="content-container">
+    <div class="mx-auto my-0 flex w-full max-w-container flex-col items-center">
       <SettingGroup
         id="theme-select"
         label="Theme"

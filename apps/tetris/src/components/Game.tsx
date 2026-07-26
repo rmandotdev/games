@@ -1,8 +1,8 @@
 import { onMount, Show } from "solid-js";
 
 import { useGame } from "#hooks/useGame";
-
 import GameBoard from "./GameBoard";
+import Button from "./ui/Button";
 
 function App() {
   const {
@@ -19,35 +19,24 @@ function App() {
   onMount(init);
 
   return (
-    <div id="game-container">
-      <div id="game-board" class="no-select">
-        <GameBoard board={getProjection} />
-      </div>
+    <div class="flex w-fit flex-row items-center gap-2.5 p-1.25">
+      <GameBoard board={getProjection()} />
 
-      <div>
-        <div id="score">Score: {score()}</div>
+      <div class="flex flex-col items-center gap-2.5">
+        <div class="select-none text-base text-glow-cyan">Score: {score()}</div>
 
-        <div id="button-container" class="no-select">
+        <div class="flex select-none flex-col items-center gap-5">
           <Show when={state() === "notstarted"}>
-            <button id="start-button" class="button" onClick={startGame}>
-              Start Game
-            </button>
+            <Button label="Start Game" onClick={startGame} />
           </Show>
 
           <Show when={state() === "ongoing"}>
-            <button id="pause-button" class="button" onClick={pauseGame}>
-              Pause Game
-            </button>
+            <Button label="Pause Game" onClick={pauseGame} />
           </Show>
 
           <Show when={state() === "paused"}>
-            <button id="resume-button" class="button" onClick={resumeGame}>
-              Resume Game
-            </button>
-
-            <button id="reset-button" class="button" onClick={resetGame}>
-              Reset
-            </button>
+            <Button label="Resume Game" onClick={resumeGame} />
+            <Button label="Reset" onClick={resetGame} danger />
           </Show>
         </div>
       </div>

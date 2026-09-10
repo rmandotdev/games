@@ -37,7 +37,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.5.12",
     "@gameroman/config": "0.2.9",
-    "knip": "6.34.0",
+    "knip": "6.35.0",
     "typescript": "7.0.2"
   }
 }

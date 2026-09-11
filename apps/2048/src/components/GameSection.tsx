@@ -32,7 +32,11 @@ function GameSection(props: GameSectionProps) {
           {props.grid.map((row, i) =>
             row.map((cell, j) => (
               <div
-                class={`cell color-${cell === 0 ? "empty" : cell} flex size-cell items-center justify-center rounded-[5px] bg-cell font-bold text-2xl text-cell-text dark:bg-cell-dark`}
+                class={`cell flex size-cell items-center justify-center rounded-[5px] bg-cell font-bold text-2xl text-cell-text dark:bg-cell-dark`}
+                classList={{
+                  "color-empty": cell === 0,
+                  [`color-${cell}`]: cell !== 0,
+                }}
                 data-row={i}
                 data-col={j}
               >

@@ -35,8 +35,8 @@
     "yaml": "npm:neoyaml@0.2.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.12",
-    "@gameroman/config": "0.2.9",
+    "@biomejs/biome": "2.5.13",
+    "@gameroman/config": "0.3.0",
     "knip": "6.35.1",
     "typescript": "7.0.2"
   }

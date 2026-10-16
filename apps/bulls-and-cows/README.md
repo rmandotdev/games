@@ -1,3 +1,3 @@
 # Bulls and Cows
 
-[bulls-and-cows.rman.dev](https://bulls-and-cows.rman.dev)
+[bulls-and-cows.roman-psc.workers.dev](https://bulls-and-cows.roman-psc.workers.dev)

@@ -71,7 +71,7 @@ function App() {
     setGameState((prev) => ({ ...prev, gameOver: true }));
     setResult(
       `Congratulations! You guessed the number ${gameState().secretNumber} in ${
-        gameState().guesses
+        gameState().guesses + 1
       } guesses!`,
     );
   }
@@ -126,7 +126,14 @@ function App() {
         </p>
       </Show>
 
-      <Show when={!gameState().gameOver}>
+      <Show
+        when={!gameState().gameOver}
+        fallback={
+          <div class="mt-4">
+            <Button onClick={startGame} label="Play Again" />
+          </div>
+        }
+      >
         <form class="flex items-center justify-center" onSubmit={handleSubmit}>
           <input
             type="number"

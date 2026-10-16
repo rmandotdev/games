@@ -71,7 +71,7 @@ function App() {
     setGameState((prev) => ({ ...prev, gameOver: true }));
     setResult(
       `Congratulations! You guessed the number ${gameState().secretNumber} in ${
-        gameState().guesses + 1
+        gameState().guesses
       } guesses!`,
     );
   }

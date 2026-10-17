@@ -126,26 +126,39 @@ function App() {
         </p>
       </Show>
 
-      <Show when={!gameState().gameOver}>
-        <form class="flex items-center justify-center" onSubmit={handleSubmit}>
-          <input
-            type="number"
-            class="no-spinner my-2.5 mr-1.25 w-auto flex-1 rounded-5 border-2 border-app-400 border-solid bg-background p-2.5 text-base outline-none transition-colors duration-300 ease-[ease] focus:border-primary dark:border-app-700"
-            value={guess()}
-            onInput={handleInput}
-            min="0"
-            max="9999"
-            inputmode="numeric"
-            pattern="\d{4}"
-            required
-            placeholder="Enter your 4-digit guess"
-            maxlength="4"
-            classList={{ invalid: !!error() }}
-          />
-          <Show when={error()}>
-            <span class="text-red-500">{error()}</span>
-          </Show>
-          <Button type="submit" label="Guess" />
+      <Show
+        when={!gameState().gameOver}
+        fallback={
+          <div class="mt-4">
+            <Button onClick={startGame} label="Play Again" />
+          </div>
+        }
+      >
+        <form
+          class="flex flex-col items-center justify-center"
+          onSubmit={handleSubmit}
+        >
+          <div class="flex w-full items-center justify-center">
+            <input
+              type="number"
+              class="no-spinner my-2.5 mr-1.25 w-auto flex-1 rounded-5 border-2 border-app-400 border-solid bg-background p-2.5 text-base outline-none transition-colors duration-300 ease-[ease] focus:border-primary dark:border-app-700"
+              value={guess()}
+              onInput={handleInput}
+              min="0"
+              max="9999"
+              inputmode="numeric"
+              pattern="\d{4}"
+              required
+              placeholder="Enter your 4-digit guess"
+              maxlength="4"
+            />
+            <Button type="submit" label="Guess" />
+          </div>
+          <div class="h-6 w-full text-center">
+            <Show when={error()}>
+              <span class="text-red-500">{error()}</span>
+            </Show>
+          </div>
         </form>
       </Show>
     </div>

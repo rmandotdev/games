@@ -151,7 +151,6 @@ function App() {
               required
               placeholder="Enter your 4-digit guess"
               maxlength="4"
-              classList={{ invalid: !!error() }}
             />
             <Button type="submit" label="Guess" />
           </div>

@@ -154,9 +154,11 @@ function App() {
             />
             <Button type="submit" label="Guess" />
           </div>
-          <Show when={error()}>
-            <span class="mt-1 text-red-500">{error()}</span>
-          </Show>
+          <div class="h-6 w-full text-center">
+            <Show when={error()}>
+              <span class="text-red-500">{error()}</span>
+            </Show>
+          </div>
         </form>
       </Show>
     </div>

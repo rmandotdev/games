@@ -8,7 +8,7 @@ type HistoryProps = {
 
 function History(props: HistoryProps) {
   return (
-    <div class="scrollbar-custom my-2.5 max-h-64 overflow-y-auto border border-app-400 border-solid bg-app-200 p-2.5 text-left dark:border-app-700 dark:bg-app-900">
+    <div class="scrollbar-custom my-2.5 max-h-54 overflow-y-auto border border-app-400 border-solid bg-app-200 p-2.5 text-left dark:border-app-700 dark:bg-app-900">
       <div class="mb-2.5 grid grid-cols-history gap-2.5 border-2 border-black border-solid p-2 font-bold dark:border-light">
         <div>#</div>
         <div>Guess</div>

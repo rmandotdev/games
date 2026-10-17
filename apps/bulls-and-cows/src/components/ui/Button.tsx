@@ -1,7 +1,10 @@
 import type { JSX } from "solid-js";
 
 interface ButtonProps
-  extends Pick<JSX.ButtonHTMLAttributes<HTMLButtonElement>, "type" | "onClick"> {
+  extends Pick<
+    JSX.ButtonHTMLAttributes<HTMLButtonElement>,
+    "type" | "onClick"
+  > {
   label: string;
 }
 

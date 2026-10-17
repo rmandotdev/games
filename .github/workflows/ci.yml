@@ -33,7 +33,7 @@ jobs:
             run: bun run test
 
           - name: Lint code
-            run: bun run lint
+            run: bun run lint --diagnostic-level=error
 
           - name: Build
             run: bun run build

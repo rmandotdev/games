@@ -10,7 +10,7 @@
       "astro": "7.3.2",
       "solid-js": "1.9.15",
       "tailwindcss": "4.3.3",
-      "wrangler": "4.130.0"
+      "wrangler": "4.151.3"
     }
   },
   "scripts": {
@@ -35,9 +35,9 @@
     "yaml": "npm:neoyaml@0.2.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.13",
+    "@biomejs/biome": "2.5.15",
     "@gameroman/config": "0.3.0",
-    "knip": "6.35.1",
+    "knip": "6.42.1",
     "typescript": "7.0.2"
   }
 }

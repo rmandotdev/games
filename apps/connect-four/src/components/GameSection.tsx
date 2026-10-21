@@ -18,7 +18,7 @@ type GameSectionProps = {
 
 function GameSection(props: GameSectionProps) {
   return (
-    <div class="items-center justify-items-center text-center">
+    <div class="place-items-center text-center">
       <GameBoard
         board={props.board}
         currentPlayer={props.currentPlayer}

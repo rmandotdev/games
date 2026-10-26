@@ -4,7 +4,7 @@ import Cell from "./Cell";
 
 function GameBoard(props: { board: number[][] }) {
   return (
-    <div class="grid aspect-1/2 w-board touch-manipulation select-none grid-cols-10 grid-rows-20 rounded-5 border-2 border-cyan bg-black/80">
+    <div class="w-board rounded-5 border-cyan grid aspect-1/2 touch-manipulation grid-cols-10 grid-rows-20 border-2 bg-black/80 select-none">
       <For each={props.board}>
         {(cells, y) => (
           <For each={cells}>

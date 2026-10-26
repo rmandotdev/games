@@ -107,10 +107,10 @@ function App() {
   });
 
   return (
-    <div class="w-full max-w-container rounded-2xl bg-background p-container text-center shadow-container">
+    <div class="max-w-container bg-background p-container shadow-container w-full rounded-2xl text-center">
       <h1 class="my-6 text-3xl">Bulls and Cows</h1>
 
-      <div class="rounded text-app-600 text-sm dark:text-app-500">
+      <div class="text-app-600 dark:text-app-500 rounded text-sm">
         <p>Guess the 4-digit number</p>
         <p>Bulls: correct digits in the correct position</p>
         <p>Cows: correct digits in the wrong position</p>
@@ -121,7 +121,7 @@ function App() {
       </Show>
 
       <Show when={result()}>
-        <p class="scrollbar-thin my-1.25 items-center rounded-5 p-2 font-bold text-black dark:text-light">
+        <p class="rounded-5 dark:text-light my-1.25 scrollbar-thin items-center p-2 font-bold text-black">
           {result()}
         </p>
       </Show>
@@ -141,7 +141,7 @@ function App() {
           <div class="flex w-full items-center justify-center">
             <input
               type="number"
-              class="no-spinner my-2.5 mr-1.25 w-auto flex-1 rounded-5 border-2 border-app-400 border-solid bg-background p-2.5 text-base outline-none transition-colors duration-300 ease-[ease] focus:border-primary dark:border-app-700"
+              class="no-spinner rounded-5 border-app-400 bg-background focus:border-primary dark:border-app-700 my-2.5 mr-1.25 w-auto flex-1 border-2 border-solid p-2.5 text-base transition-colors duration-300 ease-[ease] outline-none"
               value={guess()}
               onInput={handleInput}
               min="0"

@@ -16,7 +16,7 @@ function HeapsDisplay(props: HeapsDisplayProps) {
         {(count, index) => (
           // biome-ignore lint/a11y: Needs to be fixed
           <div
-            class="heap relative mt-0 flex cursor-not-allowed touch-manipulation flex-col items-center rounded-10 border-2 border-transparent bg-white/5 p-6 text-primary text-xl transition-all duration-300 ease-out"
+            class="heap rounded-10 text-primary relative mt-0 flex cursor-not-allowed touch-manipulation flex-col items-center border-2 border-transparent bg-white/5 p-6 text-xl transition-all duration-300 ease-out"
             classList={{
               "cursor-pointer": props.interactive && count > 0,
               "border-primary -translate-y-1.25 bg-primary/10 shadow-5-15-primary-20":
@@ -31,13 +31,13 @@ function HeapsDisplay(props: HeapsDisplayProps) {
               props.interactive && count > 0 && props.selectHeap(index())
             }
           >
-            <div class="mb-4 inline-block rounded-lg bg-black/20 px-4 py-2 text-lg text-primary">
+            <div class="text-primary mb-4 inline-block rounded-lg bg-black/20 px-4 py-2 text-lg">
               <span>{count}</span> stones
             </div>
-            <div class="grid h-stones-h w-stones-w grid-cols-stones content-start gap-stones-gap rounded-lg bg-black/20 p-4">
+            <div class="h-stones-h w-stones-w grid-cols-stones gap-stones-gap grid content-start rounded-lg bg-black/20 p-4">
               <For each={Array(count).fill(0)}>
                 {() => (
-                  <div class="relative size-stone rounded-full bg-gradient-stone shadow-2-4-20 transition-all duration-300 ease-out" />
+                  <div class="size-stone bg-gradient-stone shadow-2-4-20 relative rounded-full transition-all duration-300 ease-out" />
                 )}
               </For>
             </div>

@@ -11,7 +11,7 @@ function SimonButton(props: SimonButtonProps) {
     <button
       type="button"
       aria-label={props.variant}
-      class="button-flashing size-30 cursor-pointer touch-manipulation rounded-full border-none opacity-80 shadow-button transition-all duration-300 ease-out hover:scale-105 hover:opacity-100"
+      class="button-flashing shadow-button size-30 cursor-pointer touch-manipulation rounded-full border-none opacity-80 transition-all duration-300 ease-out hover:scale-105 hover:opacity-100"
       classList={{
         "bg-btn-red": props.variant === "red",
         "bg-btn-green": props.variant === "green",

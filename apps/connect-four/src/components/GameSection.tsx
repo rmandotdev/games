@@ -29,7 +29,7 @@ function GameSection(props: GameSectionProps) {
         handleMouseOut={props.handleMouseOut}
       />
 
-      <div class="mt-fluid h-6 text-center text-white text-xl">
+      <div class="mt-fluid h-6 text-center text-xl text-white">
         {props.message}
       </div>
 

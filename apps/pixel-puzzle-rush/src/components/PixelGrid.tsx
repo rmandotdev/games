@@ -7,13 +7,13 @@ function PixelGrid(props: {
 }) {
   return (
     <div
-      class="m-2.5 inline-grid select-none gap-0.5"
+      class="m-2.5 inline-grid gap-0.5 select-none"
       style={{ "grid-template-columns": `repeat(${props.gridSize}, 1fr)` }}
     >
       <For each={props.grid}>
         {(color, index) => (
           <div
-            class="size-10 cursor-pointer touch-manipulation border border-border"
+            class="border-border size-10 cursor-pointer touch-manipulation border"
             style={{ "background-color": color }}
             onClick={() => props.handleGridClick?.(index())}
           />

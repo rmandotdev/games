@@ -16,7 +16,7 @@ function GameSection(props: GameSectionProps) {
     <Show when={!props.inMenu}>
       <div class="flex flex-col items-center">
         <Show when={props.gameOver}>
-          <h2 class="font-bold text-2xl">Game Over!</h2>
+          <h2 class="text-2xl font-bold">Game Over!</h2>
         </Show>
 
         <div class="text-2xl">
@@ -24,7 +24,7 @@ function GameSection(props: GameSectionProps) {
         </div>
 
         <div
-          class="m-5 grid gap-grid-gap rounded-[5px] bg-grid p-2.5 dark:bg-grid-dark"
+          class="gap-grid-gap bg-grid dark:bg-grid-dark m-5 grid rounded-[5px] p-2.5"
           style={{
             "grid-template-columns": `repeat(${props.grid.length}, 1fr)`,
           }}
@@ -32,7 +32,7 @@ function GameSection(props: GameSectionProps) {
           {props.grid.map((row, i) =>
             row.map((cell, j) => (
               <div
-                class={`cell flex size-cell items-center justify-center rounded-[5px] bg-cell font-bold text-2xl text-cell-text dark:bg-cell-dark`}
+                class={`cell size-cell bg-cell text-cell-text dark:bg-cell-dark flex items-center justify-center rounded-[5px] text-2xl font-bold`}
                 classList={{
                   "color-empty": cell === 0,
                   [`color-${cell}`]: cell !== 0,

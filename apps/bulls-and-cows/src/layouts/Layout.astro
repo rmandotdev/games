@@ -37,9 +37,9 @@ const { title, description, canonical, thumbnail } = Astro.props;
   </head>
 
   <body
-    class="font-roboto-sans flex justify-center items-center h-screen m-0 text-black dark:text-light bg-app-gradient"
+    class="font-roboto-sans dark:text-light bg-app-gradient m-0 flex h-screen items-center justify-center text-black"
   >
-    <main class="flex justify-center w-full">
+    <main class="flex w-full justify-center">
       <slot />
     </main>
   </body>

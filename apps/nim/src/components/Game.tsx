@@ -133,7 +133,7 @@ function App() {
     <>
       <Show when={currentScreen() === "menu"}>
         <Section>
-          <h1 class="mt-7 mb-10 font-bold text-5xl text-glow text-white">
+          <h1 class="text-glow mt-7 mb-10 text-5xl font-bold text-white">
             NIM Game
           </h1>
 
@@ -149,7 +149,7 @@ function App() {
       <Show when={currentScreen() === "rules"}>
         <Section>
           <h2 class="mb-4 text-white">How to Play</h2>
-          <ul class="pl-6 text-left text-white/90 leading-relaxed">
+          <ul class="pl-6 text-left leading-relaxed text-white/90">
             <li>The game starts with 3 heaps of stones</li>
             <li>Players take turns removing stones from the heaps</li>
             <li>
@@ -194,7 +194,7 @@ function App() {
           />
 
           <Show when={selectedHeap() !== null}>
-            <div class="mt-8 rounded-10 bg-black/5 p-4">
+            <div class="rounded-10 mt-8 bg-black/5 p-4">
               <input
                 type="range"
                 class="custom-slider-thumb m-6 h-2 w-62.5 cursor-pointer rounded-sm bg-white/10"
@@ -205,7 +205,7 @@ function App() {
                   setTakeAmount(parseInt(e.currentTarget.value, 10))
                 }
               />
-              <div class="mx-0 my-2 text-lg text-primary">
+              <div class="text-primary mx-0 my-2 text-lg">
                 {takeAmount()} {takeAmount() === 1 ? "stone" : "stones"}{" "}
                 selected
               </div>
@@ -217,7 +217,7 @@ function App() {
 
       <Show when={currentScreen() === "game-over"}>
         <Section>
-          <h2 class="mb-4 text-3xl text-glow text-primary">
+          <h2 class="text-glow text-primary mb-4 text-3xl">
             {gameMode() === "bot"
               ? currentPlayer() === 0
                 ? "You win!"

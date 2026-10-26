@@ -236,7 +236,10 @@ function App() {
               gameState().currentState === "paused" ? "hidden" : "visible",
           }}
         >
-          <PixelGrid grid={gameState().grid} gridSize={gameState().gridSize} />
+          <PixelGrid
+            grid={gameState().pattern}
+            gridSize={gameState().gridSize}
+          />
 
           <PixelGrid
             grid={gameState().grid}

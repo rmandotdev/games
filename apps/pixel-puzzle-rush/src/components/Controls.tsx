@@ -11,7 +11,7 @@ interface ControlsProps {
 
 function Controls(props: ControlsProps) {
   return (
-    <div class="mt-5 flex select-none justify-center">
+    <div class="mt-5 flex justify-center select-none">
       <Show when={props.currentState === "menu"}>
         <button onClick={props.startGame}>Start Game</button>
       </Show>

@@ -143,10 +143,10 @@ function App() {
   };
 
   return (
-    <div class="w-full max-w-125 rounded-2xl border border-white/20 bg-white/10 p-8 text-center shadow-container backdrop-blur-xs">
-      <h1 class="title-shadow mt-6 mb-5 font-bold text-4xl">Simon Says</h1>
+    <div class="shadow-container w-full max-w-125 rounded-2xl border border-white/20 bg-white/10 p-8 text-center backdrop-blur-xs">
+      <h1 class="title-shadow mt-6 mb-5 text-4xl font-bold">Simon Says</h1>
 
-      <div class="mb-5 font-light text-2xl tracking-[1px]">{message()}</div>
+      <div class="mb-5 text-2xl font-light tracking-[1px]">{message()}</div>
 
       <div class="mx-auto mb-8 grid w-70 grid-cols-2 gap-4">
         <SimonButton
@@ -173,7 +173,7 @@ function App() {
 
       <button
         type="button"
-        class="cursor-pointer touch-manipulation rounded-3xl border-none bg-button px-7.5 py-3 font-bold text-black text-xl uppercase tracking-[1px] shadow-button transition-all duration-300 ease-out hover:bg-btn-green hover:shadow-button-hover disabled:transform-none disabled:cursor-not-allowed disabled:bg-light disabled:shadow-none"
+        class="bg-button shadow-button hover:bg-btn-green hover:shadow-button-hover disabled:bg-light cursor-pointer touch-manipulation rounded-3xl border-none px-7.5 py-3 text-xl font-bold tracking-[1px] text-black uppercase transition-all duration-300 ease-out disabled:transform-none disabled:cursor-not-allowed disabled:shadow-none"
         onClick={startGame}
         disabled={startButtonDisabled()}
       >

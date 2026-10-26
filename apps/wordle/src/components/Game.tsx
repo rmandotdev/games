@@ -36,7 +36,7 @@ function App() {
   onMount(init);
 
   return (
-    <div class="mx-auto my-0 flex w-[95%] max-w-container flex-col items-center text-dark dark:text-light">
+    <div class="max-w-container text-dark dark:text-light mx-auto my-0 flex w-[95%] flex-col items-center">
       <TopBar
         currentSection={currentSection()}
         setCurrentSection={setCurrentSection}

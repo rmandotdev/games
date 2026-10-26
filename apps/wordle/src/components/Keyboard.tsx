@@ -29,7 +29,7 @@ function KeyboardButton(props: {
   return (
     <button
       type="button"
-      class="touch-manipulation border-0 p-0 font-bold text-2xl text-black"
+      class="touch-manipulation border-0 p-0 text-2xl font-bold text-black"
       classList={{
         "cursor-pointer bg-content-bg hover:bg-content-hover":
           !color && !props.disabled,
@@ -151,7 +151,7 @@ function Keyboard(props: {
 
   return (
     <div
-      class="grid gap-keyboard"
+      class="gap-keyboard grid"
       style={{
         "grid-template-columns": "repeat(10, var(--key-size))",
         "grid-template-rows": "repeat(3, var(--key-size))",

@@ -7,7 +7,7 @@ interface SettingsProps {
 
 function Settings(props: SettingsProps) {
   return (
-    <div id="settings" class="mb-5 flex select-none justify-center">
+    <div id="settings" class="mb-5 flex justify-center select-none">
       <select
         aria-label="Grid size"
         value={props.gridSizeInput}

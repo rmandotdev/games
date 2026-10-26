@@ -23,9 +23,9 @@ function App() {
       <GameBoard board={getProjection()} />
 
       <div class="flex flex-col items-center gap-2.5">
-        <div class="select-none text-base text-glow-cyan">Score: {score()}</div>
+        <div class="text-glow-cyan text-base select-none">Score: {score()}</div>
 
-        <div class="flex select-none flex-col items-center gap-5">
+        <div class="flex flex-col items-center gap-5 select-none">
           <Show when={state() === "notstarted"}>
             <Button label="Start Game" onClick={startGame} />
           </Show>

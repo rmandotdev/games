@@ -24,7 +24,7 @@ function TopbarButton(props: {
         width="24"
         height="24"
         viewBox="0 0 24 24"
-        class="size-7.5 text-dark dark:text-white"
+        class="text-dark size-7.5 dark:text-white"
         fill="none"
         stroke="currentColor"
         stroke-width="2"
@@ -43,7 +43,7 @@ function TopBar(props: {
   setCurrentSection: (section: CurrentSection) => void;
 }) {
   return (
-    <div class="mb-5 flex h-15 w-full max-w-container items-center justify-between border-current border-b border-solid text-dark dark:text-white">
+    <div class="max-w-container text-dark mb-5 flex h-15 w-full items-center justify-between border-b border-solid border-current dark:text-white">
       <div class="flex basis-1/3 flex-row gap-2.5">
         <TopbarButton
           section="menu"
@@ -64,7 +64,7 @@ function TopBar(props: {
         </TopbarButton>
       </div>
 
-      <h1 class="m-0 grow text-center font-bold font-courier text-[2em] leading-none tracking-[2px]">
+      <h1 class="font-courier m-0 grow text-center text-[2em] leading-none font-bold tracking-[2px]">
         Wordle
       </h1>
 

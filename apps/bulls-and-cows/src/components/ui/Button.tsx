@@ -13,7 +13,7 @@ function Button(props: ButtonProps) {
     <button
       type={props.type}
       onClick={props.onClick}
-      class="cursor-pointer whitespace-nowrap rounded-5 border-none bg-primary px-5 py-2.5 text-base text-white transition-colors duration-300 ease-[ease] hover:bg-secondary"
+      class="rounded-5 bg-primary hover:bg-secondary cursor-pointer border-none px-5 py-2.5 text-base whitespace-nowrap text-white transition-colors duration-300 ease-[ease]"
     >
       {props.label}
     </button>

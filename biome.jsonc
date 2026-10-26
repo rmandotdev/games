@@ -8,7 +8,9 @@
         "noNonNullAssertion": { "fix": "none", "level": "warn" },
         "noHexColors": "warn"
       },
-      "nursery": { "useSortedClasses": { "fix": "safe", "level": "error" } }
+      "nursery": {
+        "useTailwindSortedClasses": { "fix": "safe", "level": "error" }
+      }
     }
   }
 }

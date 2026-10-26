@@ -32,7 +32,7 @@ function SharePopup(props: { data: SharePopupData; onClose: () => void }) {
       <button
         type="button"
         textContent="×"
-        class="absolute top-1.25 right-1.25 cursor-pointer border-none bg-transparent p-1.25 text-2xl text-inherit leading-[0.8] opacity-70 transition-opacity duration-200 hover:opacity-100"
+        class="absolute top-1.25 right-1.25 cursor-pointer border-none bg-transparent p-1.25 text-2xl leading-[0.8] text-inherit opacity-70 transition-opacity duration-200 hover:opacity-100"
         onClick={props.onClose}
       />
       <div textContent={props.data.title} class="mb-3.75 text-2xl" />

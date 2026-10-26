@@ -1,25 +1,12 @@
 import { createSignal, onMount, Show } from "solid-js";
-
+import { CONFIG } from "#lib/config";
+import { formatTime } from "#lib/format-time";
 import type { CurrentState } from "#types";
-
 import Controls from "./Controls";
 import PixelGrid from "./PixelGrid";
 import Settings from "./Settings";
 
 function App() {
-  const CONFIG = {
-    baseColors: [
-      "#ff0000",
-      "#00ff00",
-      "#0000ff",
-      "#ffff00",
-      "#ff00ff",
-      "#00ffff",
-      "#ffa500",
-    ],
-    saveName: "pixel-puzzle-rush-data",
-  } as const;
-
   type GameState = {
     gridSize: number;
     pattern: string[];
@@ -90,10 +77,10 @@ function App() {
   function getBestTimeText() {
     const state = gameState();
     const key = `${state.gridSize}x${state.gridSize}-${state.colors.length}`;
-    const bestTime = state.bestTimes[key] || Infinity;
-    return bestTime === Infinity
-      ? `Best Time (${key}): None`
-      : `Best Time (${key}): ${(bestTime / 1000).toFixed(2)}s`;
+    const bestTime = state.bestTimes[key] ?? null;
+    return bestTime
+      ? `Best Time (${key}): ${formatTime(bestTime)}`
+      : `Best Time (${key}): None`;
   }
 
   function startTimer() {
@@ -166,13 +153,9 @@ function App() {
         bestTimes: { ...prev.bestTimes, [key]: state.currentTime },
       }));
       saveData();
-      setMessage(
-        `New Best Time for ${key}: ${(state.currentTime / 1000).toFixed(2)}s!`,
-      );
+      setMessage(`New Best Time for ${key}: ${formatTime(state.currentTime)}!`);
     } else {
-      setMessage(
-        `Puzzle Solved! Time: ${(state.currentTime / 1000).toFixed(2)}s`,
-      );
+      setMessage(`Puzzle Solved! Time: ${formatTime(state.currentTime)}`);
     }
     setGameState((prev) => ({
       ...prev,
@@ -223,7 +206,7 @@ function App() {
 
       <Show when={gameState().currentState !== "menu"}>
         <div class="my-2.5 text-2xl">
-          Time: {(gameState().currentTime / 1000).toFixed(2)}s
+          Time: {formatTime(gameState().currentTime)}
         </div>
         <div class="my-2.5 text-2xl">{getBestTimeText()}</div>
       </Show>
@@ -236,7 +219,10 @@ function App() {
               gameState().currentState === "paused" ? "hidden" : "visible",
           }}
         >
-          <PixelGrid grid={gameState().grid} gridSize={gameState().gridSize} />
+          <PixelGrid
+            grid={gameState().pattern}
+            gridSize={gameState().gridSize}
+          />
 
           <PixelGrid
             grid={gameState().grid}

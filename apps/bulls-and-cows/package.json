@@ -20,6 +20,7 @@
   "devDependencies": {
     "@astrojs/solid-js": "catalog:",
     "@tailwindcss/vite": "catalog:",
+    "@vite-pwa/astro": "catalog:",
     "wrangler": "catalog:"
   }
 }

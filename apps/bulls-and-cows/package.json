@@ -23,6 +23,7 @@
     "@unplugin-pwa/core": "catalog:",
     "@vite-pwa/astro": "catalog:",
     "@vite-pwa/workbox-window": "catalog:",
+    "rolldown": "catalog:",
     "wrangler": "catalog:"
   }
 }

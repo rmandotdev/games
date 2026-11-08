@@ -20,6 +20,11 @@
   "devDependencies": {
     "@astrojs/solid-js": "catalog:",
     "@tailwindcss/vite": "catalog:",
+    "@unplugin-pwa/core": "catalog:",
+    "@vite-pwa/astro": "catalog:",
+    "@vite-pwa/workbox-window": "catalog:",
+    "magicast": "catalog:",
+    "rolldown": "catalog:",
     "wrangler": "catalog:"
   }
 }

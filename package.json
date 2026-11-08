@@ -6,10 +6,15 @@
     ],
     "catalog": {
       "@astrojs/solid-js": "7.1.1",
-      "@tailwindcss/vite": "4.3.3",
+      "@tailwindcss/vite": "4.3.5",
+      "@unplugin-pwa/core": "0.0.3",
+      "@vite-pwa/astro": "2.0.0",
+      "@vite-pwa/workbox-window": "8.0.14",
       "astro": "7.4.2",
+      "magicast": "0.5.5",
+      "rolldown": "1.2.15",
       "solid-js": "1.9.17",
-      "tailwindcss": "4.3.3",
+      "tailwindcss": "4.3.5",
       "wrangler": "4.152.0"
     }
   },

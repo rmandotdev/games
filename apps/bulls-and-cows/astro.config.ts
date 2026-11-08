@@ -10,7 +10,7 @@ export default defineConfig({
       manifest: {
         name: "Bulls and Cows",
         short_name: "Bulls and Cows",
-        theme_color: "#016630",
+        theme_color: "#1B163A",
         icons: [
           { src: "icons/192x192.png", sizes: "192x192", type: "image/png" },
           { src: "icons/512x512.png", sizes: "512x512", type: "image/png" },

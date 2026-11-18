@@ -16,5 +16,8 @@
   },
   "[tailwindcss]": {
     "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "biomejs.biome"
   }
 }

@@ -1,3 +1,4 @@
+import { CONFIG } from "#config";
 import { getGuessPattern } from "./get-guess-patern";
 
 export function getSharePopupData({
@@ -19,7 +20,7 @@ export function getSharePopupData({
   const topText = isWin
     ? `I guessed a word in Wordle in ${attempts} attempts`
     : `I did not guess a word in Wordle`;
-  const shareText = `${topText}\n\n${pattern}\n\nPlay on ${window.location.href}`;
+  const shareText = `${topText}\n\n${pattern}\n\nPlay on ${CONFIG.gameUrl}`;
 
   return { isWin, title, pattern, shareText };
 }

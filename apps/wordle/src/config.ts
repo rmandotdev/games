@@ -1,6 +1,21 @@
+import answersRaw from "./data/answers.txt?raw";
+import guessesRaw from "./data/guesses.txt?raw";
+
+function parseWords(raw: string): string[] {
+  return raw
+    .split("\n")
+    .map((word) => word.trim())
+    .filter(Boolean);
+}
+
+const answers = parseWords(answersRaw);
+
 export const WORDS = {
-  guesses: [] as string[],
-  answers: [] as string[],
+  guesses: new Set(parseWords(guessesRaw).concat(answers)),
+  answers,
+
+  answersRaw,
+  guessesRaw,
 };
 
 export const CONFIG = {
@@ -14,8 +29,5 @@ export const CONFIG = {
     AZERTY: ["AZERTYUIOP", "QSDFGHJKLM", "WXCVBN"],
   },
 
-  dataUrls: {
-    guesses: "/data/guesses.txt",
-    answers: "/data/answers.txt",
-  },
+  gameUrl: "https://wordle.rman.dev/",
 } as const;

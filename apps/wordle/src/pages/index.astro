@@ -1,14 +1,13 @@
 ---
 import Game from "#components/Game";
+import { CONFIG } from "#config";
 import Layout from "#layout";
 
-const id = "wordle";
 const title = "Wordle - Daily and Unlimited Word Puzzle Game";
-const canonical = `https://games.rman.dev/${id}`;
+const canonical = CONFIG.gameUrl;
 const description = `Challenge yourself with Wordle, the addictive daily word puzzle. Enjoy unlimited games or a new daily challenge. Play now on ${canonical}`;
-const thumbnail = `/images/${id}.png`;
 ---
 
-<Layout {title} {description} {canonical} {thumbnail}>
+<Layout {title} {description} {canonical}>
   <Game client:only="solid-js" />
 </Layout>

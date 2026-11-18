@@ -1,15 +1,20 @@
 ---
 import "#styles";
 
+import { pwaInfo } from "virtual:pwa-info";
+
+import type { JSXElement } from "solid-js";
+
 interface Props {
   title: string;
   description: string;
   canonical: string;
-  thumbnail: string;
-  children: unknown;
+  children: () => JSXElement;
 }
 
-const { title, description, canonical, thumbnail } = Astro.props;
+const { title, description, canonical } = Astro.props;
+
+const thumbnail = "/icons/512x512.png";
 ---
 
 <html lang="en" class="h-screen">
@@ -33,7 +38,17 @@ const { title, description, canonical, thumbnail } = Astro.props;
     <meta name="twitter:image" content={thumbnail} />
 
     <link rel="canonical" href={canonical} />
-    <link rel="shortcut icon" href={thumbnail} type="image/x-icon" />
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+    <link rel="apple-touch-icon" href="/icons/192x192.png" />
+
+    {pwaInfo && <Fragment set:html={pwaInfo.webManifest.linkTag} />}
+
+    <script>
+    import { registerSW } from "virtual:pwa-register";
+
+    registerSW({ immediate: true });
+    </script>
   </head>
 
   <body class="bg-light dark:bg-dark text-dark dark:text-light font-app">

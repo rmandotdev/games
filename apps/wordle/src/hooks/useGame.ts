@@ -107,7 +107,7 @@ export function useGame() {
   }
 
   async function submitGuess(guess: string) {
-    if (!WORDS.guesses.includes(guess)) {
+    if (!WORDS.guesses.has(guess)) {
       await shakeCurrentRow();
       showNotification(`Word ${guess.toUpperCase()} does not exist`);
       return;
@@ -142,25 +142,6 @@ export function useGame() {
       setSecretWord(getNewWord(gamemode));
       setCurrentSection("game");
     });
-  }
-
-  async function fetchWords() {
-    try {
-      const [guessesString, answersString] = await Promise.all([
-        fetch(CONFIG.dataUrls.guesses).then((r) => r.text()),
-        fetch(CONFIG.dataUrls.answers).then((r) => r.text()),
-      ]);
-
-      const guesses = guessesString.split("\n").map((word) => word.trim());
-      const answers = answersString.split("\n").map((word) => word.trim());
-
-      WORDS.guesses = guesses.concat(answers);
-      WORDS.answers = answers;
-    } catch (error) {
-      console.error("Error fetching words:", error);
-    }
-
-    return WORDS;
   }
 
   function handleBoardAction(action: BoardAction) {
@@ -231,7 +212,7 @@ export function useGame() {
   }
 
   function init() {
-    fetchWords().then(() => startNewGame("daily"));
+    startNewGame("daily");
     document.addEventListener("keydown", (event) => {
       const action = getBoardAction(event);
       if (!action) return;

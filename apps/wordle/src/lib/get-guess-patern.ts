@@ -4,17 +4,17 @@ import { getTileColors } from "./get-tile-colors";
 
 type PatternSymbol = "🟩" | "🟨" | "⬛";
 
+const colorMap = {
+  absent: "⬛",
+  present: "🟨",
+  correct: "🟩",
+} as const satisfies Record<TileColor, PatternSymbol>;
+
 function getGuessPattern(
   guesses: readonly string[],
   secretWord: string,
 ): string {
   const pattern: string[] = [];
-
-  const colorMap = {
-    absent: "⬛",
-    present: "🟨",
-    correct: "🟩",
-  } as const satisfies Record<TileColor, PatternSymbol>;
 
   for (const guess of guesses) {
     const colors = getTileColors(guess, secretWord);

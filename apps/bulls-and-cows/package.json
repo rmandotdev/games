@@ -22,6 +22,7 @@
     "@tailwindcss/vite": "catalog:",
     "@unplugin-pwa/core": "catalog:",
     "@vite-pwa/astro": "catalog:",
+    "@vite-pwa/workbox-swkit": "catalog:",
     "@vite-pwa/workbox-window": "catalog:",
     "magicast": "catalog:",
     "rolldown": "catalog:",
